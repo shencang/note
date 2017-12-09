@@ -1,4 +1,4 @@
-# note
+# C++中String到WString的转换
 W顾名思义就是Width的缩写，即所谓的“宽”。
 
 首先看一下wstring和string分别如何定义的：
