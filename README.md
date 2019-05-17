@@ -12,5 +12,9 @@
 
 [Java](https://github.com/shencang/note/tree/master/Java)
 
+[Singlechip](https://github.com/shencang/note/tree/master/Singlechip)
+
+[DeepLearning](https://github.com/shencang/note/tree/master/DeepLearning)
+
 [other]()
 
