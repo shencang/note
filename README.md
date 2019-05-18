@@ -16,5 +16,5 @@
 
 [DeepLearning](https://github.com/shencang/note/tree/master/DeepLearning)
 
-[other]()
+[other](https://github.com/shencang/note/tree/master/Other)
 
