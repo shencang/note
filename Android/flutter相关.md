@@ -7,3 +7,5 @@
 [入坑Flutter ,弃坑React-Native(简单体验)](https://www.liangzl.com/get-article-detail-17693.html)
 
 [Flutter 入门教程](https://blog.csdn.net/sinat_17775997/article/details/82108352)
+
+[安卓学习笔记(21)-flutter doctor时显示X Unable to locate Android SDK的解决方案](https://blog.csdn.net/kabuto_hui/article/details/79505262)
