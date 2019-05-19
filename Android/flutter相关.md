@@ -9,3 +9,9 @@
 [Flutter 入门教程](https://blog.csdn.net/sinat_17775997/article/details/82108352)
 
 [安卓学习笔记(21)-flutter doctor时显示X Unable to locate Android SDK的解决方案](https://blog.csdn.net/kabuto_hui/article/details/79505262)
+
+一些找到的但是没有用处的：
+
+[java 11，运行sdkmanage导致java.lang.module.FindException：找不到模块java.se.ee](https://cloud.tencent.com/developer/ask/210444/answer/325161)
+
+[]()
