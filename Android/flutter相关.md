@@ -20,3 +20,8 @@
 [GSYGithubAppFlutter](https://github.com/CarGuo/GSYGithubAppFlutter)
 
 [Flutter完整开发实战详解(一、Dart语言和Flutter基础) ](https://juejin.im/post/5b631d326fb9a04fce524db2)
+
+[Dart语法学习](https://www.jianshu.com/p/9e5f4c81cc7d)
+
+[Dart中文网](http://dart.goodev.org/)
+
