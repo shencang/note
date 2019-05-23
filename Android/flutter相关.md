@@ -25,3 +25,11 @@
 
 [Dart中文网](http://dart.goodev.org/)
 
+[请收下我的 20 个 Flutter 开源项目](https://www.jianshu.com/p/72e359bfe1e0)
+
+~~暂时换没有什么卵用：~~
+[两个星期，用Flutter撸个APP](https://www.cnblogs.com/game-over/p/9998392.html)
+
+[揭开Flutter工程编译的面纱（Android篇）](https://blog.csdn.net/mcryeasy/article/details/88175068)
+
+[基于Flutter的开源项目和App,Flutter入门有她就够了(一)](https://www.jianshu.com/p/c4bc4a612e88?utm_campaign=haruki&utm_content=note&utm_medium=reader_share&utm_source=qq)
