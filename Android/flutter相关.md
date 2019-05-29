@@ -39,3 +39,5 @@
 [Flutter安装和配置，Flutter开发遇到的难题，Flutter示例代码和模板，Flutter项目实战，Dart语言学习示例代码。](https://github.com/AweiLoveAndroid/Flutter-learning)
 
 [flutter_study](https://github.com/luhenchang/flutter_study)
+
+~~这个感觉很棒：~~[三天学会flutter系列视频](https://www.bilibili.com/video/av38906503)
