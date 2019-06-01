@@ -33,6 +33,9 @@
 ~~目前来看还是至多Java 10 才能运行~~
 认怂了，就jdk10吧
 
+[Compiler message: Error: The argument type 'Null Function(StringBuffer)' can't be assigned to the parameter type 'Iterable<DiagnosticsNode> Function()'. Flutter 1.5.9](https://github.com/renefloor/flutter_cached_network_image/issues/171)
+
+一个不是很明白的错误。但是急需解决
 
 # 拓展内容：
 
