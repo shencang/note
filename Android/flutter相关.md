@@ -53,3 +53,9 @@
 [Flutter安装和配置，Flutter开发遇到的难题，Flutter示例代码和模板，Flutter项目实战，Dart语言学习示例代码。](https://github.com/AweiLoveAndroid/Flutter-learning)
 
 [flutter_study](https://github.com/luhenchang/flutter_study)
+
+# 技巧
+
+[Flutter 圆形/圆角头像](https://www.jianshu.com/p/b4085a1a5129)
+
+[留一个下载](https://download.csdn.net/download/u010326875/11082948)
