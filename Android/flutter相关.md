@@ -55,8 +55,18 @@
 
 [flutter_study](https://github.com/luhenchang/flutter_study)
 
-# 技巧
+# 技巧：
 
 [Flutter 圆形/圆角头像](https://www.jianshu.com/p/b4085a1a5129)
 
 [留一个下载](https://download.csdn.net/download/u010326875/11082948)
+
+# 项目要用[临时]
+
+[Flutter系列之Dart数据库编程](https://blog.csdn.net/s1120080286/article/details/83445840)
+
+[为你的 Flutter APP 添加交互性](https://juejin.im/post/5b612a59e51d4515b01c004e)
+
+[mysql插件](https://pub.dev/packages/mysql1#-installing-tab-)
+
+[flutter网络请求和详情页展示的例子](https://blog.csdn.net/kfeng632/article/details/80934427)
