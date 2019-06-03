@@ -18,6 +18,7 @@
 
 [揭开Flutter工程编译的面纱（Android篇）](https://blog.csdn.net/mcryeasy/article/details/88175068)
 
+[flutter实战5：异步async、await和Future的使用技巧](https://segmentfault.com/a/1190000014396421)
 
 ~~这个感觉很棒：~~[三天学会flutter系列视频](https://www.bilibili.com/video/av38906503)
 # 问题解决：
