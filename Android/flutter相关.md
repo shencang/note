@@ -70,3 +70,5 @@
 [mysql插件](https://pub.dev/packages/mysql1#-installing-tab-)
 
 [flutter网络请求和详情页展示的例子](https://blog.csdn.net/kfeng632/article/details/80934427)
+
+[mysql1 0.17.0](https://pub.dev/packages/mysql1)
