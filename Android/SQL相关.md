@@ -1,6 +1,10 @@
-[LitePal的基本用法](https://www.jianshu.com/p/27b99daa98f2)
+# litepal：
 
 [SQLiteDatabase中query、insert、update、delete方法参数说明](https://www.cnblogs.com/mochaMM/p/5112929.html)
+
+[LitePal的基本用法](https://www.jianshu.com/p/27b99daa98f2)
+
+# mysql：
 
 [mysql 1130错误，无法登录远程服务](https://www.baidu.com/link?url=OoQy0RsOS1hzhvb0UOFtmo72h6B7HBBVJ1XBWtP754R8liv92p7DST43PUhCQrU2QolSVnNMlfPIUuAoFGe-sJLqxkiU4i8vb7Genlnd8jW&wd=&eqid=f5093b49000018c5000000035cf7ba9c)
 
