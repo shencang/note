@@ -21,6 +21,8 @@
 [flutter实战5：异步async、await和Future的使用技巧](https://segmentfault.com/a/1190000014396421)
 
 ~~这个感觉很棒：~~[三天学会flutter系列视频](https://www.bilibili.com/video/av38906503)
+
+[你想了解的Dart](https://www.jianshu.com/p/d41952e51120)
 # 问题解决：
 
 [安卓学习笔记(21)-flutter doctor时显示X Unable to locate Android SDK的解决方案](https://blog.csdn.net/kabuto_hui/article/details/79505262)
@@ -72,3 +74,7 @@
 [flutter网络请求和详情页展示的例子](https://blog.csdn.net/kfeng632/article/details/80934427)
 
 [mysql1 0.17.0](https://pub.dev/packages/mysql1)
+
+[Flutter 网络请求库http](https://www.cnblogs.com/zhujiabin/p/10333253.html)
+
+[# Flutter从入门到奔溃（四）：撸一个包含列表刷新以及网络请求的首页](https://www.jianshu.com/p/7265b054271f)
