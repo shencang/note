@@ -4,7 +4,7 @@
     其他部分还有些内容存在问题以及内容较少的问题。
     我会尽力补充，如果有想法或者推荐，欢迎留言。
     
-#### 目录跳转：
+#### 目录：
 
 * 编程：
 >* [Python](https://github.com/shencang/note/tree/master/Python)
