@@ -20,6 +20,8 @@
 
 [flutter实战5：异步async、await和Future的使用技巧](https://segmentfault.com/a/1190000014396421)
 
+[Flutter基础篇（6）-- 水平和垂直布局详解](https://www.jianshu.com/p/7511cb18a05e?utm_source=oschina-app)
+
 ~~这个感觉很棒：~~[三天学会flutter系列视频](https://www.bilibili.com/video/av38906503)
 
 [你想了解的Dart](https://www.jianshu.com/p/d41952e51120)
@@ -57,6 +59,7 @@
 
 [flutter_study](https://github.com/luhenchang/flutter_study)
 
+[(Flutter学习 ---- 屏幕截图和高斯模糊)](https://juejin.im/post/5b03ea7e51882565bd2594b0)
 # 技巧：
 
 [Flutter 圆形/圆角头像](https://www.jianshu.com/p/b4085a1a5129)
