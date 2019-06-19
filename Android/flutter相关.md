@@ -90,3 +90,5 @@
 [# Flutter从入门到奔溃（四）：撸一个包含列表刷新以及网络请求的首页](https://www.jianshu.com/p/7265b054271f)
 
 [如何确定Flutter中网络图像的宽度和高度](https://www.jianshu.com/p/804a8e12d91a)
+
+[flutter之从零开始搭建（一）之 BottomNavigationBar](https://juejin.im/post/5b3ee0b66fb9a04f8a21678c)
