@@ -25,7 +25,9 @@
 ~~这个感觉很棒：~~[三天学会flutter系列视频](https://www.bilibili.com/video/av38906503)
 
 [你想了解的Dart](https://www.jianshu.com/p/d41952e51120)
+
 # 问题解决：
+[Flutter Image 参数详解](https://blog.csdn.net/chenlove1/article/details/84111554)
 
 [安卓学习笔记(21)-flutter doctor时显示X Unable to locate Android SDK的解决方案](https://blog.csdn.net/kabuto_hui/article/details/79505262)
 
@@ -41,6 +43,10 @@
 [Compiler message: Error: The argument type 'Null Function(StringBuffer)' can't be assigned to the parameter type 'Iterable<DiagnosticsNode> Function()'. Flutter 1.5.9](https://github.com/renefloor/flutter_cached_network_image/issues/171)
 
 一个不是很明白的错误。但是急需解决
+
+正解好用：
+[Flutter 实战:圆形头像](https://www.jianshu.com/p/1f1c6bbfdebf)
+
 
 # 拓展内容：
 
@@ -61,6 +67,7 @@
 
 [(Flutter学习 ---- 屏幕截图和高斯模糊)](https://juejin.im/post/5b03ea7e51882565bd2594b0)
 # 技巧：
+[Flutter之实现动态高斯模糊](https://www.jianshu.com/p/5c6095be73d4)
 
 [Flutter 圆形/圆角头像](https://www.jianshu.com/p/b4085a1a5129)
 
@@ -81,3 +88,5 @@
 [Flutter 网络请求库http](https://www.cnblogs.com/zhujiabin/p/10333253.html)
 
 [# Flutter从入门到奔溃（四）：撸一个包含列表刷新以及网络请求的首页](https://www.jianshu.com/p/7265b054271f)
+
+[如何确定Flutter中网络图像的宽度和高度](https://www.jianshu.com/p/804a8e12d91a)
