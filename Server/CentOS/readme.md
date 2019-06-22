@@ -102,6 +102,16 @@ make install
 
 安装
 
+
+```
+yum -y install epel-release
+```
+首先安装epel扩展源
+
+```
+yum install python-pip
+```
+安装pip
 ```
 cd /usr/bin
 ```
@@ -152,3 +162,144 @@ vim /usr/libexec/urlgrabber-ext-down
 ``` 
 ![image](https://images2018.cnblogs.com/blog/1321829/201807/1321829-20180710155353100-1996539343.png)
 
+### VIM
+
+#### 一、vim进入编辑模式
+
+编辑模式：一般模式下不可以修改某个字符，若要修改字符，只能进入编辑模式。从一般模式进编辑模式，只需按i、I、a、A、o、O、r和R中某个键即可。当进入编辑模式时，在屏幕尾部会显示INSERT或REPLACE字样（若你的centos支持中文，则会显示“插入”）。从编辑模式回到一般模式，按esc即可。
+
+i：在当前字符前插入。
+
+I：在光标所在行的行首插入。
+
+a：在当前字符后插入。
+
+A：在光标所在行的行尾插入。
+
+o：在当前行的下一行插入新的一行。
+
+O：在当前行的上一行插入新的 一行。
+
+#### 二、vim命令模式
+
+命令模式：输入：或者/即可进入命令模式。该模式下，可以搜索字符或字符串，可以保存、替换、退出、显示行号等操作。
+```
+/word
+```
+:在光标之后查找一个字符串word，按n向后继续搜索，shift+n向上搜索。
+```
+?word
+```
+:在光标之前查找一个字符串word，按n向后继续搜索。
+
+搜索出来的字符串都会高亮显示，若想不高亮，输入:
+```
+nohl
+```
+。
+```
+:n1,n2s/word1/word2/g
+```
+：在n1和n2行之间查找word1并替换为word2，不加g则只替换每行的第一个word1。（先起点然后逗号分隔，再终点s表示替换/需替换的/替换后的/g表示全部。$表示到最末端）
+
+```
+:1,$s/word1/word2/g
+```
+
+
+：将文档中所有的word1替换为word2，不加g则只替换每行的第一个word1。
+
+#### **特殊情况**：
+```
+:1,$s//etc/hosts/aminglinux.com/g
+```
+；将
+```
+/etc/hosts
+```
+替换为，
+```
+aminglinux.com
+```
+由于有多个斜杠，所以无法识别，因此要推一下，系统就会将/etc/hosts的斜杠视为普通的字符，
+```
+:1,$s/\/etc\/hosts/aminglinux.com/g
+```
+，加两个右斜杠。
+
+也可将原来的斜杠改为#或@，
+```
+:1,$s#/etc/hosts#aminglinux.com#g，
+```
+如此以#或@作为它的语法组成字符。
+
+#### **其他功能**：
+```
+:w 
+```
+ 保存文本。
+
+```
+:q
+```
+  退出vim。
+```
+:w! 
+```
+  强制保存，在root用户下，即使文本只读也可以完成保存。
+  
+```
+:q! 
+```
+ 强制退出，所有改动不生效。
+```
+:wq 
+```
+ 保存退出。
+```
+:x 
+```
+ 类似于wq，更改了文件以后，wq和x的作用是一样的，若没有更改文件，使用wq，文件的mtime会改变，而x不会。
+```
+:set nu 
+```
+ 显示行号。
+```
+:set nonu
+```
+  不显示行号。
+
+#### 三、vim实践
+
+若没有/etc/dnsmasq.conf这个文件，需安装软件包
+```
+yum install dnsmasq -y 
+```
+重启dnsmasq服务：
+```
+# service dnsmasq start
+```
+#### 扩展
+
+[vim的特殊用法](http://www.apelearn.com/bbs/thread-9334-1-1.html) 
+
+[vim常用快捷键总结](http://www.apelearn.com/bbs/thread-407-1-1.html)
+
+[vim快速删除一段字符](http://www.apelearn.com/bbs/thread-842-1-1.html) 
+
+[vim乱码](http://www.apelearn.com/bbs/thread-6753-1-1.html) 
+
+[小键盘问题](http://www.apelearn.com/bbs/thread-7215-1-1.html) 
+
+[vim加密](http://www.apelearn.com/bbs/thread-7750-1-1.html)  
+
+
+# 腾讯服务器相关
+
+##### 可视化
+
+[腾讯云Centos7搭建图形界面详解](https://blog.csdn.net/nsu406096612/article/details/78062230)
+
+[腾讯云CentOS7实现可视化！！！](https://blog.csdn.net/xiaokanshijie/article/details/84397052)
+
+[腾讯云centos7.2X64安装图形界面](https://blog.csdn.net/weixin_34001430/article/details/88251994)
