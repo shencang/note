@@ -73,6 +73,17 @@ cd Python-3.6.5
 
 进入解压后的目录
 
+
+ ```
+ gcc -v
+ ```
+ 查看 gcc 版本
+
+```
+yum install gcc-c++
+```
+若无安装，则运行
+
 ```
 ./configure --prefix=/usr/local/python
 ```
