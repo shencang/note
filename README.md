@@ -17,7 +17,7 @@
 >
 >* [Java](https://github.com/shencang/note/tree/master/Java)
 >
->* [server](https://github.com/shencang/note/tree/master/server)
+>* [server](https://github.com/shencang/note/tree/master/Server)
 
 * 硬件：
 >* [Single chip microcomputer](https://github.com/shencang/note/tree/master/Singlechip)
