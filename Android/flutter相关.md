@@ -92,3 +92,15 @@
 [如何确定Flutter中网络图像的宽度和高度](https://www.jianshu.com/p/804a8e12d91a)
 
 [flutter之从零开始搭建（一）之 BottomNavigationBar](https://juejin.im/post/5b3ee0b66fb9a04f8a21678c)
+
+[Flutter路由跳转及参数传递](https://www.jianshu.com/p/866619e22941)
+
+[Flutter的菜鸟教程十四:携带数据跳转页面](https://blog.csdn.net/duo_shine/article/details/81261440
+)
+[flutter页面间跳转和传参-Navigator的使用](https://www.jianshu.com/p/cb0af52376ba)
+
+[Django REST framework API 指南（11）：序列化·关系]([https://www.colabug.com/2479670.html]())
+
+[Django外键（ForeignKey）操作以及related_name的作用](https://blog.csdn.net/hpu_yly_bj/article/details/78939748
+)
+[[](Django中外键使用详解)](https://blog.csdn.net/xujin0/article/details/83552349)
