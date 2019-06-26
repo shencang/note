@@ -103,4 +103,8 @@
 
 [Django外键（ForeignKey）操作以及related_name的作用](https://blog.csdn.net/hpu_yly_bj/article/details/78939748
 )
-[[](Django中外键使用详解)](https://blog.csdn.net/xujin0/article/details/83552349)
+[(Django中外键使用详解)](https://blog.csdn.net/xujin0/article/details/83552349)
+
+[simple use json_serializable](https://caijinglong.github.io/json2dart/index.html)
+
+[json_serializable 3.0.0-CN](https://translate.google.com.hk/translate?sl=auto&tl=zh-CN&u=https://pub.dev/packages/json_serializable%23-readme-tab-)

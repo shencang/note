@@ -9,7 +9,7 @@
 ```
 创建用户
 ```mysql
-GRANT USAGE ON *.* TO 'user01'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
+GRANT USAGE ON *.* TO 'jiyue'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
 ```
 刷新系统权限表
 ```mysql
