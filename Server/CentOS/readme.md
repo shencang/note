@@ -303,3 +303,14 @@ yum install dnsmasq -y
 [腾讯云CentOS7实现可视化！！！](https://blog.csdn.net/xiaokanshijie/article/details/84397052)
 
 [腾讯云centos7.2X64安装图形界面](https://blog.csdn.net/weixin_34001430/article/details/88251994)
+
+# 部署uwsgi和nginx
+ 
+[django+uwsgi+nginx部署](https://www.cnblogs.com/wdliu/p/8932816.html)
+
+[MySQL之权限管理](https://www.cnblogs.com/Richardzhu/p/3318595.html)
+
+[MySQL缺失mysql_config文件](https://www.cnblogs.com/php-linux/p/6121370.html)
+
+[Centos7+nginx1.12+uwsgi2.0+django2.0+python3.6个人配置记录(概要)](https://blog.csdn.net/qq_25532699/article/details/80988869)
+
