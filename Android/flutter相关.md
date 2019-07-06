@@ -26,7 +26,27 @@
 
 [你想了解的Dart](https://www.jianshu.com/p/d41952e51120)
 
+
+[Flutter系列之Dart数据库编程](https://blog.csdn.net/s1120080286/article/details/83445840)
+
+[为你的 Flutter APP 添加交互性](https://juejin.im/post/5b612a59e51d4515b01c004e)
+
+
+
+[flutter之从零开始搭建（一）之 BottomNavigationBar](https://juejin.im/post/5b3ee0b66fb9a04f8a21678c)
+
+[Flutter路由跳转及参数传递](https://www.jianshu.com/p/866619e22941)
+
+[Flutter的菜鸟教程十四:携带数据跳转页面](https://blog.csdn.net/duo_shine/article/details/81261440
+)
+[flutter页面间跳转和传参-Navigator的使用](https://www.jianshu.com/p/cb0af52376ba)
+
+[simple use json_serializable](https://caijinglong.github.io/json2dart/index.html)
+
+[json_serializable 3.0.0-CN](https://translate.google.com.hk/translate?sl=auto&tl=zh-CN&u=https://pub.dev/packages/json_serializable%23-readme-tab-)
+
 # 问题解决：
+
 [Flutter Image 参数详解](https://blog.csdn.net/chenlove1/article/details/84111554)
 
 [安卓学习笔记(21)-flutter doctor时显示X Unable to locate Android SDK的解决方案](https://blog.csdn.net/kabuto_hui/article/details/79505262)
@@ -48,8 +68,20 @@
 [Flutter 实战:圆形头像](https://www.jianshu.com/p/1f1c6bbfdebf)
 
 
+[# Flutter从入门到奔溃（四）：撸一个包含列表刷新以及网络请求的首页](https://www.jianshu.com/p/7265b054271f)
+
+[如何确定Flutter中网络图像的宽度和高度](https://www.jianshu.com/p/804a8e12d91a)
+
+
 # 拓展内容：
 
+[mysql插件](https://pub.dev/packages/mysql1#-installing-tab-)
+
+[flutter网络请求和详情页展示的例子](https://blog.csdn.net/kfeng632/article/details/80934427)
+
+[mysql1 0.17.0](https://pub.dev/packages/mysql1)
+
+[Flutter 网络请求库http](https://www.cnblogs.com/zhujiabin/p/10333253.html)
 
 [GSYGithubAppFlutter](https://github.com/CarGuo/GSYGithubAppFlutter)
 
@@ -73,38 +105,3 @@
 
 [留一个下载](https://download.csdn.net/download/u010326875/11082948)
 
-# 项目要用[临时]
-
-[Flutter系列之Dart数据库编程](https://blog.csdn.net/s1120080286/article/details/83445840)
-
-[为你的 Flutter APP 添加交互性](https://juejin.im/post/5b612a59e51d4515b01c004e)
-
-[mysql插件](https://pub.dev/packages/mysql1#-installing-tab-)
-
-[flutter网络请求和详情页展示的例子](https://blog.csdn.net/kfeng632/article/details/80934427)
-
-[mysql1 0.17.0](https://pub.dev/packages/mysql1)
-
-[Flutter 网络请求库http](https://www.cnblogs.com/zhujiabin/p/10333253.html)
-
-[# Flutter从入门到奔溃（四）：撸一个包含列表刷新以及网络请求的首页](https://www.jianshu.com/p/7265b054271f)
-
-[如何确定Flutter中网络图像的宽度和高度](https://www.jianshu.com/p/804a8e12d91a)
-
-[flutter之从零开始搭建（一）之 BottomNavigationBar](https://juejin.im/post/5b3ee0b66fb9a04f8a21678c)
-
-[Flutter路由跳转及参数传递](https://www.jianshu.com/p/866619e22941)
-
-[Flutter的菜鸟教程十四:携带数据跳转页面](https://blog.csdn.net/duo_shine/article/details/81261440
-)
-[flutter页面间跳转和传参-Navigator的使用](https://www.jianshu.com/p/cb0af52376ba)
-
-[Django REST framework API 指南（11）：序列化·关系]([https://www.colabug.com/2479670.html]())
-
-[Django外键（ForeignKey）操作以及related_name的作用](https://blog.csdn.net/hpu_yly_bj/article/details/78939748
-)
-[(Django中外键使用详解)](https://blog.csdn.net/xujin0/article/details/83552349)
-
-[simple use json_serializable](https://caijinglong.github.io/json2dart/index.html)
-
-[json_serializable 3.0.0-CN](https://translate.google.com.hk/translate?sl=auto&tl=zh-CN&u=https://pub.dev/packages/json_serializable%23-readme-tab-)
