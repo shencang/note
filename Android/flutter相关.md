@@ -26,9 +26,6 @@
 
 [你想了解的Dart](https://www.jianshu.com/p/d41952e51120)
 
-
-[【开发经验】浅谈flutter的优点与缺点](https://segmentfault.com/a/1190000017164263?utm_source=tag-newest)
-
 # 问题解决：
 [Flutter Image 参数详解](https://blog.csdn.net/chenlove1/article/details/84111554)
 
@@ -104,8 +101,8 @@
 
 [Django REST framework API 指南（11）：序列化·关系]([https://www.colabug.com/2479670.html]())
 
-[Django外键（ForeignKey）操作以及related_name的作用](https://blog.csdn.net/hpu_yly_bj/article/details/78939748)
-
+[Django外键（ForeignKey）操作以及related_name的作用](https://blog.csdn.net/hpu_yly_bj/article/details/78939748
+)
 [(Django中外键使用详解)](https://blog.csdn.net/xujin0/article/details/83552349)
 
 [simple use json_serializable](https://caijinglong.github.io/json2dart/index.html)
