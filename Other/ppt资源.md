@@ -7,5 +7,3 @@
 [包图](https://ibaotu.com/)
 
 [知乎的推荐](https://www.zhihu.com/question/19644160)
-
-[【开发经验】浅谈flutter的优点与缺点](https://segmentfault.com/a/1190000017164263?utm_source=tag-newest)
