@@ -25,6 +25,6 @@
 * 算法：
 >* [DeepLearning](https://github.com/shencang/note/tree/master/DeepLearning)
 
- 其他：
+* 其他：
 >* [other](https://github.com/shencang/note/tree/master/Other)
 
