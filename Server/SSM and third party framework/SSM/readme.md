@@ -8,6 +8,8 @@
 
 [java优雅的SSM框架（一）：Spring框架（由浅入深，深度解读）](https://baijiahao.baidu.com/s?id=1623472794079496219&wfr=spider&for=pc)
 
+[Spring MVC框架](https://www.cnblogs.com/jxtx92/p/8022154.html)
+
 ## idea的搭建和环境：
 
 亲测可用：
