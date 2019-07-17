@@ -134,11 +134,9 @@ Django常用指令和示例项目编写参考[Django实践以及服务器部署]
   user@localhost:~$ sudo service nginx start(这里需要注意一下，服务器需要开放80端口，外网才能进行访问)
   ```
     
-  在浏览器输入域名，看到如下页面说明Nginx启动成功了。
+  在浏览器输入域名，看到页面说明Nginx启动成功了。
   记住这指令，后面用的比较多
     
-![1538882981199](C:\Users\16500\AppData\Local\Temp\1538882981199.png)
-
 ## 部署代码
 #### 以下借用[Django实践以及服务器部署](https://github.com/wangyufei1006/Study-Notes/blob/master/Web/Django%E5%AE%9E%E8%B7%B5%E4%BB%A5%E5%8F%8A%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2.md?tdsourcetag=s_pctim_aiomsg)]的部分代码
 
@@ -505,7 +503,9 @@ nginx -t
 ```
 启动nginx，访问项目url若出现Exception Value: Invalid HTTP_HOST header异常 ，需要在settings.py中ALLOWED_HOSTS = ['*']
 
-* [可选][重启脚本centos6.x]
+* [可选]
+
+####  **[重启脚本centos6.x]**
 ```
 #!/bin/bash
 if [ ! -n "$1" ]
