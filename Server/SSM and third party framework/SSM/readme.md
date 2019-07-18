@@ -34,6 +34,15 @@
  
  [IDEA 整合 SSM 框架学习](https://www.cnblogs.com/wmyskxz/p/8916365.html)
  
+ 一个系列：
+ 
+ [【SSM框架从零开始1】IntelliJ IDEA搭建最简单的Spring MVC项目](https://www.jianshu.com/p/23e58ca14f1c)
+ 
+ [【SSM框架从零开始2】IntelliJ IDEA下Spring MVC数据库配置与增删改查开发](https://www.jianshu.com/p/61d16f8ad23a)
+ 
+ [【SSM框架从零开始3】使用Mybatis-Generator自动生成Dao、Model层相关代码](https://www.jianshu.com/p/ad8fb997e4c8)
+ 
+ [【SSM框架从零开始4】IntelliJ IDEA搭建SSM框架](https://www.jianshu.com/p/c01f0f499715?utm_campaign=haruki&utm_content=note&utm_medium=reader_share&utm_source=weixin)
  
  # Tomcat 
  
