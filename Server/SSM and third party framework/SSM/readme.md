@@ -29,7 +29,7 @@
  [idea使用mybatis generator自动生成代码mapper+pojo+xml](https://blog.csdn.net/i168wintop/article/details/94972991)
  
  [DEA实现SSM分布式编程实现用户登录、增删改查](https://blog.csdn.net/Franks_Wan/article/details/94432149)
- 
+  
  [SSM框架整合（IntelliJ IDEA + maven + Spring + SpringMVC + MyBatis）](https://blog.csdn.net/GallenZhang/article/details/51932152)
  
  [IDEA 整合 SSM 框架学习](https://www.cnblogs.com/wmyskxz/p/8916365.html)
@@ -44,6 +44,12 @@
  
  [【SSM框架从零开始4】IntelliJ IDEA搭建SSM框架](https://www.jianshu.com/p/c01f0f499715?utm_campaign=haruki&utm_content=note&utm_medium=reader_share&utm_source=weixin)
  
+ 补充还没有搞完：
+ 
+ [使用Maven插件mybatis-generator生成代码配置](https://www.jianshu.com/p/310c299846fc)
+ 
+ [[06] 利用mybatis-generator自动生成代码](https://www.cnblogs.com/deng-cc/p/9340748.html)
+ 
  # Tomcat 
  
  ### tomcat日志打印乱码 
@@ -53,3 +59,51 @@
     java.util.logging.ConsoleHandler.encoding = utf-8这行
     更改为
     java.util.logging.ConsoleHandler.encoding = GBK
+    =====》上下五个均修改才可以
+    
+ ### BUG解决
+ 
+ 错误：
+    
+     No converter found for return value of type: class java.util.ArrayList
+     
+ 解决：
+ 
+    原因：这是因为springmvc默认是没有对象转换成json的转换器的，需要手动添加jackson依赖。
+    
+    
+ 解决步骤：
+　　　　
+
+   手动添加jackson依赖到pom.xml文件中
+    
+```xml
+  <properties>
+    <jackson.version>2.5.4</jackson.version>
+  </properties> 
+
+  <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    
+```
+如果还是没有解决，则进行以下步骤
+
+
+在springmvc配置文件中进行如下配置
+```xml
+<mvc:annotation-driven>
+     <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+   </mvc:message-converters>
+</mvc:annotation-driven>
+```
+即可
