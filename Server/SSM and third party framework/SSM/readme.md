@@ -50,6 +50,12 @@
  
  [[06] 利用mybatis-generator自动生成代码](https://www.cnblogs.com/deng-cc/p/9340748.html)
  
+ 出了BUG ---》mybatis-generator无法使用
+ 
+ [IDEA 中使用MyBatis-generator 自动生成MyBatis代码](https://www.cnblogs.com/liaojie970/p/7058543.html)
+ 
+ [idea-mybatis-generator](http://plugins.jetbrains.com/plugin/10196-idea-mybatis-generator)
+ 
  # Tomcat 
  
  ### tomcat日志打印乱码 
