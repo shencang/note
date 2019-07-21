@@ -46,13 +46,11 @@
  
  补充还没有搞完：
  
+ # mybatis-generator
+ 
  [使用Maven插件mybatis-generator生成代码配置](https://www.jianshu.com/p/310c299846fc)
  
  [[06] 利用mybatis-generator自动生成代码](https://www.cnblogs.com/deng-cc/p/9340748.html)
- 
- 出了BUG ---》mybatis-generator无法使用
- 
- [IDEA 中使用MyBatis-generator 自动生成MyBatis代码](https://www.cnblogs.com/liaojie970/p/7058543.html)
  
  [idea-mybatis-generator](http://plugins.jetbrains.com/plugin/10196-idea-mybatis-generator)
  
@@ -69,9 +67,10 @@
     
  ### BUG解决
  
- 错误：
+ * 1-错误：
     
-     No converter found for return value of type: class java.util.ArrayList
+    
+    No converter found for return value of type: class java.util.ArrayList
      
  解决：
  
@@ -113,3 +112,27 @@
 </mvc:annotation-driven>
 ```
 即可
+
+* 2-错误：
+    
+    
+     [ERROR] Failed to execute goal org.mybatis.generator:mybatis-generator-maven-plugin:1.3.5:generate (default-cli) on project nailQuartzProject: Execution default-cli of goal org.mybatis.generator:mybatis-generator-maven-plugin:1.3.5:generate failed: Cannot resolve classpath entry: D:\study\nailQuartzProject\src\main\resource -> [Help 1]
+
+     
+ 解决：
+ 
+    确认在main目录下有resources文件夹，并有正确的配置信息xml文件，没有则新建。
+    
+
+* 3-错误：
+    
+    
+     Public Key Retrieval is not allowed -> [Help 1]
+     
+ 解决：
+ 
+    1.mysql5及之前的版本使用的是旧版驱动"com.mysql.jdbc.Driver"，mysql6以及之后的版本需要更新到新版驱动，对应的Driver是"com.mysql.cj.jdbc.Driver"，但是这个驱动错误的信息是"Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary."，排除这个原因。
+
+    2.连接数据库的url中，加上allowPublicKeyRetrieval=true参数，经过验证解决该问题。
+
+    3.网上看到另外的解决 办法，修改default_authentication_plugin设置，在my.ini中增加[mysqld]default_authentication_plugin=mysql_native_password，然后mysql命令行执行ALTER USER 'username'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';最后在url中添加时区参数serverTimezone=Asia/Shanghai。
