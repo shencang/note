@@ -54,6 +54,15 @@
  
  [idea-mybatis-generator](http://plugins.jetbrains.com/plugin/10196-idea-mybatis-generator)
  
+ [随笔分类 - Java框架 MyBatis](https://www.cnblogs.com/deng-cc/category/1256755.html)
+ 
+ ----
+ [数据库表反向生成(一) MyBatis-generator与IDEA的集成](https://www.cnblogs.com/kangoroo/p/7495873.html)
+ 
+ []()
+ 
+ ----
+ 
  # Tomcat 
  
  ### tomcat日志打印乱码 
