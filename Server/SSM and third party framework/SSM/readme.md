@@ -59,7 +59,7 @@
  ----
  [数据库表反向生成(一) MyBatis-generator与IDEA的集成](https://www.cnblogs.com/kangoroo/p/7495873.html)
  
- []()
+ [Idea+Mybatis Generator+Mysql8.0.13自动生成sql文件（搭建微服务系列）](https://blog.csdn.net/duck0730/article/details/83790228)
  
  ----
  
