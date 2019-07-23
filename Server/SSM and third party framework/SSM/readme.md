@@ -122,6 +122,10 @@
 ```
 即可
 
+
+----
+ 
+ 
 * 2-错误：
     
     
@@ -132,6 +136,7 @@
  
     确认在main目录下有resources文件夹，并有正确的配置信息xml文件，没有则新建。
     
+ ----
 
 * 3-错误：
     
@@ -145,3 +150,33 @@
     2.连接数据库的url中，加上allowPublicKeyRetrieval=true参数，经过验证解决该问题。
 
     3.网上看到另外的解决 办法，修改default_authentication_plugin设置，在my.ini中增加[mysqld]default_authentication_plugin=mysql_native_password，然后mysql命令行执行ALTER USER 'username'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';最后在url中添加时区参数serverTimezone=Asia/Shanghai。
+    
+    
+  ----
+    
+ * 4-错误：
+    
+    
+     org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.AbstractMethodError: Method com/mchange/v2/c3p0/impl/NewProxyResultSet.isClosed()Z is abstract
+
+     
+ 解决：
+ 
+   在pom.xml文件中修改C3P0的依赖包：
+   
+   之前是
+   ```xml
+   <dependency>
+	<groupId>c3p0</groupId>
+	<artifactId>c3p0</artifactId>
+	<version>0.9.1.2</version>
+</dependency> 
+```
+   修改成
+   ```xml
+<dependency>
+	<groupId>com.mchange</groupId>
+	<artifactId>c3p0</artifactId>
+	<version>0.9.5.2</version>
+</dependency>
+```
