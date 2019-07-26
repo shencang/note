@@ -180,3 +180,70 @@
 	<version>0.9.5.2</version>
 </dependency>
 ```
+
+* 5-错误：
+    
+    
+     java.lang.ClassNotFoundException: javax.xml.bind.JAXBException
+     
+ 解决：
+ 解决方案一：
+
+    降低JDK版本到 JDK 6/7/8
+
+解决方案二:（亲测可行）
+
+    手动加入这些依赖Jar包
+
+    要解决这个问题，导入了下面这四个Jar包修复成功。
+
+[javax.activation-1.2.0.jar](http://search.maven.org/remotecontent?filepath=com/sun/activation/javax.activation/1.2.0/javax.activation-1.2.0.jar)
+
+[jaxb-api-2.3.0.jar](http://search.maven.org/remotecontent?filepath=javax/xml/bind/jaxb-api/2.3.0/jaxb-api-2.3.0.jar)
+
+[jaxb-core-2.3.0.jar](http://search.maven.org/remotecontent?filepath=com/sun/xml/bind/jaxb-core/2.3.0/jaxb-core-2.3.0.jar)
+
+[jaxb-impl-2.3.0.jar](http://search.maven.org/remotecontent?filepath=com/sun/xml/bind/jaxb-impl/2.3.0/jaxb-impl-2.3.0.jar)
+
+    下载上面这些文件和复制他们到libs文件夹下，
+    添加他们导入到Build Path中
+    重新运行即可
+
+解决方案三：
+
+    Maven项目可添加如下依赖：
+
+```xml
+<!-- Java 6 = JAX-B Version 2.0   -->
+<!-- Java 7 = JAX-B Version 2.2.3 -->
+<!-- Java 8 = JAX-B Version 2.2.8 -->
+<dependencies>
+    <dependency>
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>2.3.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.sun.xml.bind</groupId>
+        <artifactId>jaxb-impl</artifactId>
+        <version>2.3.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.sun.xml.bind</groupId>
+        <artifactId>jaxb-core</artifactId>
+        <version>2.3.0</version>
+    </dependency>
+    <dependency>
+        <groupId>javax.activation</groupId>
+        <artifactId>activation</artifactId>
+        <version>1.1.1</version>
+    </dependency>
+</dependencies>
+```
+    Tips:
+    建议使用中心仓库，否则可能某些jar找不到：
+
+    HTTP: http://repo1.maven.org/maven2
+    HTTPS:https://repo1.maven.org/maven2
+    
+[参考](https://blog.csdn.net/hadues/article/details/79188793)
