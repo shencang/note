@@ -24,7 +24,8 @@
 >
 * 算法：
 >* [DeepLearning](https://github.com/shencang/note/tree/master/DeepLearning)
-
+>
+>* [Graph theory](https://github.com/shencang/note/tree/master/Graph_theory)
 * 其他：
 >* [other](https://github.com/shencang/note/tree/master/Other)
 
