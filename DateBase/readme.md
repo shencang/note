@@ -2,6 +2,9 @@
 
 ## MySQL
 
+### 链接
+* [MySQL子查询 嵌套查询](https://blog.csdn.net/m0_38061639/article/details/82872705)
+
 ### 一、mysql服务的启动和停止
 ```mysql
 mysql> net stop mysql
