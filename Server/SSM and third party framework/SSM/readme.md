@@ -44,8 +44,7 @@
  
  [【SSM框架从零开始4】IntelliJ IDEA搭建SSM框架](https://www.jianshu.com/p/c01f0f499715?utm_campaign=haruki&utm_content=note&utm_medium=reader_share&utm_source=weixin)
  
- 补充还没有搞完：
- 
+
  # mybatis-generator
  
  [使用Maven插件mybatis-generator生成代码配置](https://www.jianshu.com/p/310c299846fc)
@@ -62,6 +61,16 @@
  [Idea+Mybatis Generator+Mysql8.0.13自动生成sql文件（搭建微服务系列）](https://blog.csdn.net/duck0730/article/details/83790228)
  
  ----
+ 
+ # 前端设计有关
+ 
+ [ssm demo，ssm详细教程，SSM简明教程：简单的十步教你搭建人生第一个SSM框架 SSM框架整合教程(spring+spring mvc+mybatis+redis+maven+idea+bootstrap)](https://github.com/hisenyuan/SSM_BookSystem)
+ 
+ [ssm——整合，前端页面设计，分页](https://blog.csdn.net/zhiyikeji/article/details/84632687)
+ 
+ [关于SSH、SSM、前端开发技术体系的简单了解](https://blog.csdn.net/Smart_J_King/article/details/88350305)
+
+ [SSM框架之前端传递数据到后台](https://blog.csdn.net/lzx159951/article/details/86303679)
  
  # Tomcat 
  
