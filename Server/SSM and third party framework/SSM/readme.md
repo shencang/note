@@ -70,7 +70,7 @@
  
  [关于SSH、SSM、前端开发技术体系的简单了解](https://blog.csdn.net/Smart_J_King/article/details/88350305)
 
- [SSM框架之前端传递数据到后台](https://blog.csdn.net/lzx159951/article/details/86303679)
+ [SSM框架之前端传递数据到后台](https://blog.csdn.net/lzx159951/article/details/86303679 )
  
  # Tomcat 
  
