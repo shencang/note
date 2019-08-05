@@ -7,6 +7,7 @@
 > 
 框架：
 >* [SSM and third party framework](https://github.com/shencang/note/tree/master/Server/SSM%20and%20third%20party%20framework)
->>*[Django](https://github.com/shencang/note/tree/master/Server/SSM%20and%20third%20party%20framework/Django)
 >>
->>*[SSM](https://github.com/shencang/note/tree/master/Server/SSM%20and%20third%20party%20framework/SSM)
+>>* [Django](https://github.com/shencang/note/tree/master/Server/SSM%20and%20third%20party%20framework/Django)
+>>
+>>* [SSM](https://github.com/shencang/note/tree/master/Server/SSM%20and%20third%20party%20framework/SSM)

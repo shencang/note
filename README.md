@@ -26,6 +26,7 @@
 >* [DeepLearning](https://github.com/shencang/note/tree/master/Algorithm/DeepLearning)
 >
 >* [Graph theory](https://github.com/shencang/note/tree/master/Algorithm/Graph_theory)
+>
 * 其他：
 >* [other](https://github.com/shencang/note/tree/master/Other)
 
