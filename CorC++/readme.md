@@ -1,6 +1,6 @@
 # C 和 C++
 
-### 未整理
+### 未整理(待补充)
 
 [C++中String到WString的转换](https://github.com/shencang/note/tree/master/CorC%2B%2B/C++中String到WString的转换.md)
 
