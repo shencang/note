@@ -38,7 +38,9 @@
 [java 11，运行sdkmanage导致java.lang.module.FindException：找不到模块java.se.ee](https://cloud.tencent.com/developer/ask/210444/answer/325161)
 
 ~~目前来看还是至多Java 10 才能运行~~
-认怂了，就jdk10吧
+~~认怂了，就jdk10吧~~
+
+确认jdk8才是最优解。
 
 [Compiler message: Error: The argument type 'Null Function(StringBuffer)' can't be assigned to the parameter type 'Iterable<DiagnosticsNode> Function()'. Flutter 1.5.9](https://github.com/renefloor/flutter_cached_network_image/issues/171)
 
