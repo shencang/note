@@ -15,3 +15,5 @@
 * [组件](https://github.com/shencang/note/tree/master/Android/组件.md)
 
 * [面试题](https://github.com/shencang/note/tree/master/Android/面试题.md)
+
+* [问题解决](https://github.com/shencang/note/tree/master/Android/问题解决.md)

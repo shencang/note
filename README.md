@@ -7,26 +7,28 @@
 #### 目录：
 
 * 编程：
->* [Python](https://github.com/shencang/note/tree/master/Python)
+>* [Python](https://github.com/shencang/note/tree/master/Python)->python
 >
->* [Android](https://github.com/shencang/note/tree/master/Android)
+>* [Android](https://github.com/shencang/note/tree/master/Android)->Android
 >
->* [C和C++](https://github.com/shencang/note/tree/master/CorC%2B%2B)
+>* [C和C++](https://github.com/shencang/note/tree/master/CorC%2B%2B)->c和c++
 >
->* [DateBase](https://github.com/shencang/note/tree/master/DateBase)
+>* [DateBase](https://github.com/shencang/note/tree/master/DateBase)->数据库
 >
->* [Java](https://github.com/shencang/note/tree/master/Java)
+>* [Java](https://github.com/shencang/note/tree/master/Java)->java
 >
->* [server](https://github.com/shencang/note/tree/master/Server)
+>* [server](https://github.com/shencang/note/tree/master/Server)->服务器
 
 * 硬件：
->* [Single chip microcomputer](https://github.com/shencang/note/tree/master/Singlechip)
+>* [Single chip microcomputer](https://github.com/shencang/note/tree/master/Singlechip)->单片机
 >
 * 算法：
->* [DeepLearning](https://github.com/shencang/note/tree/master/Algorithm/DeepLearning)
+>* [DeepLearning](https://github.com/shencang/note/tree/master/Algorithm/DeepLearning)->深度学习
 >
->* [Graph theory](https://github.com/shencang/note/tree/master/Algorithm/Graph_theory)
+>* [Graph theory](https://github.com/shencang/note/tree/master/Algorithm/Graph_theory)->图论
 >
 * 其他：
->* [other](https://github.com/shencang/note/tree/master/Other)
+>* [Other](https://github.com/shencang/note/tree/master/Other)->其他
+>
+>* [Resources](https://github.com/shencang/note/tree/master/Resources)->资源
 
