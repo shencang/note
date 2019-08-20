@@ -17,3 +17,7 @@
 * [面试题](https://github.com/shencang/note/tree/master/Android/面试题.md)
 
 * [问题解决](https://github.com/shencang/note/tree/master/Android/问题解决.md)
+
+* [工具](https://github.com/shencang/note/tree/master/Android/工具.md)
+
+* [多进程编程](https://github.com/shencang/note/tree/master/Android/多进程编程.md)
