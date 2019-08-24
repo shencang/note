@@ -2,7 +2,7 @@
 
 ### ACG
 
-# 需翻墙：
+#### 需翻墙：
 
 [动漫花园](https://share.dmhy.org)
 
@@ -23,3 +23,7 @@
 ### apk
 
 [手机抓包工具：packet capture](https://github.com/shencang/note/tree/master/Resources/apk/app.greyshirts.sslcapture.zip)
+
+### 平台资源
+
+[绿色计算官方](https://github.com/shencang/note/tree/master/Resources/复制来的资源整理.md)
