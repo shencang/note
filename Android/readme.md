@@ -1,5 +1,5 @@
 # Android 
-
+[近期有较大修改，注意]
 * [as插件相关](https://github.com/shencang/note/tree/master/Android/as插件相关.md)
 
 * [flutter相关](https://github.com/shencang/note/tree/master/Android/flutter相关.md)
