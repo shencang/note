@@ -1,6 +1,6 @@
 # 服务器
 
-###目录
+### 目录
 
 系统：
 * [CentOS](https://github.com/shencang/note/tree/master/Server/CentOS)
@@ -11,7 +11,7 @@
 >>* [Django](https://github.com/shencang/note/tree/master/Server/SSM%20and%20third%20party%20framework/Django)
 >>
 >>* [SSM](https://github.com/shencang/note/tree/master/Server/SSM%20and%20third%20party%20framework/SSM)
->>
->>* [HTTP](https://github.com/shencang/note/tree/master/Server/SSM%20and%20third%20party%20framework/Http)
->>
->>* [HTML&JS](https://github.com/shencang/note/tree/master/Server/SSM%20and%20third%20party%20framework/HTML&JS)
+>
+>* [HTTP](https://github.com/shencang/note/tree/master/Server/Http)
+>
+>* [HTML&JS](https://github.com/shencang/note/tree/master/Server/HTML&JS)
