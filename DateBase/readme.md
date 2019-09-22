@@ -33,7 +33,7 @@ mysql> 格式：grant 权限 on 数据库.* to 用户名@登录主机 identified
 
 mysql> 如，增加一个用户user1密码为password1，让其可以在本机上登录， 并对所有数? 据库有查询、插入、修改、删除的权限。首先用以root用户连入mysql，然后键入以下命令：
 
-mysql> grant select,insert,update,delete on *.* to user1@localhost Identified by "password1";
+mysql> grant select,insert,update,delete on *.* to iwps@localhost Identified by "passwordiwps";
 
 ```
 
