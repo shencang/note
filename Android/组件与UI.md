@@ -101,3 +101,7 @@
 [EditText限制只能输入整数](https://blog.csdn.net/a872822645/article/details/51741975)
 
 [EditText设置只能输入整数金额](https://blog.csdn.net/youjia29/article/details/78271365)
+
+# ADB
+
+[玩转ADB命令（ADB命令使用大全）](https://blog.csdn.net/cui130/article/details/82686732)
