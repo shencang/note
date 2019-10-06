@@ -2,13 +2,13 @@
 
 ### ACG
 
-#### 需翻墙：
+#### 需翻墙
 
 [动漫花园](https://share.dmhy.org)
 
 [acg.rip](https://acg.rip)
 
-### PPT:
+### PPT
 
 [51ppt模板](http://www.51pptmoban.com/zt/dongtaiPPTmoban/index_6.html)
 
