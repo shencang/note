@@ -6,8 +6,8 @@
     博客搭建完毕后可能会有迁移。
 
 # 网站
-* 我的[博客](http://blog.shencangblue.com):上次同步日期：10月17日
-> Android/Server/C&C++/算法/python/ios/java/other资源 目录已同步
+* 我的[博客](http://blog.shencangblue.com):上次同步日期：10月18日
+> 目录已全部同步
 >
 > [博客Android客户端](https://github.com/shencang/Blog_RecentNative)
 
