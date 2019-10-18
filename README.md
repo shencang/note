@@ -14,7 +14,11 @@
 * 我的[私有网盘](http://data.shencangblue.com)：申请账号请联系邮箱
 
 #### 目录：
-
+* 面试与笔试：(近期重点)
+>
+>* [面试与笔试集合](https://github.com/shencang/note/tree/master/Interview&26WrittenExamination)
+>
+>
 * 编程：
 >* [Python](https://github.com/shencang/note/tree/master/Python)->python
 >
