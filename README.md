@@ -7,9 +7,12 @@
 
 # 网站
 * 我的[博客](http://blog.shencangblue.com):上次同步日期：10月18日
-> 目录已全部同步
+> 
+>目录已全部同步
 >
 > [博客Android客户端](https://github.com/shencang/Blog_RecentNative)
+> 
+> 近期更新
 
 * 我的[私有网盘](http://data.shencangblue.com)：申请账号请联系邮箱
 
