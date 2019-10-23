@@ -373,3 +373,81 @@ SSL / TLS协议：安全传输协议，TLS是SSL的升级版，也是现阶段�
 2）数字证书：互联网通讯中标志通讯各方身份信息的一串数字。
 
 3）握手过程
+
+
+# 刷题记录：
+
+1.当Activity 被消毁时，如何保存它原来的状态（）
+* 实现Activity 的 onSaveInstanceState（）方法
+
+2.下面关于AndroidUI 框架描述的选项中有误的一项是（）
+* ViewGroup 是一个可以将一些信息绘制在屏幕上并与用户产生交互的对象。
+       
+      View是所有UI组件的基类，而ViewGroup是容纳View及其派生类的容器，ViewGroup也是从View派生出来的。一般来说，开发UI界面都不会直接使用View和ViewGroup（自定义控件的时候使用），而是使用其派生类。
+      
+3.Android 开发中常用的开发与调试工具有很多，下面相关描述不对的是（）
+ * Android 调试桥 (adb) 是一种功能多样的命令行工具，可让您与设备进行通信。adb 命令便于执行各种设备操作（例如安装和调试应用）
+ 
+4.下面说法错误的是（）
+* Window Manager（窗口管理器）管理所有的移动设备窗口功能。
+
+      window 有三种类型，分别是应用 Window、子 Window 和系统 Window。应用类 Window 对应一个 Acitivity，子 Window 不能单独存在，需要依附在特定的父 Window 中，比如常见的一些 Dialog 就是一个子 Window。系统 Window是需要声明权限才能创建的 Window，比如 Toast 和系统状态栏都是系统 Window。
+       
+      Window 是一个抽象类，表示一个窗口，它的具体实现类是 PhoneWindow，实现位于 WindowManagerService 中。
+
+5.service的启动方法有:
+1 startService()
+2 bindService()
+
+6.ListView／RecycleView什么情况下会卡顿，常用的优化手段有哪些?（）
+    
+    ListView在以下情况会有卡顿：
+    1,listview的多层嵌套，多次的onMessure导致卡顿
+    2.ADapter数据列表的整体刷新，而非单个受影响的数据刷新（notifySetDataChanged）
+    3.在getView方法里inflate的row 嵌套太深（布局过于复杂）或者是布局里面有大图片或者背景所致
+    4,在getView方法里ViewHolder初始化后的赋值或者是多个控件的显示状态和背景的显示没有优化好，抑或是里面含有复杂的计算和耗时操作
+    5，Adapter的getView方法里面convertView没有使用setTag和getTag方式
+    
+    对于此，首先要减少层级，对改变的数据单独刷新，减少复杂计算和耗时操作优化图片素材。减少自适应尺寸的组件数量
+
+
+    RecycleView在以下情况会有卡顿：
+    1,RecyclerView层级较高
+    2.RecyclerView布局不等高，需要在绘制item时频繁计算
+    3.单次缓存资源较多
+    4.在onBindViewHolder/getView方法中，过多的逻辑判断，临时变量
+    5.数据列表的整体刷新，而非单个受影响的数据刷新
+    
+    对于此，首先要减少层级，对改变的数据单独刷新，减少复杂计算和耗时操作优化图片素材。
+    对于不需要动态改变尺寸的item，设置为等高减少计算，
+    在onBindViewHolder/getView方法中，减少逻辑判断，减少临时对象创建
+    适当控制单次缓存数量
+
+7.ANR产生的原因及解决方法？
+    1）输入事件(按键和触摸事件)5s内没被处理
+
+    2）BroadcastReceiver的事件(onRecieve方法)在规定时间内没处理完(前台广播为10s，后台广播为60s)
+
+    3）service 前台20s后台200s未完成启动  
+
+    4）ContentProvider的publish在10s内没进行完 
+   
+    为了避免发生ARN不应该在Ui线程做耗时操作，如网络请求，复杂的数据库查询，耗时计算等。对于耗时的工作应放在非ui线程去做，利用广播，handler等进行线程间通信，刷新ui。
+
+其他：
+
+    ANR定义：在Android上，如果你的应用程序有一段时间响应不够灵敏，系统会向用户显示一个对话框，这个对话框称作应用程序无响应（ANR：Application Not Responding）对话框。用户可以选择“等待”而让程序继续运行，也可以选择“强制关闭”。所以一个流畅的合理的应用程序中不能出现anr，而让用户每次都要处理这个对话框。因此，在程序里对响应性能的设计很重要，这样系统不会显示ANR给用户。
+    默认情况下，在android中Activity的最长执行时间是5秒，BroadcastReceiver的最长执行时间则是10秒。
+    
+    产生原因：
+    1 应用进程自身引起：
+    1.1.调用thread的join()方法、sleep()方法、wait()方法或者其他线程持有锁或者其它线程终止或崩溃导致主线程等待超时；
+    1.2.service binder的数量达到上限，system server中发生WatchDog ANR，service忙导致超时无响应
+    1.3.在主线程中做了非常耗时的操作：像耗时的网络访问，大量的数据读写，数据库操作，硬件操作（比如camera)，耗时的计算如操作位图；
+    2 其他进程引起的，比如：其他进程CPU占用率过高，导致当前应用进程无法抢占到CPU时间片。常见的问题如文件读写频繁，io进程CPU占用率过高，导致当前应用出现ANR；
+    解决方法：
+    1.不要让主线程进行耗时工作
+    1.1 在关键生命周期方法里尽量少的创建新的操作(可使用重新开启子线程的方式，使用Handler+Message异步更新UI，还可以用asyntask异步任务方式）
+    1.2 避免在BroadcastReceiver和子线程里做耗时的操作或计算，应该使用Service
+    1.3 避免在Broadcast Receiver里启动一个Activity（会发生焦点的抢夺，使用通知管理）
+    2，不要让其他线程阻塞主线程的执行
