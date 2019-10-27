@@ -8,8 +8,8 @@
 # 网站
 * 我的[博客](http://blog.shencangblue.com):上次同步日期：10月18日
 > 
->目录已全部同步（索引方式已经修改-名称索引）-》正在https改造中，敬请期待。
->
+>目录已全部同步（索引方式已经修改-名称索引）-》正在尝试https改造中，可能会有暂时无法访问的问题。敬请期待。
+> 
 > [博客Android客户端](https://github.com/shencang/Blog_RecentNative)
 > 
 > 近期更新
