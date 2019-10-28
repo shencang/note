@@ -109,3 +109,112 @@ class Solution {
 }
 
 ```
+
+
+4.给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。
+
+请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。
+
+你可以假设 nums1 和 nums2 不会同时为空。
+
+示例 1:
+
+nums1 = [1, 3]
+nums2 = [2]
+
+则中位数是 2.0
+示例 2:
+
+nums1 = [1, 2]
+nums2 = [3, 4]
+
+则中位数是 (2 + 3)/2 = 2.5
+
+**(扯犊子流解法，用Collections居然给过，就是运算有点慢)**
+```java
+
+class Solution {
+
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+
+        List<Integer> numList = new ArrayList<>();
+        for (int i : nums1) {
+            numList.add(i);
+        }
+        for (int i : nums2) {
+            numList.add(i);
+        }
+        Collections.sort(numList);
+        return numList.size() % 2 == 0 ? ((numList.get(numList.size() / 2-1) + numList.get(numList.size() / 2 )) / 2.0) : numList.get(numList.size() / 2 );
+
+
+    }
+}
+```
+
+       
+       
+5.给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+
+示例 1：
+
+输入: "babad"
+输出: "bab"
+注意: "aba" 也是一个有效答案。
+示例 2：
+
+输入: "cbbd"
+输出: "bb"
+
+```java
+package 其他测试题;
+
+import java.lang.reflect.Array;
+import java.util.*;
+import java.io.*;
+import java.lang.*;
+
+public class FindWay {
+    public static void main(String[] args) {
+        System.out.println("test");
+        Solution solution = new Solution();
+        System.out.println(solution.longestPalindrome("babad"));
+
+    }
+
+
+}
+
+
+class Solution {
+    public String longestPalindrome(String s) {
+        if (s == null || s.length() < 1) {
+            return "";
+        }
+        int begin = 0, end = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int sl1 = nextChar(s, i, i);
+            int sl2 = nextChar(s, i, i + 1);
+            int sl = Math.max(sl1, sl2);
+            if (sl > end - begin) {
+                begin = i - (sl - 1) / 2;
+                end = i + sl / 2;
+            }
+
+        }
+        return s.substring(begin, end + 1);
+    }
+
+    public static int nextChar(String s, int left, int right) {
+        int leftNum = left;
+        int rightNum = right;
+        while (leftNum >= 0 && rightNum < s.length() && s.charAt(leftNum) == s.charAt(rightNum)) {
+            leftNum--;
+            rightNum++;
+        }
+        return rightNum - leftNum - 1;
+
+    }
+}
+
+``` 
