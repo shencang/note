@@ -85,6 +85,22 @@
     
 ### volatile
 volatile 是一个类型修饰符。volatile 的作用是作为指令关键字，确保本条指令不会因编译器的优化而省略。
+* 特性
+
+保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。（实现可见性）
+
+禁止进行指令重排序。（实现有序性）
+
+volatile 只能保证对单次读/写的原子性。i++ 这种操作不能保证原子性。
+
+* 可见性实现
+
+volatile 变量的内存可见性是基于内存屏障（Memory Barrier）实现。
+
+内存屏障，又称内存栅栏，是一个 CPU 指令。
+
+在程序运行时，为了提高执行性能，编译器和处理器会对指令进行重排序，JMM 为了保证在不同的编译器和 CPU 上有相同的结果，通过插入特定类型的内存屏障来禁止特定类型的编译器重排序和处理器重排序，插入一条内存屏障会告诉编译器和 CPU：不管什么指令都不能和这条 Memory Barrier 指令重排序。
+
 
 ### object的equals
 equals是java中用于比较的一个方法。（之后补）
@@ -94,7 +110,8 @@ equals是java中用于比较的一个方法。（之后补）
 （之后补）
 
 ### GC
-（之后补）
+   垃圾回传机制
+
 
 ### 参考链接
 [深入理解Java类加载器(ClassLoader)](https://blog.csdn.net/javazejian/article/details/73413292)
@@ -104,3 +121,9 @@ equals是java中用于比较的一个方法。（之后补）
 [【Java 并发笔记】volatile 相关整理](https://www.jianshu.com/p/ccfe24b63d87)
 
 [深入理解Java-GC机制](https://blog.csdn.net/qq_36314960/article/details/79923581)
+
+[Java集合之一—HashMap](https://blog.csdn.net/woshimaxiao1/article/details/83661464)
+
+[Java的equals方法实现及其细节](https://www.cnblogs.com/stevenshen123/p/9199354.html)
+
+[java8文档](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html)
