@@ -86,6 +86,16 @@
 ### volatile
 volatile 是一个类型修饰符。volatile 的作用是作为指令关键字，确保本条指令不会因编译器的优化而省略。
 
+### object的equals
+equals是java中用于比较的一个方法。（之后补）
+
+### object的HashCode与HashMap
+
+（之后补）
+
+### GC
+（之后补）
+
 ### 参考链接
 [深入理解Java类加载器(ClassLoader)](https://blog.csdn.net/javazejian/article/details/73413292)
 
@@ -93,4 +103,4 @@ volatile 是一个类型修饰符。volatile 的作用是作为指令关键字�
 
 [【Java 并发笔记】volatile 相关整理](https://www.jianshu.com/p/ccfe24b63d87)
 
- 之后更新：   hashcode/hashmap/equals/volatile/GC/
+[深入理解Java-GC机制](https://blog.csdn.net/qq_36314960/article/details/79923581)
