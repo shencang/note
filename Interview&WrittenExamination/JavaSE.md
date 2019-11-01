@@ -151,4 +151,6 @@ volatile 变量的内存可见性是基于内存屏障（Memory Barrier）实现
 
 [Java的equals方法实现及其细节](https://www.cnblogs.com/stevenshen123/p/9199354.html)
 
+[java并发](https://www.nowcoder.com/discuss/150809?type=0&order=0&pos=9&page=0)
+
 [java8文档](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html)
