@@ -132,7 +132,8 @@ volatile 变量的内存可见性是基于内存屏障（Memory Barrier）实现
 
 
 ### object的HashCode与HashMap
-（之后补）
+
+参考下面的hashMap的链接，非常详细
 
 ### GC
    垃圾回传机制
