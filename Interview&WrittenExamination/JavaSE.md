@@ -19,6 +19,34 @@
 * 未对数据进行完整性控制
 
 
+* 5.class：编译后的Java文件 ；
+* .java：是未编译的Java程序；
+* .jsp：是Java 服务器页面技术，支持Java代码的动态网页；
+* .xml：可拓展文本标记语言，一种文本格式，常用来做配置文件；
+* .jar：一种压缩包格式，常用来打包 Java 类库。
+
+* 6.下面这段代码，当 T 分别是引用类型和值类型的时候，分别产生了多少个 T 对象（1 ，1）
+T t = new T();
+Func(t);
+Func 定义如下：
+public void Func(T t) {  }
+
+* 7.java中下面哪个能创建并启动线程（）
+```java
+public class MyRunnable implements Runnable          { 
+     public void run()             { 
+         //some code here 
+     } 
+ }
+```
+
+new Thread(new MyRunnable()).start()
+
+![thread](https://github.com/shencang/note/blob/master/Android/image/interview/thread.png)
+
+
+
+
 # 小米面试总结：
 
 ### 类加载器的运行机制：

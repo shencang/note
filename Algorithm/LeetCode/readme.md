@@ -75,17 +75,25 @@ class Solution {
 示例 1:
 
 输入: "abcabcbb"
+
 输出: 3 
+
 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+
 示例 2:
 
 输入: "bbbbb"
+
 输出: 1
+
 解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
+
 示例 3:
 
 输入: "pwwkew"
+
 输出: 3
+
 解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
      请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
 
@@ -120,12 +128,15 @@ class Solution {
 示例 1:
 
 nums1 = [1, 3]
+
 nums2 = [2]
 
 则中位数是 2.0
+
 示例 2:
 
 nums1 = [1, 2]
+
 nums2 = [3, 4]
 
 则中位数是 (2 + 3)/2 = 2.5
@@ -162,11 +173,15 @@ class Solution {
 示例 1：
 
 输入: "babad"
+
 输出: "bab"
+
 注意: "aba" 也是一个有效答案。
+
 示例 2：
 
 输入: "cbbd"
+
 输出: "bb"
 
 ```java
@@ -213,7 +228,7 @@ class Solution {
         int rightNum = right;
         while (leftNum >= 0 && rightNum < s.length() && s.charAt(leftNum) == s.charAt(rightNum)) {
             leftNum--;
-            rightNum++;
+                  rightNum++;
         }
         return rightNum - leftNum - 1;
 
@@ -221,3 +236,61 @@ class Solution {
 }
 
 ``` 
+6.将一个给定字符串根据给定的行数，以从上往下、从左到右进行 Z 字形排列。
+
+比如输入字符串为 "LEETCODEISHIRING" 行数为 3 时，排列如下：
+
+    L   C   I   R
+    E T O E S I I G
+    E   D   H   N
+
+之后，你的输出需要从左往右逐行读取，产生出一个新的字符串，比如："LCIRETOESIIGEDHN"。
+
+请你实现这个将字符串进行指定行数变换的函数：
+
+string convert(string s, int numRows);
+
+示例 1:
+
+输入: s = "LEETCODEISHIRING", numRows = 3
+
+输出: "LCIRETOESIIGEDHN"
+
+示例 2:
+
+输入: s = "LEETCODEISHIRING", numRows = 4
+
+输出: "LDREOEIIECIHNTSG"
+
+解释:
+    
+    L     D     R
+    E   O E   I I
+    E C   I H   N
+    T     S     G
+
+
+```java
+class Solution {
+    public String convert(String s, int numRows) {
+        if (numRows == 1) {
+            return s;
+        }
+        StringBuilder result = new StringBuilder();
+        int gen = numRows * 2 - 2;
+
+        for (int i = 0; i < numRows; i++) {
+
+            for (int j = 0; j + i < s.length(); j += gen) {
+                result.append(s.charAt(j + i));
+                if (i != 0 && i != numRows - 1 && j + gen - i < s.length()) {
+                    result.append(s.charAt(j + gen - i));
+                }
+            }
+        }
+        return result.toString();
+
+    }
+
+}
+```
