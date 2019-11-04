@@ -1,11 +1,17 @@
 # 面试和笔试题的集合
 
->* [Android](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/android.md) ->Android类
+>* [Android类](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/Android.md) 
 >
->* [SE](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/javaSE.md) ->JavaSE 类
+>* [Java SE](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/JavaSE.md)
 >
->* [JavaEE](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/javaEE.md) ->JavaEE 类
+>* [Java EE](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/JavaEE.md)
 >
->* [Mathematics](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/mathematics.md)->数学类
+>* [数理类](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/Mathematics.md)
 >
->* [logic](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/logic.md)->逻辑类
+>* [逻辑类](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/Logic.md)
+>
+>* [操作系统类](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/OS.md)
+>
+>* [数据结构类](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/DataStructure.md)
+>
+>* [软件工程类](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/SoftwareEngineering.md)

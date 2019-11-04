@@ -45,6 +45,15 @@ new Thread(new MyRunnable()).start()
 ![thread](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/image/thread.png)
 
 
+* 8.RuntimeException是Throwable的一个子类，它指示合理的应用程序不应试图捕获的严重问题。
+
+（An RuntimeException is a subclass of Throwable that indicates serious problems that a reasonable application should not try to catch.）
+
+运行时异常： 都是RuntimeException类及其子类异常，如NullPointerException(空指针异常)、IndexOutOfBoundsException(下标越界异常)等，这些异常是不检查异常，程序中可以选择捕获处理，也可以不处理。这些异常一般是由程序逻辑错误引起的，程序应该从逻辑角度尽可能避免这类异常的发生。运行时异常的特点是Java编译器不会检查它，也就是说，当程序中可能出现这类异常，即使没有用try-catch语句捕获它，也没有用throws子句声明抛出它，也会编译通过。
+
+非运行时异常 （编译异常）： 是RuntimeException以外的异常，类型上都属于Exception类及其子类。从程序语法角度讲是必须进行处理的异常，如果不处理，程序就不能编译通过。如IOException、SQLException等以及用户自定义的Exception异常，一般情况下不自定义检查异常。
+
+![exception](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/image/exception.png)
 
 
 # 小米面试总结：
