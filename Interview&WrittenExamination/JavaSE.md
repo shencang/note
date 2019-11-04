@@ -42,7 +42,7 @@ public class MyRunnable implements Runnable          {
 
 new Thread(new MyRunnable()).start()
 
-![thread](https://github.com/shencang/note/blob/master/Android/image/interview/thread.png)
+![thread](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/image/thread.png)
 
 
 
@@ -53,7 +53,7 @@ new Thread(new MyRunnable()).start()
 
 每个每个编写的".java"类文件都存储着需要执行的程序逻辑，这些".java"文件经过Java编译器编译成拓展名为".class"的文件，".class"文件中保存着Java代码经转换后的虚拟机指令，当需要使用某个类时，虚拟机将会加载它的".class"文件，并创建对应的class对象，将class文件加载到虚拟机的内存，这个过程称为类加载，这里我们需要了解一下类加载的过程，如下：
 
-![类加载器](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/image/classloader)
+![类加载器](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/image/classloader.png)
     
 * 加载：类加载过程的一个阶段：通过一个类的完全限定查找此类字节码文件，并利用字节码文件创建一个Class对象
 
