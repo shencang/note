@@ -101,6 +101,134 @@ new Thread(new MyRunnable()).start()
     
     综上：新生代基本采用复制算法，老年代采用标记整理算法。cms采用标记清理。
 
+
+* 12.以下哪个接口的定义是正确的？（ ）
+
+```java
+interface  B
+      {  void  print();}
+```
+
+    虽然说在Java8可以在接口中定义静态方法了（此处定义指的是含body的实现），
+    但是不能只声明，只声明的会被编译器识别为抽象方法，而抽象方法不能用static修饰
+
+* 13.Java程序初始化顺序：
+
+    父类的静态代码块
+    子类的静态代码块
+    父类的普通代码块
+    父类的构造方法
+    子类的普通代码块
+    子类的构造方法
+    
+    
+* 14.下面有关struts1和struts2的区别，描述错误的是？B
+  
+  Struts1要求Action类继承一个抽象基类。Struts 2 Action类可以实现一个Action接口
+  
+  Struts1 Action对象为每一个请求产生一个实例。Struts2 Action是单例模式并且必须是线程安全的
+  
+  Struts1 Action 依赖于Servlet API，Struts 2 Action不依赖于容器，允许Action脱离容器单独被测试
+  
+  Struts1 整合了JSTL，Struts2可以使用JSTL，但是也支持OGNL
+    
+    从action类上分析:
+    1.Struts1要求Action类继承一个抽象基类。Struts1的一个普遍问题是使用抽象类编程而不是接口。 
+    2. Struts 2 Action类可以实现一个Action接口，也可实现其他接口，使可选和定制的服务成为可能。Struts2提供一个ActionSupport基类去实现常用的接口。Action接口不是必须的，任何有execute标识的POJO对象都可以用作Struts2的Action对象。
+    从Servlet 依赖分析: 
+    3. Struts1 Action 依赖于Servlet API ,因为当一个Action被调用时HttpServletRequest 和 HttpServletResponse 被传递给execute方法。 
+    4. Struts 2 Action不依赖于容器，允许Action脱离容器单独被测试。如果需要，Struts2 Action仍然可以访问初始的request和response。但是，其他的元素减少或者消除了直接访问HttpServetRequest 和 HttpServletResponse的必要性。
+    从action线程模式分析: 
+    5. Struts1 Action是单例模式并且必须是线程安全的，因为仅有Action的一个实例来处理所有的请求。单例策略限制了Struts1 Action能作的事，并且要在开发时特别小心。Action资源必须是线程安全的或同步的。 
+    6. Struts2 Action对象为每一个请求产生一个实例，因此没有线程安全问题。（实际上，servlet容器给每个请求产生许多可丢弃的对象，并且不会导致性能和垃圾回收问题）
+
+
+* 15.在一个基于分布式的游戏服务器系统中，不同的服务器之间，哪种通信方式是不可行的（管道）？
+ 
+ 
+    对于管道，有下面这几种类型：
+    ①普通管道（PIPE）：通常有两种限制，一是单工，即只能单向传输；二是血缘，即常用于父子进程间（或有血缘关系的进程间）。
+    ②流管道（s_pipe）：去除了上述的第一种限制，实现了双向传输。
+    
+    ③命名管道（name_pipe）：去除了上述的第二种限制，实现了无血缘关系的不同进程间通信。
+    显然，要求是对于不同的服务器之间的通信，是要要求全双工形式的，而管道只能是半双工，虽然可以双向，但是同一时间只能有一个方向传输，全双工和半双工的区别可以如下图示理解：
+
+![pipe.png](https://i.loli.net/2019/11/06/qnzx5C3Rl2us8BA.png)
+
+* 16.Java程序的种类有：
+
+
+    （a）内嵌于Web文件中，由浏览器来观看的_Applet
+    
+    （b）可独立运行的 Application
+    
+    （c）服务器端的 Servlets
+    
+    Application
+    ―Java应用程序”是可以独立运行的Java程序。
+    由Java解释器控制执行。
+    Applet
+      ―Java小程序”不能独立运行（嵌入到Web页中）。
+      由Java兼容浏览器控制执行。
+    
+    Serverlets
+    是Java技术对CGI 编程的解决方案。
+    是运行于Web server上的、作为来自于Web browser 或其他HTTP client端的请求和在server上的数据库及其他应用程序之间的中间层程序。
+    Serverlets的工作是：
+    读入用户发来的数据（通常在web页的form中）
+    找出隐含在HTTP请求中的其他请求信息（如浏览器功能细节、请求端主机名等。
+    产生结果(调用其他程序、访问数据库、直接计算)
+    格式化结果（网页）
+    设置HTTP response参数(如告诉浏览器返回文档格式)
+    将文档返回给客户端。
+    
+* 17.往OuterClass类的代码段中插入内部类声明, 哪一个是错误的:(都不对)
+```java
+public class OuterClass{
+    private float f=1.0f;
+    //插入代码到这里
+}
+```
+```java
+class InnerClass{
+public static float func(){return f;}
+}
+abstract class InnerClass{
+public abstract float func(){}
+}
+static class InnerClass{
+protected static float func(){return f;}
+}
+public class InnerClass{
+ static float func(){return f;}
+}
+
+```
+
+
+    主要考核了这几个知识点：
+    1.静态内部类才可以声明静态方法
+    2.静态方法不可以使用非静态变量
+    3.抽象方法不可以有函数体
+其他参考见[链接](https://www.nowcoder.com/test/question/done?tid=29150376&qid=5120#summary)
+
+* 18.Java是一门支持反射的语言,基于反射为Java提供了丰富的动态性支持，下面关于Java反射的描述，哪些是错误的：( A D F   )
+
+
+    A，Java反射主要涉及的类如Class, Method, Filed,等，他们都在java.lang.reflet包下
+    B，通过反射可以动态的实现一个接口，形成一个新的类，并可以用这个类创建对象，调用对象方法
+    C，通过反射，可以突破Java语言提供的对象成员、类成员的保护机制，访问一般方式不能访问的成员
+    D,Java反射机制提供了字节码修改的技术，可以动态的修剪一个类
+    E,Java的反射机制会给内存带来额外的开销。例如对永生堆的要求比不通过反射要求的更多
+    F,Java反射机制一般会带来效率问题，效率问题主要发生在查找类的方法和字段对象，因此通过缓存需要反射类的字段和方法就能达到与之间调用类的方法和访问类的字段一样的效率
+
+---
+    A选项Class类位于lang包下面，D选项反射的本质就是从字节码中查找，动态获取类的整容结构，包括属性，构造器，动态调用对象的方法，而不是修剪类，F选项我觉得应该是，使用了反射的效率都会降低，就算加了缓存
+
+
+
+
+
 # 小米面试总结：
 
 ### 类加载器的运行机制：
