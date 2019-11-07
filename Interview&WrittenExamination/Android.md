@@ -32,10 +32,10 @@ Content Provider【内容提供商】：支持在多个应用中存储和读取�
 Activity生命周期图及 Fragment生命周期图  
 
                                                                                                                                         
-![Activity生命周期图](https://github.com/shencang/note/blob/master/Android/image/interview/activity_life.png)
+![activity_life.png](https://i.loli.net/2019/11/07/RhbAw3lLarSOuMJ.png)
 
 
-![Fragment生命周期图](https://github.com/shencang/note/blob/master/Android/image/interview/fragment_life.png)
+![fragment_life.png](https://i.loli.net/2019/11/07/BksYmWZPp2Dx3cK.png)
 
 
 Service的生命周期：首先Service有两种启动方式，而在这两种启动方式下，它的生命周期不同。

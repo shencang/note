@@ -6,12 +6,12 @@
     博客搭建完毕后可能会有迁移。
 
 # 网站
-* 我的[博客](http://blog.shencangblue.com):上次同步日期：11月6日
+* 我的[博客](http://blog.shencangblue.com):上次同步日期：11月7日
 > 
 >目录已全部同步（索引方式已经修改-名称索引）->   正在尝试https改造中，可能会有暂时无法访问的问题。敬请期待。
 >
 >订阅服务评估中，可提供订阅服务（真的会有人订阅吗······） 
->近期优化博客图片显示问题。
+> 更换图床
 >
 > [博客Android客户端](https://github.com/shencang/Blog_RecentNative)
 > 

@@ -23,7 +23,7 @@ MST性质：假设G＝(V,E)是一个连通网，U是顶点V的一个非空子集
 
 O(n*n),O(n*n),O(nlogn)
 
-![thread](https://github.com/shencang/note/blob/master/Interview%26WrittenExamination/image/softTime.png)
+![softTime.png](https://i.loli.net/2019/11/07/LUpEh5tGRC4XoZe.png)
 
 
 * 5.一个网(带权图)都有唯一的最小生成树(错 ，不唯一，最小生成树可以有多个， 他们的权值相等且最小即可)
