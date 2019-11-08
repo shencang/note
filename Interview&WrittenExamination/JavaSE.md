@@ -1,4 +1,4 @@
-# javaSE
+# javaSE[后续有重构计划]
 
 * 1.如果一个进程在运行过程中占用的内存无限制上升，那么该进程有内存泄漏
 
@@ -226,8 +226,6 @@ public class InnerClass{
 
 
 
-
-
 # 小米面试总结：
 
 ### 类加载器的运行机制：
@@ -364,3 +362,39 @@ volatile 变量的内存可见性是基于内存屏障（Memory Barrier）实现
 [java并发](https://www.nowcoder.com/discuss/150809?type=0&order=0&pos=9&page=0)
 
 [java8文档](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html)
+
+### 19.静态内部类不可以直接访问外围类的非静态数据，而非静态内部类可以直接访问外围类的数据，包括私有数据。（正确 ）
+
+![19](https://i.loli.net/2019/11/08/pkyLYtTKqixdZaj.png)
+
+### 20.下面程序的运行结果（）
+
+```java
+        Object obj=new Object();
+        List aList=new ArrayList();
+        List bList=new LinkedList();
+        long t1=System.currentTimeMillis();
+        for(int i=0;i<50000;i++){
+            aList.add(0,obj);
+        }
+        long t2=System.currentTimeMillis()-t1;
+        t1=System.currentTimeMillis();
+        for(int i=0;i<50000;i++){
+            bList.add(0,obj);
+        }
+        long t3=System.currentTimeMillis()-t1; 
+
+```
+
+* t2>t3
+
+```text
+ArrayList内部是动态数组实现，在增加空间时会复制全部数据到新的容量大一些的数组中。而LinkedList内部为双向链表，可以按需分配空间，扩展容量简单，因此LinkedList用时少。
+```
+
+### 21.ServletConfig接口默认是哪里实现的
+
+* GenericServlet
+
+![21](https://i.loli.net/2019/11/08/zwZpOGb48EVQvnt.png)
+
