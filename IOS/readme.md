@@ -1,6 +1,6 @@
 # iOS
 
-## 这个目录待定。不添加到主目录。
+## 这个目录待定。不添加到主目录
 
 * [官方文档](https://developer.apple.com/ios/)
 
