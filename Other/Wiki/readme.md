@@ -32,11 +32,13 @@
     
     # text     = 有符号列表
     ;term:ex   = 名词定义，用'ex'定义名字'term'
-    
+
 ## 文字相关语法
+
 在写wiki页面时可以不懂任何wiki语法，只需要像写信那样写自己的wiki页面，用空行来分割不同的段落，这样输出的页面跟你输入时的格式是类似的.
 
 ### 标题'!'
+
     !text    = 用于定义小号标题
     
     !!text   = 用于定义中号标题
@@ -45,7 +47,7 @@
 
 除了用于定义页面输出样式，标题还有两个增值用法
 
-### 书签:
+### 书签
 
     所有标题都会自动生成一个页面书签, 这样我们可以在其他页面定义一个链接到这个页面某个书签的链接. 举例, 在本页有下面这样的标题，
     
@@ -59,38 +61,43 @@
 
     [TextFormattingRules#ThisIsMyHeading]
     or [Bookmark Text|TextFormattingRules#ThisIsMyHeading]
-    
-### 生成索引和目录:
+
+### 生成索引和目录
 
 Table Of Contents Plugin  将会把标题生成对应的索引和目录
 
 ### 无符号列表'*'
+
     '*'生成无符号列表，多个'*'生成多级无符号列表. 举例:
     * One
     * Two
     * Three
     ** Three.One
 生成列表如下
-    
+
     One
     Two
     Three
     Three.One
+
 ### 有符号列表'#'
+
 类似无符号列表, 只是使用'#'. 举例如下:
     # One
     # Two
     # Three
     ## Three.One
 生成列表如下
-    
+
     One
     Two
     Three
     Three.One
+
 ### 名词定义与注释';:'
+
 ';term:ex'用于名词定义，名词construct的定义举例如下:
-    
+
     ;__Construct__:''Something you use to do something with''
     将生成如下格式，
     Construct
@@ -145,7 +152,7 @@ Table Of Contents Plugin  将会把标题生成对应的索引和目录
 InterWiki
 
 我们还可以定义一个超链链接到其他wiki里的某个页面. 系统里支持哪些InterWiki是在配置文件里配置的, 配置格式举例如下:
-    
+
     jspwiki.interWikiRef.JSPWiki = http://www.jspwiki.org/Wiki.jsp?page=%s
     jspwiki.interWikiRef.Edit = Edit.jsp?page=%s
     jspwiki.interWikiRef.WikiWikiWeb = http://c2.com/cgi/wiki?%s
@@ -169,12 +176,13 @@ InterWiki
     在 SystemInfo 里列出了可用的wiki.
 
 ### 表格相关语法
+
 使用管道符号('|')生成表格. 使用双管道符号生成表格标题. 举例:
-    
+
     || Heading 1 || Heading 2
     | ''Gobble'' | Bar
     | [Main]     | [SandBox]
-    
+
 ### 使用CSS样式表
 
     Hi there!
@@ -185,7 +193,7 @@ InterWiki
     %%
     样式 "small" 必须在文件 jspwiki.css 里定义. 这种用法要求wiki页面作者清楚管理员提供了哪些CSS样式, 提供的CSS样式在各个站点可能是不同的.
 下面是使用自己定义的CSS样式:
-    
+
     %%( font-size: 150%; color: red; )
     Hello, world!
     %%
@@ -202,6 +210,7 @@ InterWiki
 ### 使用Plugin
 
 使用Plugin的基本格式如下:
+
     [{INSERT <plugin class=""></plugin> WHERE param1=value, param2=value, ...}]
-    
+
     JSPWiki Plugins详细介绍了Plugin的用法.

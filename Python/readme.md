@@ -2,7 +2,7 @@
 
 [pythonPractice](https://github.com/shencang/pythonPractice)
 
-# python与其他目录交集
+## python与其他目录交集
 
 ## python - linux
 

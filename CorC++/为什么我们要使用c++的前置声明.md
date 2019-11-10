@@ -1,10 +1,12 @@
 # 为什么我们要使用c++的前置声明
+
 转载声明：(http://blog.csdn.net/fjb2080/archive/2010/04/27/5533514.aspx) 。
 感谢原作者的辛勤付出。
 
 一、正文
 
 定义一个类 class A，这个类里面使用了类B的对象b，然后定义了一个类B，里面也包含了一个类A的对象a，就成了这样：
+
 ```c++
 //a.h  
 #include "b.h"  
@@ -23,31 +25,35 @@ private:
     A a;  
 };
 ```
+
 一编译，就出现了一个互包含的问题了，这时就有人跳出来说，这个问题的解决办法可以这样，在a.h文件中声明类B，然后使用B的指针。
+
 ```c++
-//a.h   
+//a.h
 //#include "b.h"  
-class B;   
-class A   
+class B;
+class A
 {  
- ....   
+ ....
 private:  
- B b;   
-};   
-//b.h   
-#include "a.h"   
+ B b;
+};
+//b.h
+#include "a.h"
 class B  
 {  
- ....   
+ ....
 private:  
- A a;   
+ A a;
 };
 ```
+
 然后，问题就解决了。
 但是，有人知道问题是为什么就被解决的吗，也就是说，加了个前置声明为什么就解决了这样的问题。下面，让我来探讨一下这个前置声明。
 类的前置声明是有许多的好处的。
 我们使用前置声明的一个好处是，从上面看到，当我们在类A使用类B的前置声明时，我们修改类B时，只需要重新编译类B，而不需要重新编译a.h的（当然，在真正使用类B时，必须包含b.h）。
 另外一个好处是减小类A的大小，上面的代码没有体现，那么我们来看下：
+
 ```c++
 class B;  
 class A  
@@ -65,8 +71,9 @@ private:
     int a;  
     int b;  
     int c;  
-}; 
+};
 ```
+
 我们看上面的代码，类B的大小是12（在32位机子上）。
 
 如果我们在类A中包含的是B的对象，那么类A的大小就是12（假设没有其它成员变量和虚函数）。如果包含的是类B的指针*b变量，那么类A的大小就是4，所以这样是可以减少类A的大小的，特别是对于在STL的容器里包含的是类的对象而不是指针的时候，这个就特别有用了。
@@ -84,19 +91,20 @@ private:
 如果你回答到：那是因为指针是固定大小，并且可以表示任意的类型，那么可以给你80分了。为什么只有80分，因为还没有完全回答到。
 
 想要更详细的答案，我们看下下面这个类：
+
 ```c++
 class A  
 {  
 public:  
     A(int a):_a(a),_b(_a){} // _b is new add  
-      
     int get_a() const {return _a;}  
     int get_b() const {return _b;} // new add  
 private:  
     int _b; // new add  
     int _a;  
-}; 
+};
 ```
+
 我们看下上面定义的这个类A，其中_b变量和get_b()函数是新增加进这个类的。
 那么我问你，在增加进_b变量和get_b()成员函数后这个类发生了什么改变，思考一下再回答。
 
@@ -110,6 +118,7 @@ private:
 这个隐藏的改变是类A的默认构造函数和默认拷贝构造函数发生了改变。
 由上面的改变可以看到，任何调用类A的成员变量或成员函数的行为都需要改变，因此，我们的a.h需要重新编译。
 如果我们的b.h是这样的：
+
 ```c++
 //b.h  
 #include "a.h"  
@@ -118,10 +127,12 @@ class B
 ...  
 private:  
     A a;  
-}; 
+};
 ```
+
 那么我们的b.h也需要重新编译。
 如果是这样的：
+
 ```c++
 class A;  
 class B  
@@ -129,8 +140,9 @@ class B
 ...  
 private:  
     A *a;  
-}; 
+};
 ```
+
 那么我们的b.h就不需要重新编译。
 像我们这样前置声明类A：
 class A;
@@ -155,7 +167,7 @@ Item 26 的Guideline - "Never #include a header when a forward declaration will 
 2.A有一个类型为C的成员变量
 3.A有一个类型为C的指针的成员变量
 4.A有一个类型为C的引用的成员变量
-5.A有一个类型为std::list<C>的成员变量
+5.A有一个类型为std::list\<C>的成员变量
 6.A有一个函数，它的签名中参数和返回值都是类型C
 7.A有一个函数，它的签名中参数和返回值都是类型C，它调用了C的某个函数，代码在头文件中
 8.A有一个函数，它的签名中参数和返回值都是类型C(包括类型C本身，C的引用类型和C的指针类型)，并且它会调用另外一个使用C的函数，代码直接写在A的头文件中
@@ -166,29 +178,34 @@ Item 26 的Guideline - "Never #include a header when a forward declaration will 
 看Hurb的Exceptional C++。
 3.4.不需要，前置声明就可以了，其实3和4是一样的，引用在物理上也是一个指针，它的大小根据平台不同，可能是32位也可能是64位，反正我们不需要知道C的定义就可以确定这个成员变量的大小。
 5.不需要，有可能老式的编译器需要。标准库里面的容器像list， vector，map，
-在包括一个list<C>，vector<C>，map<C, C>类型的成员变量的时候，都不需要C的定义。因为它们内部其实也是使用C的指针作为成员变量，它们的大小一开始就是固定的了，不会根据模版参数的不同而改变。
+在包括一个list\<C>，vector\<C>，map<C, C>类型的成员变量的时候，都不需要C的定义。因为它们内部其实也是使用C的指针作为成员变量，它们的大小一开始就是固定的了，不会根据模版参数的不同而改变。
 6，不需要，只要我们没有使用到C。7，需要，我们需要知道调用函数的签名。8，8的情况比较复杂，直接看代码会比较清楚一些。
+
 ```c++
-      C& doToC(C&);        
+      C& doToC(C&);
       C& doToC2(C& c) {return doToC(c);};
 ```
+
 从上面的代码来看，A的一个成员函数doToC2调用了另外一个成员函数doToC，但是无论是doToC2，还是doToC，它们的的参数和返回类型其实都是C的引用(换成指针，情况也一样)，引用的赋值跟指针的赋值都是一样，无非就是整形的赋值，所以这里即不需要知道C的大小也没有调用C的任何函数，实际上这里并不需要C的定义。
 
 但是，我们随便把其中一个C&换成C，比如像下面的几种示例：
+
 ```c++
-1.C& doToC(C&);           
-   C& doToC2(C c) {return doToC(c);};                                
-2.C& doToC(C);               
-   C& doToC2(C& c) {return doToC(c);};                
-3.C doToC(C&);                
-   C& doToC2(C& c) {return doToC(c);};                
-4.C& doToC(C&);                
+1.C& doToC(C&);
+   C& doToC2(C c) {return doToC(c);};
+2.C& doToC(C);
+   C& doToC2(C& c) {return doToC(c);};
+3.C doToC(C&);
+   C& doToC2(C& c) {return doToC(c);};
+4.C& doToC(C&);
    C doToC2(C& c) {return doToC(c);};
    ```
+
 无论哪一种，其实都隐式包含了一个拷贝构造函数的调用，比如1中参数c由拷贝构造函数生成，3中doToC的返回值是一个由拷贝构造函数生成的匿名对象。因为我们调用了C的拷贝构造函数，所以以上无论那种情形都需要知道C的定义。
 
 9和10都一样，我们都不需要知道C的定义，只是10的情况下，前置声明的语法会稍微复杂一些。
 最后给出一个完整的例子，我们可以看到在两个不同名字空间的类型A和C，A是如何使用前置声明来取代直接包括C的头文件的：
+
 ```c++
 #pragma once  
   
@@ -206,33 +223,32 @@ namespace test1
   
   
 namespace test2  
-{     
+{
        //用using避免使用完全限定名  
     using test1::C;  
-      
-    class A   
+    class A
     {  
     public:  
                 C   useC(C);  
             C& doToC(C&);  
             C& doToC2(C& c) {return doToC(c);};  
-                           
+
     private:  
             std::list<C>    _list;  
             std::vector<C>  _vector;  
             std::map<C, C>  _map;  
             C*              _pc;  
             C&              _rc;  
-      
+
     };  
-} 
+}
 #ifndef C_H  
 #define C_H  
 #include <iostream>  
   
 namespace test1  
 {  
-            
+
     class C  
     {  
     public:  

@@ -1,4 +1,5 @@
-#C语言system函数
+# C语言system函数
+
 Windows函数
 
 windows操作系统下system () 函数详解（主要是在C语言中的应用）　函数名： system
@@ -6,7 +7,8 @@ windows操作系统下system () 函数详解（主要是在C语言中的应用�
 用 法： int system(char *command);
 system函数已经被收录在标准c库中，可以直接调用
 程序例：
-```c 
+
+```c
 #include <stdlib.h>
 #include <stdio.h>
 int main(void)
@@ -95,10 +97,13 @@ XCOPY    复制文件和目录树。
 
 （注意：Microsoft Visual C++6.0 支持system）
 ```
+
 举例
 看了下面实例，相信你会对学到更多system在C程序设计中的应用。
 例一：
+
 ```c
+
 C语言调用DOS命令实现定时关机：
 #include<stdio.h>
 #include<string.h>
@@ -139,10 +144,13 @@ system("pause");
 exit(0);
 }
 ```
+
 例二：
 用C语言删除文件，例如文件的位置是d:\123.txt
 用system（）函数执行windows命令。
+
 ```c
+
 #include <stdlib.h>
 #include <stdio.h>
 int main(void)
@@ -152,14 +160,23 @@ return 0;
 }
 Linux/Unix函数
 ```
+
 函数详解
 （执行shell 命令）
 相关函数
 fork，execve，waitpid，popen
 表头文件
+
+```c
 #include<stdlib.h>
+```
+
 定义函数
+
+```c
 int system(const char * string);
+```
+
 函数说明
 system（）会调用fork（）产生子进程，由子进程来调用/bin/sh-c string来执行参数string字符串所代表的命令，此命令执行完后随即返回原调用的进程。在调用system（）期间SIGCHLD 信号会被暂时搁置，SIGINT和SIGQUIT 信号则会被忽略。
 返回值
@@ -170,6 +187,7 @@ system（）会调用fork（）产生子进程，由子进程来调用/bin/sh-c 
 附加说明
 在编写具有SUID/SGID权限的程序时请勿使用system（），system（）会继承环境变量，通过环境变量可能会造成系统安全的问题。
 范例
+
 ```c
 include<stdlib.h>
 main()
@@ -180,19 +198,21 @@ system（“ls -al /etc/passwd /etc/shadow”）；
 -rw-r--r-- 1 root root 705 Sep 3 13 :52 /etc/passwd
 -r--------- 1 root root 572 Sep 2 15 :34 /etc/shado
 ```
+
 例2：
+
 ```c
 char tmp[];
 sprintf(tmp,"/bin/mount -t vfat %s /mnt/usb",dev);
 system(tmp);
 ```
+
 其中dev是/dev/sda1.
 与exec的区别
 1、system（）和exec（）都可以执行进程外的命令，system是在原进程上开辟了一个新的进程，但是exec是用新进程（命令）覆盖了原有的进程
 2、system（）和exec（）都有能产生返回值，system的返回值并不影响原有进程，但是exec的返回值影响了原进程
 具体例：
 效果如下：
-
 
 ```c
 #include <stdio.h>  
@@ -210,7 +230,7 @@ int main()
     system("cls");  
     //console font color be change 02,BLUE  
     system("COLOR 02");  
-      
+
     for(int j=0;j<10;j++)  
         printf("第%d个符号是：%c\n",j+1,(char)(63+j));  
     system("pause");  
@@ -219,4 +239,3 @@ int main()
     system("pause");  
     return 0;  
 }  
-

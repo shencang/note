@@ -2,7 +2,7 @@
 
 在我的python目录中还有一部分
 
-#### admin
+## admin
 
 [Django Admin 管理工具](https://www.runoob.com/django/django-admin-manage-tool.html)
 
@@ -12,6 +12,6 @@
 
 [(Django中外键使用详解)](https://blog.csdn.net/xujin0/article/details/83552349)
 
-### 自己的经验教程
+## 自己的经验教程
 
 [django+nginx+uwSGI云服务器部署教程](https://github.com/shencang/note/blob/master/Server/SSM%20and%20third%20party%20framework/Django/django%2Bnginx%2BuwSGI%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B.md)

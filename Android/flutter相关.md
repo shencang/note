@@ -1,4 +1,6 @@
-# 学习资料：
+# Flutter
+
+## 学习资料
 
 [Flutter中文网](https://flutterchina.club/get-started/test-drive/)
 
@@ -8,7 +10,7 @@
 
 [Flutter 入门教程](https://blog.csdn.net/sinat_17775997/article/details/82108352)
 
-[Flutter完整开发实战详解(一、Dart语言和Flutter基础) ](https://juejin.im/post/5b631d326fb9a04fce524db2)
+[Flutter完整开发实战详解(一、Dart语言和Flutter基础)](https://juejin.im/post/5b631d326fb9a04fce524db2)
 
 [Flutter完整开发实战详解(二、 快速开发实战篇)](https://www.jianshu.com/p/5768a999790d?utm_source=oschina-app)
 
@@ -26,7 +28,8 @@
 
 [你想了解的Dart](https://www.jianshu.com/p/d41952e51120)
 
-# 问题解决：
+## 问题解决
+
 [Flutter Image 参数详解](https://blog.csdn.net/chenlove1/article/details/84111554)
 
 [安卓学习笔记(21)-flutter doctor时显示X Unable to locate Android SDK的解决方案](https://blog.csdn.net/kabuto_hui/article/details/79505262)
@@ -42,16 +45,14 @@
 
 确认jdk8才是最优解。
 
-[Compiler message: Error: The argument type 'Null Function(StringBuffer)' can't be assigned to the parameter type 'Iterable<DiagnosticsNode> Function()'. Flutter 1.5.9](https://github.com/renefloor/flutter_cached_network_image/issues/171)
+[Compiler message: Error: The argument type 'Null Function(StringBuffer)' can't be assigned to the parameter type 'Iterable\<DiagnosticsNode> Function()'. Flutter 1.5.9](https://github.com/renefloor/flutter_cached_network_image/issues/171)
 
 一个不是很明白的错误。但是急需解决
 
 正解好用：
 [Flutter 实战:圆形头像](https://www.jianshu.com/p/1f1c6bbfdebf)
 
-
-# 拓展内容：
-
+## 拓展内容
 
 [GSYGithubAppFlutter](https://github.com/CarGuo/GSYGithubAppFlutter)
 
@@ -60,7 +61,6 @@
 ~~暂时换没有什么卵用：~~
 [两个星期，用Flutter撸个APP](https://www.cnblogs.com/game-over/p/9998392.html)
 
-
 [基于Flutter的开源项目和App,Flutter入门有她就够了(一)](https://www.jianshu.com/p/c4bc4a612e88?utm_campaign=haruki&utm_content=note&utm_medium=reader_share&utm_source=qq)
 
 [Flutter安装和配置，Flutter开发遇到的难题，Flutter示例代码和模板，Flutter项目实战，Dart语言学习示例代码。](https://github.com/AweiLoveAndroid/Flutter-learning)
@@ -68,14 +68,16 @@
 [flutter_study](https://github.com/luhenchang/flutter_study)
 
 [(Flutter学习 ---- 屏幕截图和高斯模糊)](https://juejin.im/post/5b03ea7e51882565bd2594b0)
-# 技巧：
+
+## 技巧
+
 [Flutter之实现动态高斯模糊](https://www.jianshu.com/p/5c6095be73d4)
 
 [Flutter 圆形/圆角头像](https://www.jianshu.com/p/b4085a1a5129)
 
 [留一个下载](https://download.csdn.net/download/u010326875/11082948)
 
-# 项目要用[临时]
+## 项目用到的
 
 [Flutter系列之Dart数据库编程](https://blog.csdn.net/s1120080286/article/details/83445840)
 

@@ -1,4 +1,4 @@
-# 组件
+# 组件与UI
 
 ## banner - 横幅
 
@@ -12,8 +12,6 @@
 
 [Android 悬浮窗全系统版本实现](https://blog.csdn.net/zhuchenglin830/article/details/81812747)
 
-
-
 ## 单元测试
 
 [Android单元测试只看这一篇就够了](https://www.jianshu.com/p/aa51a3e007e2)
@@ -26,13 +24,13 @@
 
 ## 支持库
 
-#### Android Support v4\v7\v13和AndroidX理解
+### Android Support v4\v7\v13和AndroidX理解
 
     为什么要用support库呢？
     
     因为在低版本Android平台上开发一个APP时，想使用高版本才有的功能，此时就需要使用Support来支持兼容。
 
-##### 1. android-support-v4 
+#### 1. android-support-v4
 
     compile "com.android.support:support-v4
     
@@ -42,7 +40,7 @@
     
     V4包含了V7和V13的基础功能。
 
-##### 2. android-support-v7
+#### 2. android-support-v7
 
     compile "com.android.support:appcompat-v7:xx.xx"
     
@@ -52,11 +50,11 @@
     
     android studio在创建工程的时候默认导入了v7工程，并且将style使用了兼容style。
 
-##### 3. android-support-v13
-    
+#### 3. android-support-v13
+
     为平板开发推出的版本兼容包，最低兼容Android3.2的系统。可以说Android 3.x系统都是平板专用系统。
 
-##### 4. androidX 
+#### 4. androidX
 
      从android9.0 (API28)开始, support库将会进行改动, V7: 28.0.0将会是support库的终结版本。未来新的特性和改进都会进入Androidx包。其主要原因是support库的命名已经越来越令人迷惑 ，包越来越臃肿。
     
@@ -78,7 +76,6 @@
     
     android.enableJetifier=true
 
-
 ### assert（断言，非资源那个）
 
     在android中看到这个关键字，你的第一反应应该是操作资源文件用的，但是据我今天的了解并非如此，这个在android中还有另一个作用就是用来调试的，名字叫断言。
@@ -87,12 +84,11 @@
 
 [原断言assert()与调试帮助](https://blog.csdn.net/enterprise_/article/details/82111501)
 
-
 [Android系统自带下载DownloadManager使用方法完美实现](https://blog.csdn.net/qq_29428215/article/details/80570034)
 
 [Android 5.0、6.0、7.0、8.0、9.0 新特性，DownloadManager踩坑记](https://blog.csdn.net/csdn_aiyang/article/details/85780925)
 
-# Android UI 
+## Android UI
 
 [Android--UI之ScrollView](https://www.cnblogs.com/plokmju/p/android_ScrollView.html)
 
@@ -102,19 +98,19 @@
 
 [EditText设置只能输入整数金额](https://blog.csdn.net/youjia29/article/details/78271365)
 
-# ADB
+## ADB
 
 [玩转ADB命令（ADB命令使用大全）](https://blog.csdn.net/zhonglunshun/article/details/78362439)
 
 Android 调试桥 (adb) 是一种功能多样的命令行工具，可让您与设备进行通信。adb 命令便于执行各种设备操作（例如安装和调试应用），并提供对 Unix shell（可用来在设备上运行各种命令）的访问权限。它是一种客户端-服务器程序，包括以下三个组件：
 
- - 客户端：用于发送命令。客户端在开发计算机上运行。您可以通过发出 adb 命令从命令行终端调用客户端。
+- 客户端：用于发送命令。客户端在开发计算机上运行。您可以通过发出 adb 命令从命令行终端调用客户端。
 
- - 守护进程 (adbd)：在设备上运行命令。守护进程在每个设备上作为后台进程运行。
+- 守护进程 (adbd)：在设备上运行命令。守护进程在每个设备上作为后台进程运行。
 
- - 服务器：管理客户端和守护进程之间的通信。服务器在开发计算机上作为后台进程运行。
+- 服务器：管理客户端和守护进程之间的通信。服务器在开发计算机上作为后台进程运行。
 
-adb 包含在 Android SDK 平台工具软件包中。您可以使用 SDK 管理器下载此软件包，管理器会将此软件包安装在 android_sdk/platform-tools/。或者，如果您需要独立的 Android SDK 平台工具软件包，可以点击此处进行下载。 
+adb 包含在 Android SDK 平台工具软件包中。您可以使用 SDK 管理器下载此软件包，管理器会将此软件包安装在 android_sdk/platform-tools/。或者，如果您需要独立的 Android SDK 平台工具软件包，可以点击此处进行下载。
 
 要了解如何连接设备以进行 adb 通信，包括如何使用 Connection Assistant 对常见问题进行排查，请参阅在硬件设备上运行应用。
 
