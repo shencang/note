@@ -565,3 +565,13 @@ SharedPreferences他是安卓中的一个轻型的数据存储方式，它的本
     3.在通过Editor的putXXX(key , value);方法设置数据
     4. 在通过Editor的  commit(); 方法 关闭对象
 ```
+
+### 12.下列关于View、Activity、Window的表述正确的是？（）
+
+* 每一个Activity分配唯一个PhoneWindow
+* DecorView是PhoneWindow的根视图
+* Activity的setContentView()方法必须在Activity完成attach之后调用
+
+```text
+
+```

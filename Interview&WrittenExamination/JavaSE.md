@@ -286,6 +286,75 @@ ArrayList内部是动态数组实现，在增加空间时会复制全部数据�
 
 ![21](https://i.loli.net/2019/11/08/zwZpOGb48EVQvnt.png)
 
+### 22.关于Java和C/C++的比较，下列哪个描述是错误的
+
+* Java和C++一样，是纯编译型语言，因此它们的class都是在编译时静态联编(static binding)的
+* Java数组、字符串不可能溢出，C/C++数组、字符串则有可能溢出边界
+
+```text
+C，java不完全算是编译型语言，他编译的字节码文件运行时是解释执行的，其次，java和C++的类也不都完全是静态绑定的，比如C+++的虚函数，java的父类引用子类对象等情况。
+D，java也可以数组溢出，溢出是会抛出异常，也就是ArrayIndexOutOfBoundsException
+```
+
+### 23.关于下面这段Java程序，哪些描述是正确的：（ ）
+
+```java
+public class ThreadTest extends Thread {
+public void run() {
+System.out.println("In run");
+yield();
+System.out.println("Leaving run");
+}
+public static void main(String []argv) {
+(new ThreadTest()).start();
+}
+}
+```
+
+* 程序运行输出先有In run后有Leaving run
+
+```text
+Thread.yield()方法作用是：暂停当前正在执行的线程对象，并执行其他线程。
+
+yield()应该做的是让当前运行线程回到可运行状态，以允许具有相同优先级的其他线程获得运行机会。因此，使用yield()的目的是让相同优先级的线程之间能适当的轮转执行。但是，实际中无法保证yield()达到让步目的，因为让步的线程还有可能被线程调度程序再次选中。
+
+结论：yield()从未导致线程转到等待/睡眠/阻塞状态。在大多数情况下，yield()将导致线程从运行状态转到可运行状态，但有可能没有效果。
+```
+
+### 下列描述正确的是（ ）
+
+* 类不可以多继承而接口可以多实现
+* 抽象类和接口都不能被实例化
+
+```text
+1.java支持单继承，却可以实现多个接口。a对d错
+2.接口没有构造方法，所以不能实例化，抽象类有构造方法，但是不是用来实例化的，是用来初始化的。c对
+3.抽象类可以定义普通成员变量而接口不可以，但是抽象类和接口都可以定义静态成员变量，只是接口的静态成员变量要用static final public 来修饰。b错
+```
+
+### 关于Java的一些概念，下面哪些描述是正确的：(    )
+
+* 通过try … catch … finally语句，finally中的语句部分无论发生什么异常都会得到执行
+
+* Java是跨平台的语言，无论通过哪个版本的Java编写的程序都能在所有的Java运行平台中运行
+
+```text
+A、java异常和错误的基类Throwable,包括Exception和Error
+B、try...catch...finally finally不管什么异常都会执行
+C、java是面向对象的，但是不是所有的都是对象，基本数据类型就不是对象，所以才会有封装类的；
+D、如果是等待清理队列中如果又被调用，则不会执行finallize方法
+E、JAVA跨平台性    实现在任意平台的java程序都可以在其他平台运行
+F、synchronized实现方式：三种
+```
+
+### 下列方法中哪个是线程执行的方法？ （）
+
+* run（）
+
+```text
+选A，start是启动线程对象，使之从新建状态转入就绪状态；sleep让线程睡眠一段时间，在此期间线程不消耗CPU资源；suspend使线程挂起，暂停执行， 如果想恢复线程，必须由其他线程调用 resume方法。
+```
+
 ## 小米面试总结
 
 ### 类加载器的运行机制
