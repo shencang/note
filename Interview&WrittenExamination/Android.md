@@ -575,3 +575,21 @@ SharedPreferences他是安卓中的一个轻型的数据存储方式，它的本
 ```text
 
 ```
+
+### 13.SharedPreferences保存文件的路径和扩展名是
+
+* /data/data/package name/shared_prefs/   *.xml
+
+```text
+SharedPreferences是Android平台上一个轻量级的存储类，用来保存应用的一些常用配置，比如Activity状态，Activity暂停时，将此activity的状态保存到SharedPereferences中；当Activity重载，系统回调方法onSaveInstanceState时，再从SharedPreferences中将值取出。
+以xml方式来保存
+```
+
+### 14.关于 android 中播放视频的说法不对的是 ___
+
+* 可以使用SurfaceView组件播视频
+* 可以使用VideoView组件播视频
+* VideoView组件可以控制播放的位置和大小
+* VideoView播放视频的格式可以是3gp
+
+![14](https://i.loli.net/2019/11/11/ozWdXIguTAjVCHv.png)

@@ -321,7 +321,7 @@ yield()应该做的是让当前运行线程回到可运行状态，以允许具�
 结论：yield()从未导致线程转到等待/睡眠/阻塞状态。在大多数情况下，yield()将导致线程从运行状态转到可运行状态，但有可能没有效果。
 ```
 
-### 下列描述正确的是（ ）
+### 24.下列描述正确的是（ ）
 
 * 类不可以多继承而接口可以多实现
 * 抽象类和接口都不能被实例化
@@ -332,7 +332,7 @@ yield()应该做的是让当前运行线程回到可运行状态，以允许具�
 3.抽象类可以定义普通成员变量而接口不可以，但是抽象类和接口都可以定义静态成员变量，只是接口的静态成员变量要用static final public 来修饰。b错
 ```
 
-### 关于Java的一些概念，下面哪些描述是正确的：(    )
+### 25.关于Java的一些概念，下面哪些描述是正确的：(    )
 
 * 通过try … catch … finally语句，finally中的语句部分无论发生什么异常都会得到执行
 
@@ -347,13 +347,67 @@ E、JAVA跨平台性    实现在任意平台的java程序都可以在其他平�
 F、synchronized实现方式：三种
 ```
 
-### 下列方法中哪个是线程执行的方法？ （）
+### 26.下列方法中哪个是线程执行的方法？ （）
 
 * run（）
 
 ```text
 选A，start是启动线程对象，使之从新建状态转入就绪状态；sleep让线程睡眠一段时间，在此期间线程不消耗CPU资源；suspend使线程挂起，暂停执行， 如果想恢复线程，必须由其他线程调用 resume方法。
 ```
+
+### 27.检查程序，是否存在问题，如果存在指出问题所在，如果不存在，说明输出结果
+
+```java
+package algorithms.com.guan.javajicu;
+public class Example {
+  String str = new String("good");
+  char[] ch = {'a','b','c'};
+  public static void main(String[] args) {
+     Example ex = new Example();
+     ex.change(ex.str, ex.ch);
+     System.out.print(ex.str +"and");
+     System.out.print(ex.ch);  
+  }
+
+  public void change(String str, char ch[]){
+     str= "test ok";
+     ch[0]= 'g';
+  }
+}
+
+```
+
+* goodandgbc
+
+```t
+java 中String是 immutable的，也就是不可变，一旦初始化，其引用指向的内容是不可变的。
+
+也就是说，String str = “aa”；str=“bb”；第二句不是改变“aa”所存储地址的内容，而是另外开辟了一个空间用来存储“bb”；同时由str指向
+
+原来的“aa”，现在已经不可达，GC时会自动回收。
+
+因此String作为参数传进来时候，str= "test ok"; 实际给副本引用str指向了新分配的地址，该地址存储“test ok”。
+
+因此，原先的str仍然指向“good”
+```
+
+### 28.关于AWT和Swing说法正确的是 D
+
+* Swing是AWT的子类
+* AWT在不同操作系统中显示相同的风格
+* AWT不支持事件类型，Swing支持事件模型
+* Swing在不同的操作系统中显示相同的风格
+
+![28](https://i.loli.net/2019/11/11/7fbaEiT6N5tMQD4.png)
+
+### 关于Java中的数组，下面的一些描述，哪些描述是准确的：（    ）
+
+* 数组是一个对象，不同类型的数组具有不同的类
+* 数组是一个连续的存储结构
+* 可以二维数组，且可以有多维数组，都是在Java中合法的
+
+* 留意
+![28](https://i.loli.net/2019/11/11/tPITHB5sQSZvXj8.png)
 
 ## 小米面试总结
 
