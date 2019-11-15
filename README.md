@@ -10,13 +10,12 @@
 >
 >目录框架全部同步-间歇日期同步。
 >
->文章索引方式已经修改从时间索引切换为名称索引
 >
 >正在尝试https改造中，可能会有暂时无法访问的问题。
 >
 >更换图床到sm.ms
 >
->逐步规范化MD的使用。
+>逐步规范化MD的使用
 >
 > [博客Android客户端](https://github.com/shencang/Blog_RecentNative)
 >
