@@ -593,3 +593,71 @@ SharedPreferences是Android平台上一个轻量级的存储类，用来保存�
 * VideoView播放视频的格式可以是3gp
 
 ![14](https://i.loli.net/2019/11/11/ozWdXIguTAjVCHv.png)
+
+### 15.下列代码中哪个是隐式Intent的例子
+
+```java
+Intent intent=new Intent(Intent.ACTION_SEND);
+intent.putExtra(Intent.EXTRA_TEXT,textMessage);
+intent.setType("text/plain");
+startActivity(intent);
+```
+
+```t
+显式启动 是明确指定了需要启动的Activity 或 service 的类名或包名。
+隐式启动 不明确制定需要启动哪个Activity，而是通过设置action、data、 Category 等让系统来匹配出合适的目标
+```
+
+### 15.阅读代码回答运行结果
+
+```java
+
+public classMainActivity extends Activity implements OnClickListener
+{
+   private Button mBtnLogin = (Button) findViewById(R.id.btn_login);
+   private TextView mTextViewUser;
+  
+   @Override
+   protected void onCreate(BundlesavedInstanceState)
+   {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        mTextViewUser = (TextView) findViewById(R.id.textview_user);
+        mBtnLogin.setOnClickListener(this);
+        new Thread()
+        {
+            @Override
+            public void run()
+            {
+                mTextViewUser.setText(10);
+            }
+        }.start();
+   }
+  
+   @Override
+   public void onClick(View v)
+   {
+        mTextViewUser.setText(20);
+   }
+}
+```
+
+* NullPointerException
+
+```t
+Button的初始化时找不到对应的id的。id绑定应该在setContentView后执行。
+代码实测：
+
+1、首先会报错NullPointerException，就是privateButton mBtnLogin = (Button) findViewById(R.id.btn_login);这个位置，要先加载了layout后才能成功获取到相应的按钮组件对象；
+2、修改NullPointerException错误后再运行，报错 Resources$NotFoundException，在mTextViewUser.setText(10);这个位置（原本以为会先检查onclick方法里的setText（），但实际是run（）里的setText（）），要改成字符串形式；
+3、修改上面的错误后再运行，报错Resources$NotFoundException，这次就轮到mTextViewUser.setText(20);这个位置了；
+4、修改上面的错误后再运行，没有报错，程序成功运行，点击按钮后TextView由10变为20，说好的不能在非UI线程里更新UI组件呢？翻看别人的博客后，终于找到答案了，其实非UI线程是可以刷新UI的，前提是它要拥有自己的ViewRoot，ViewRoot是在onResume（）里addview（）创建的，所以是在 onResume（）检查是否为UI线程，一般在onCreate（）中通过子线程可以更新UI，但官方不建议这样做，因为 Android UI操作并不是线程安全的。
+PS：而且，可以试下在上面代码的run（）中setText（）前加一句Thread.sleep(2000)，先让线程休眠个2到3秒，就会报错 ViewRootImpl$CalledFromWrongThreadException，说明已经检查到在非UI线程里更新UI。
+```
+
+### 16.下列哪些操作会使线程释放锁资源
+
+* wait()
+* join()
+
+![16](https://i.loli.net/2019/11/18/Q1veEuWy9j8kxfz.png)

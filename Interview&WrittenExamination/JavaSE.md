@@ -409,6 +409,50 @@ java 中String是 immutable的，也就是不可变，一旦初始化，其引�
 * 留意
 ![28](https://i.loli.net/2019/11/11/tPITHB5sQSZvXj8.png)
 
+### 29.从以下哪一个选项中可以获得Servlet的初始化参数
+
+* ServletConfig
+
+```t
+
+通过ServletConfig接口的getInitParameter(java.lang.String name)方法
+
+ServletContext对象：servlet容器在启动时会加载web应用，并为每个web应用创建唯一的servlet context对象，可以把ServletContext看成是一个Web应用的服务器端组件的共享内存，在ServletContext中可以存放共享数据。ServletContext对象是真正的一个全局对象，凡是web容器中的Servlet都可以访问。
+   整个web应用只有唯一的一个ServletContext对象
+servletConfig对象：用于封装servlet的配置信息。从一个servlet被实例化后，对任何客户端在任何时候访问有效，但仅对servlet自身有效，一个servlet的ServletConfig对象不能被另一个servlet访问。
+
+```
+
+### 30.有如下一段代码，请选择其运行结果（）
+
+```java
+public class StringDemo{
+  private static final String MESSAGE="taobao";
+  public static void main(String [] args) {
+    String a ="tao"+"bao";
+    String b="tao";
+    String c="bao";
+    System.out.println(a==MESSAGE);
+    System.out.println((b+c)==MESSAGE);
+  }
+}
+```
+
+![30](https://i.loli.net/2019/11/18/s2JY5W7Qc41Miy3.png)
+
+![30-1](https://i.loli.net/2019/11/18/x1dQnEsOzVSR6tL.png)
+
+![30-2](https://i.loli.net/2019/11/18/W7iKes2R5q43MpD.png)
+
+![30-3](https://i.loli.net/2019/11/18/OElAbjPagqeJ6Hd.png)
+
+### 31.下面哪些类实现或继承了 Collection 接口
+
+* ArrayList
+* Vector
+
+![31](https://i.loli.net/2019/11/18/ysMH3WeUjLz58Eq.png)
+
 ## 小米面试总结
 
 ### 类加载器的运行机制
