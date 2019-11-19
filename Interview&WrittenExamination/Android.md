@@ -661,3 +661,5 @@ PS：而且，可以试下在上面代码的run（）中setText（）前加一�
 * join()
 
 ![16](https://i.loli.net/2019/11/18/Q1veEuWy9j8kxfz.png)
+
+### 17.将一个Activity设置成窗口的样式，只需设置Theme(true)
