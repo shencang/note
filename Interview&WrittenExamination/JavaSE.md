@@ -483,6 +483,53 @@ AOP不能替代OOP，OOP是obejct abstraction，而AOP是concern abstraction，�
 
 ![34](https://i.loli.net/2019/11/19/n5I9ZwdDcNFMzvr.png)
 
+### 35.对于文件的描述正确的是（ ）
+
+* Java中对于文本文件和二进制文件，都可以当作二进制文件进行操作。
+
+```t
+
+A.文件分为文本文件和二进制文件，计算机只认识二进制，所以实际上都是二进制的不同解释方式。文本文件是以不同编码格式显示的字符，例如Ascii、Unicode等，window中文本文件的后缀名有".txt",".log",各种编程语言的源码文件等；二进制文件就是用文本文档打开是看不懂乱码，只要能用文本打开的文件都可以算是文本文件，只是显示的结果不是你想要的，二进制文件只有用特殊的应用才能读懂的文件，例如".png",".bmp"等，计算机中大部分的文件还是二进制文件。
+B.File类是对文件整体或者文件属性操作的类，例如创建文件、删除文件、查看文件是否存在等功能，不能操作文件内容；文件内容是用IO流操作的。
+C.当输入过程中意外到达文件或流的末尾时，抛出EOFException异常,正常情况下读取到文件末尾时，返回一个特殊值表示文件读取完成，例如read()返回-1表示文件读取完成。
+D.上面A选项已经说了，不论是文本文件还是二进制文件，在计算机中都是以二进制形式存储的，所以都当做二进制文件读取。
+```
+
+### 36.给出以下代码,请给出结果
+
+```java
+class Two{
+    Byte x;
+}
+class PassO{
+    public static void main(String[] args){
+        PassO p=new PassO();
+        p.start();
+    }
+    void start(){
+        Two t=new Two();
+        System.out.print(t.x+””);
+        Two t2=fix(t);
+        System.out.print(t.x+” ” +t2.x);
+    }
+    Two fix(Two tt){
+        tt.x=42;
+        return tt;
+    }
+}
+```
+
+* null 42 42
+
+![36](https://i.loli.net/2019/11/19/uo5Uz2eAQ4wL7GB.png)
+
+### 37.以下哪些继承自 Collection 接口（）
+
+* List
+* Set
+
+![37](https://i.loli.net/2019/11/19/2XpyYak9ml6VIKT.png)
+
 ## 小米面试总结
 
 ### 类加载器的运行机制
