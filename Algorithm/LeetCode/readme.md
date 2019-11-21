@@ -1027,20 +1027,51 @@ static int[] minList(int a ,int b,int c){
 
 class Solution {
 public int threeSumClosest(int[] nums, int target) {
-        Arrays.sort(nums);
+         Arrays.sort(nums);
         int ans = nums[0] + nums[1] + nums[2];
-        for(int i=0;i<nums.length-2;i++) {
-            int start = i+1, end = nums.length - 1;
-            while(start < end) {
+        for (int i = 0; i < nums.length - 2; i++) {
+            int start = i + 1, end = nums.length - 1;
+            while (start != end) {
+                // 判断最小值
+                int min = nums[i] + nums[start] + nums[start + 1];
+                if (target < min) {
+                    if (Math.abs(ans - target) > Math.abs(min - target))
+                        ans = min;
+                    break;
+                }
+                //判断最大值
+                int max = nums[i] + nums[end] + nums[end - 1];
+                if (target > max) {
+                    if (Math.abs(ans - target) > Math.abs(max - target))
+                        ans = max;
+                    break;
+                }
+
                 int sum = nums[start] + nums[end] + nums[i];
-                if(Math.abs(target - sum) < Math.abs(target - ans))
+                // 判断三数之和是否等于target
+                if (sum == target) {
+                    return sum;
+                }
+                if (Math.abs(sum - target) < Math.abs(ans - target)) {
                     ans = sum;
-                if(sum > target)
+                }
+                if (sum > target) {
                     end--;
-                else if(sum < target)
+                    // 解决nums[end]重复
+                    while (start != end && nums[end] == nums[end + 1]) {
+                        end--;
+                    }
+                } else {
                     start++;
-                else
-                    return ans;
+                    // 解决nums[start]重复
+                    while (start != end && nums[start] == nums[start - 1]) {
+                        start++;
+                    }
+                }
+            }
+            // 解决nums[i]重复
+            while (i < nums.length - 2 && nums[i] == nums[i + 1]) {
+                i++;
             }
         }
         return ans;

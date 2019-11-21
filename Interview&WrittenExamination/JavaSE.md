@@ -530,6 +530,45 @@ class PassO{
 
 ![37](https://i.loli.net/2019/11/19/2XpyYak9ml6VIKT.png)
 
+### 38.Java类Demo中存在方法func0、func1、func2、func3和func4，请问该方法中，哪些是不合法的定义？( )
+
+```java
+public class Demo{
+　　float func0()
+　　{
+　　　　byte i=1;
+　　　　return i;
+　　}
+　　float func1()
+　　{
+　　　　int i=1;
+　　　　return;
+　　}
+　　float func2()
+　　{
+　　　　short i=2;
+　　　　return i;
+　　}
+　　float func3()
+　　{
+　　　　long i=3;
+　　　　return i;
+　　}
+　　float func4()
+　　{
+　　　　double i=4;
+　　　　return i;
+　　}
+}
+
+```
+
+* func1
+
+* func4
+
+![38](https://i.loli.net/2019/11/21/SrlBU7fh4DHLWca.png)
+
 ## 小米面试总结
 
 ### 类加载器的运行机制
