@@ -6,7 +6,7 @@
 
 ## 网站&博客
 
-* 我的[博客](http://blog.shencangblue.com):同步日期：2019年11月18日
+* 我的[博客](http://blog.shencangblue.com):同步日期：2019年11月23日
 >
 >目录框架全部同步-间歇日期同步。
 >
@@ -16,7 +16,7 @@
 >
 >github端已经完成MD规范化,博客逐步同步MD的使用
 >
-> [博客Android客户端](https://github.com/shencang/Blog_RecentNative)
+> [博客Android客户端](https://github.com/shencang/Blog_RecentNative) - 已上线服务
 >
 
 * 我的[私有网盘](http://data.shencangblue.com)：申请账号请联系邮箱
