@@ -1078,3 +1078,77 @@ public int threeSumClosest(int[] nums, int target) {
     }
 }
 ```
+
+### 17.电话号码的字母组合
+
+```t
+给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。
+
+给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。
+```
+
+![17](https://i.loli.net/2019/11/24/kquRFngxpaPt5wO.png)
+
+* 示例:
+
+```t
+输入："23"
+输出：["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+```
+
+说明:
+尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。
+
+* 官方题解：
+
+```java
+class Solution {
+    Map<String, String> phoneNum = new HashMap<String, String>() {{
+        put("2", "abc");
+        put("3", "def");
+        put("4", "ghi");
+        put("5", "jkl");
+        put("6", "mno");
+        put("7", "pqrs");
+        put("8", "tuv");
+        put("9", "wxyz");
+    }};
+
+    List<String> result = new ArrayList<>();
+
+    public List<String> letterCombinations(String digits) {
+        if (digits.length() != 0) {
+            backtrack("", digits);
+        }
+        return result;
+
+
+    }
+
+    /**
+     * 递归处理键值
+     *
+     * @param combination 结合
+     * @param next_digits 下一个数字
+     */
+    private void backtrack(String combination, String next_digits) {
+        //如果没有更多的数字要检查
+        if (next_digits.length() == 0) {
+            //组合完成
+            result.add(combination);
+        }//如果还有数字要检查
+        else {
+            //遍历映射的所有字母
+            //下一个可用数字
+            String digit = next_digits.substring(0, 1);
+            String letters = phoneNum.get(digit);
+            for (int i = 0; i < letters.length(); i++) {
+                String latter = phoneNum.get(digit).substring(i, i + 1);
+                //将当前字母附加到组合中
+                //然后进入下一个数字
+                backtrack(combination + latter, next_digits.substring(1));
+            }
+        }
+    }
+}
+```
