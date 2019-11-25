@@ -569,6 +569,110 @@ public class Demo{
 
 ![38](https://i.loli.net/2019/11/21/SrlBU7fh4DHLWca.png)
 
+### 39.若在某一个类定义中定义有如下的方法： abstract void performDial( ); 该方法属于（D）
+
+* 抽象方法
+
+![39](https://i.loli.net/2019/11/25/6lo5Kndq8MxNktF.png)
+
+### 以下哪项不属于java类加载过程(b)
+
+* int类型对象成员变量赋予默认值
+
+```t
+不应该选D，而应该选B
+类的加载包括：加载，验证，准备，解析，初始化。
+选项A：生成java.lang.Class对象是在加载时进行的。生成Class对象作为方法区这个类的各种数据的访问入口。
+选项B：既然是对象成员，那么肯定在实例化对象后才有。在类加载的时候会赋予初值的是类变量，而非对象成员。
+选项C：这个会调用。可以用反射试验。
+选项D：类方法解析发生在解析过程。
+```
+
+### 40.下列哪个说法是正确的（）
+
+* ConcurrentHashMap使用synchronized关键字保证线程安全
+* HashMap实现了Collction接口
+* Array.asList方法返回java.util.ArrayList对象
+* SimpleDateFormat是线程不安全的
+
+![40](https://i.loli.net/2019/11/25/bxALG197aJWXK3E.png)
+
+### 41.list是一个ArrayList的对象，哪个选项的代码填到//todo delete处，可以在Iterator遍历的过程中正确并安全的删除一个list中保存的对象？（）
+
+```java
+Iterator it = list.iterator();
+int index = 0;
+while (it.hasNext())
+{
+    Object obj = it.next();
+    if (needDelete(obj))  //needDelete返回boolean，决定是否要删除
+    {
+        //todo delete
+    }
+    index ++;
+}
+```
+
+* it.remove();
+
+```t
+Iterator  支持从源集合中安全地删除对象，只需在 Iterator 上调用 remove() 即可。这样做的好处是可以避免 ConcurrentModifiedException ，当打开 Iterator 迭代集合时，同时又在对集合进行修改。有些集合不允许在迭代时删除或添加元素，但是调用 Iterator 的remove() 方法是个安全的做法。
+```
+
+### 42.下列Java代码中的变量a、b、c分别在内存的____存储区存放
+
+```java
+class A {
+    private String a = “aa”;
+    public boolean methodB() {
+        String b = “bb”;
+        final String c = “cc”;
+    }
+}
+```
+
+* 堆区、栈区、栈区
+
+```t
+答案是C
+a是类中的成员变量，存放在堆区
+b、c都是方法中的局部变量，存放在栈区
+
+堆区：只存放类对象，线程共享；
+方法区：又叫静态存储区，存放class文件和静态数据，线程共享;
+栈区：存放方法局部变量，基本类型变量区、执行环境上下文、操作指令区，线程不共享;
+```
+
+### 43.以下说法中正确的有 AD
+
+* StringBuilder是 线程不安全的
+* Java类可以同时用 abstract和final声明
+* HashMap中，使用 get(key)==null可以 判断这个Hasmap是否包含这个key
+* volatile关键字不保证对变量操作的原子性
+
+```t
+abstract修饰的类是抽象类，是可以继承的，而final修饰的类表示不能再被继承，故肯定不能共同使用。故B错。
+HashMap中提供的get(key)获取的是变量，无法判断是否存在key。所以C是错的
+volatile关键字是一种轻量级的同步机制，只保证数据的可见性，而不保证数据的原子性。故D对
+```
+
+### 44.下面的Java赋值语句哪些是有错误的 （B F ）
+
+* int i =1000;
+* float f = 45.0;
+* char s = ‘\u0639’;
+* Object o = ‘f’;
+* String s = "hello,world\0";
+* Double d = 100;
+
+```t
+java中默认声明的小数是double类型的，如double d=4.0
+
+如果声明： float x = 4.0则会报错，需要如下写法：float x = 4.0f或者float x = (float)4.0
+
+其中4.0f后面的f只是为了区别double，并不代表任何数字上的意义
+```
+
 ## 小米面试总结
 
 ### 类加载器的运行机制
