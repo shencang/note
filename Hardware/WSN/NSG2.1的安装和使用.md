@@ -36,3 +36,15 @@ java –jar NSG2.jar
 ```
 
 ### NSG2使用基础
+
+* NSG基本使用方法：
+
+[NSG入门-Word文档下载](http://data.shencangblue.com/index.php/s/FrCMIKAL7G3TE8T)
+
+* NS2语法及结果分析
+
+[NSG入门-NS2语法及结果分析-PPT文档下载](http://data.shencangblue.com/index.php/s/Gw9ZE2Y1IHuvts2)
+
+* 如何对NS2仿真结果进行分析
+
+[如何对NS2仿真结果进行分析 - Word文档下载](http://data.shencangblue.com/index.php/s/R7daMX4lncVKzzx)
