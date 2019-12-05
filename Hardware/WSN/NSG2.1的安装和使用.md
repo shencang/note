@@ -48,3 +48,9 @@ java –jar NSG2.jar
 * 如何对NS2仿真结果进行分析
 
 [如何对NS2仿真结果进行分析 - Word文档下载](http://data.shencangblue.com/index.php/s/R7daMX4lncVKzzx)
+
+### NSG2 分析工具
+
+![条目分析](https://i.loli.net/2019/12/05/sdzpmSFQbj6U7Wf.png)
+
+[NSWireless](http://data.shencangblue.com/index.php/s/7c7J4kdMxmHjfwQ)
