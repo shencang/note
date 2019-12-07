@@ -43,7 +43,7 @@
 >
 >* [Java](https://github.com/shencang/note/tree/master/Java)->java
 >
->* [server](https://github.com/shencang/note/tree/master/Server)->服务器
+>* [NetWork](https://github.com/shencang/note/tree/master/NetWork)->网络
 >
 ### 硬件
 
