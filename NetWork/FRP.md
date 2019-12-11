@@ -16,4 +16,21 @@
 
 * 利用处于内网或防火墙后的机器，对外网环境提供 TCP 和 UDP 服务，例如在家里通过 SSH 访问处于公司内网环境内的主机。
 
+## FRP的安装
+
+* 下载：
+
+```cmd
+
+ wget https://github.com/fatedier/frp/releases/download/v0.30.0/frp_0.30.0_linux_amd64.tar.gz
+
+```
+
+* 解压并与移动指定目录：
+
+```cmd
+ tar xzvf frp_0.30.0_linux_amd64.tar.gz
+ mv frp_0.30.0_linux_amd64 frp
+```
+
 [未完](https://www.jianshu.com/p/00c79df1aaf0)
