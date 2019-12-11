@@ -34,3 +34,31 @@
 ```
 
 [未完](https://www.jianshu.com/p/00c79df1aaf0)
+
+* 看到该教程是可能不是不是最新版本或者是其他平台的设备，请访问[项目释放](https://github.com/fatedier/frp/releases)
+
+## FRP 服务端配置
+
+配置 FRP 服务端的前提条件是需要一台具有**公网 IP **的设备，得益于 FRP 是 Go 语言开发的，具有良好的跨平台特性。你可以在 Windows、Linux、MacOS、ARM等几乎任何可联网设备上部署。
+
+这里以 Linux 为例，FRP 默认给出两个服务端配置文件，一个是简版的 frps.ini，另一个是完整版本 frps_full.ini。
+我们先来看看简版的 frps.ini，通过这个配置可以快速的搭建起一个 FRP 服务端。
+
+```cmd
+
+cat frps.ini
+
+[common]
+bind_port = 7000
+默认配置中监听的是 7000 端口，可根据自己实际情况修改。
+
+启动 FRP 服务端
+$ ./frps -c ./frps.ini
+2018/01/25 10:52:45 [I] [service.go:96] frps tcp listen on 0.0.0.0:7000
+2018/01/25 10:52:45 [I] [main.go:112] Start frps success
+2018/01/25 10:52:45 [I] [main.go:114] PrivilegeMode is enabled, you should pay more attention to security issues
+```
+
+通过上面简单的两步就可以成功启动一个监听在 7000 端口的 FRP 服务端。
+
+![frp-1](https://i.loli.net/2019/12/11/GHubF6IJEvPBRk4.png)
