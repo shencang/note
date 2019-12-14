@@ -17,7 +17,7 @@
 >
     >已经完成MD规范化。
 >
->近期稳定性改进中
+>近期稳定性改进中，涵盖部分插件和主题更新
 >
 > [博客Android客户端](https://github.com/shencang/Blog_RecentNative) - 已上线下载服务
 >
