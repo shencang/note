@@ -8,7 +8,7 @@
 
 * 项目地址：[GitHub](https://github.com/fatedier/frp)
 
-## FRP 的作用
+### FRP 的作用
 
 * 利用处于内网或防火墙后的机器，对外网环境提供 HTTP 或 HTTPS 服务。
 
@@ -16,7 +16,7 @@
 
 * 利用处于内网或防火墙后的机器，对外网环境提供 TCP 和 UDP 服务，例如在家里通过 SSH 访问处于公司内网环境内的主机。
 
-## FRP的安装
+### FRP的安装
 
 * 下载：
 
@@ -33,11 +33,9 @@
  mv frp_0.30.0_linux_amd64 frp
 ```
 
-[未完](https://www.jianshu.com/p/00c79df1aaf0)
-
 * 看到该教程是可能不是不是最新版本或者是其他平台的设备，请访问[项目释放](https://github.com/fatedier/frp/releases)
 
-## FRP 服务端配置
+### FRP 服务端配置
 
 配置 FRP 服务端的前提条件是需要一台具有**公网 IP **的设备，得益于 FRP 是 Go 语言开发的，具有良好的跨平台特性。你可以在 Windows、Linux、MacOS、ARM等几乎任何可联网设备上部署。
 
@@ -46,7 +44,7 @@
 
 ```cmd
 
-cat frps.ini
+-> cat frps.ini
 
 [common]
 bind_port = 7000
@@ -54,11 +52,138 @@ bind_port = 7000
 
 启动 FRP 服务端
 $ ./frps -c ./frps.ini
-2018/01/25 10:52:45 [I] [service.go:96] frps tcp listen on 0.0.0.0:7000
-2018/01/25 10:52:45 [I] [main.go:112] Start frps success
-2018/01/25 10:52:45 [I] [main.go:114] PrivilegeMode is enabled, you should pay more attention to security issues
+2019/12/15 10:52:45 [I] [service.go:96] frps tcp listen on 0.0.0.0:7000
+2019/12/15 10:52:45 [I] [main.go:112] Start frps success
+2019/12/15 10:52:45 [I] [main.go:114] PrivilegeMode is enabled, you should pay more attention to security issues
 ```
 
 通过上面简单的两步就可以成功启动一个监听在 7000 端口的 FRP 服务端。
 
 ![frp-1](https://i.loli.net/2019/12/11/GHubF6IJEvPBRk4.png)
+
+### FRP 客户端配置
+
+和 FRP 服务端类似，FRP 默认也给出两个客户端配置文件，一个是简版的 frpc.ini，另一个是完整版本 frpc_full.ini。
+这里同样以简版的 frpc.ini 文件为例，假设 FRP 服务端所在服务器的公网 IP 为 4.3.2.1。
+
+```cmd
+
+-> vim frpc.ini
+
+[common]
+# server_addr 为 FRP 服务端的公网 IP
+server_addr = 4.3.2.1
+# server_port 为 FRP 服务端监听的端口
+server_port = 7000
+启动 FRP 客户端
+$ ./frpc -c ./frpc.ini
+2019/12/15 11:15:49 [I] [proxy_manager.go:284] proxy removed: []
+2019/12/15 11:15:49 [I] [proxy_manager.go:294] proxy added: []
+2019/12/15 11:15:49 [I] [proxy_manager.go:317] visitor removed: []
+2019/12/15 11:15:49 [I] [proxy_manager.go:326] visitor added: []
+2019/12/15 11:15:49 [I] [control.go:240] [83775d7388b8e7d9] login to server success, get run id [83775d7388b8e7d9], server udp port [0]
+```
+
+这样就可以成功在 FRP 服务端上成功建立一个客户端连接，当然现在还并不能对外提供任何内网机器上的服务，因为我们并还没有在 FRP 服务端注册任何内网服务的端口。
+
+## FRP 使用实例
+
+下面我们就来看几个常用的例子，通过这些例子来了解下 FRP 是如何实现内网服务穿透的。
+
+### 通过 TCP 访问内网机器
+
+```cmd
+-> cat frpc.ini
+
+[ssh]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 22
+remote_port = 6000
+启动 FRP 客户端
+$ ./frpc -c ./frpc.ini
+2019/12/15 12:21:23 [I] [proxy_manager.go:284] proxy removed: []
+2019/12/15 12:21:23 [I] [proxy_manager.go:294] proxy added: [ssh]
+2019/12/15 12:21:23 [I] [proxy_manager.go:317] visitor removed: []
+2019/12/15 12:21:23 [I] [proxy_manager.go:326] visitor added: []
+2019/12/15 12:21:23 [I] [control.go:240] [3b468a55191341cb] login to server success, get run id [3b468a55191341cb], server udp port [0]
+2019/12/15 12:21:23 [I] [control.go:165] [3b468a55191341cb] [ssh] start proxy success
+```
+
+这样就在 FRP 服务端上成功注册了一个端口为 6000 的服务，接下来我们就可以通过这个端口访问内网机器上 SSH 服务，假设用户名为 mike：
+`$ ssh -oPort=6000 mike@4.3.2.1`
+
+
+### 通过自定义域名访问部署于内网的 Web 服务
+
+有时需要在公有网络通过域名访问我们在本地环境搭建的 Web 服务，但是由于本地环境机器并没有公网 IP，无法将域名直接解析到本地的机器。
+现在通过 FRP 就可以很容易实现这一功能，这里以 HTTP 服务为例：首先修改 FRP 服务端配置文件，通过 vhost_http_port 参数来设置 HTTP 访问端口，这里将 HTTP 访问端口设为 8080
+
+```cmd
+$ vim frps.ini
+[common]
+bind_port = 7000
+vhost_http_port = 8080
+启动 FRP 服务端
+$ ./frps -c ./frps.ini
+2019/12/15 13:33:26 [I] [service.go:96] frps tcp listen on 0.0.0.0:7000
+2019/12/15 13:33:26 [I] [service.go:125] http service listen on 0.0.0.0:8080
+2019/12/15 13:33:26 [I] [main.go:112] Start frps success
+2019/12/15 13:33:26 [I] [main.go:114] PrivilegeMode is enabled, you should pay more attention to security issues
+其次我们在修改 FRP 客户端配置文件并增加如下内容：
+-> vim frpc.ini
+
+[web]
+type = http
+local_port = 80
+custom_domains = **.***.com
+这里通过 local_port 和 custom_domains 参数来设置本地机器上 Web 服务对应的端口和自定义的域名，这里我们分别设置端口为 80，对应域名为 **.***.com。
+启动 FRP 客户端
+$ ./frpc -c ./frpc.ini
+2019/12/15 13:56:11 [I] [proxy_manager.go:284] proxy removed: []
+2019/12/15 13:56:11 [I] [proxy_manager.go:294] proxy added: [web ssh]
+2019/12/15 13:56:11 [I] [proxy_manager.go:317] visitor removed: []
+2019/12/15 13:56:11 [I] [proxy_manager.go:326] visitor added: []
+2019/12/15 13:56:11 [I] [control.go:240] [296fe9e31a551e07] login to server success, get run id [296fe9e31a551e07], server udp port [0]
+2019/12/15 13:56:11 [I] [control.go:165] [296fe9e31a551e07] [web] start proxy success
+2019/12/15 13:56:11 [I] [control.go:165] [296fe9e31a551e07] [ssh] start proxy success
+```
+
+最后将 ..com 的域名 A 记录解析到 FRP 服务器的公网 IP 上，现在便可以通过 `http://.*.com:8080` 这个 URL 访问到处于内网机器上对应的 Web 服务。
+
+```t
+HTTPS 服务配置方法类似，只需将 vhost_http_port 替换为 vhost_https_port， type 设置为 https 即可。
+```
+
+### 通过密码保护你的 Web 服务
+
+由于所有客户端共用一个 FRP 服务端的 HTTP 服务端口，任何知道你的域名和 URL 的人都能访问到你部署在内网的 Web 服务，但是在某些场景下需要确保只有限定的用户才能访问。
+FRP 支持通过 HTTP Basic Auth 来保护你的 Web 服务，使用户需要通过用户名和密码才能访问到你的服务。需要实现此功能主要需要在 FRP 客户端的配置文件中添加用户名和密码的设置。
+
+```cmd
+
+-> vim frpc.ini
+
+[web]
+type = http
+local_port = 80
+custom_domains = **.***.com
+
+
+## 设置认证的用户名
+
+
+http_user = abc
+
+
+## 设置认证的密码
+
+
+http_pwd = abc
+
+```
+
+这时访问 `http://.*.com:8080` 这个 URL 时就需要输入配置的用户名和密码才能访问。
+该功能目前仅限于 HTTP 类型的代理。
+
+[未完](https://www.jianshu.com/p/00c79df1aaf0)
