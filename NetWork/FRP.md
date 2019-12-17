@@ -113,7 +113,6 @@ $ ./frpc -c ./frpc.ini
 这样就在 FRP 服务端上成功注册了一个端口为 6000 的服务，接下来我们就可以通过这个端口访问内网机器上 SSH 服务，假设用户名为 mike：
 `$ ssh -oPort=6000 mike@4.3.2.1`
 
-
 ### 通过自定义域名访问部署于内网的 Web 服务
 
 有时需要在公有网络通过域名访问我们在本地环境搭建的 Web 服务，但是由于本地环境机器并没有公网 IP，无法将域名直接解析到本地的机器。
@@ -185,5 +184,47 @@ http_pwd = abc
 
 这时访问 `http://.*.com:8080` 这个 URL 时就需要输入配置的用户名和密码才能访问。
 该功能目前仅限于 HTTP 类型的代理。
+
+### 给 Web 服务增加自定义二级域名
+
+在多人同时使用一个 FRP 服务端实现 Web 服务时，通过自定义二级域名的方式来使用会更加方便。
+通过在 FRP 服务端的配置文件中配置 subdomain_host参数就可以启用该特性。之后在 FRP 客户端的 http、https 类型的代理中可以不配置 custom_domains，而是配置一个 subdomain 参数。
+然后只需要将 *.{subdomain_host} 解析到 FRP 服务端所在服务器。之后用户可以通过 subdomain 自行指定自己的 Web 服务所需要使用的二级域名，并通过 {subdomain}.{subdomain_host} 来访问自己的 Web 服务。
+首先我们在 FRP 服务端配置 subdomain_host 参数：
+
+```cmd
+$ vim frps.ini
+[common]
+subdomain_host = ***.com
+其次在 FRP 客户端配置文件配置 subdomain 参数：
+$ vim frpc.ini
+[web]
+type = http
+local_port = 80
+subdomain = test
+```
+
+然后将泛域名 .com 解析到 FRP 服务端所在服务器的公网 IP 地址。FRP 服务端 和 FRP 客户端都启动成功后，通过 test.**.com 就可以访问到内网的 Web 服务。
+
+同一个 HTTP 或 HTTPS 类型的代理中 custom_domains 和 subdomain 可以同时配置。
+
+需要注意的是如果 FPR 服务端配置了 subdomain_host，则 custom_domains 中不能是属于 subdomain_host 的子域名或者泛域名。
+
+### 修改 Host Header
+
+通常情况下 FRP 不会修改转发的任何数据。但有一些后端服务会根据 HTTP 请求 header 中的 host 字段来展现不同的网站，例如 Nginx 的虚拟主机服务，启用 host-header 的修改功能可以动态修改 HTTP 请求中的 host 字段。
+实现此功能只需要在 FRP 客户端配置文件中定义 host_header_rewrite 参数。
+
+```cmd
+$ vim frpc.ini
+[web]
+type = http
+local_port = 80
+custom_domains = test.***.com
+host_header_rewrite = dev.***.com
+原来 HTTP 请求中的 host 字段 test.***.com 转发到后端服务时会被替换为 dev.***.com。
+```
+
+该功能仅限于 HTTP 类型的代理。
 
 [未完](https://www.jianshu.com/p/00c79df1aaf0)
