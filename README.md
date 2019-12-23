@@ -13,10 +13,6 @@
 >
 >正在尝试https改造中，可能会有暂时无法访问的问题。
 >
->更换图床-sm.ms
->
->已经完成MD规范化。
->
 >近期稳定性改进中，涵盖部分插件和主题更新
 >
 > [博客Android客户端](https://github.com/shencang/Blog_RecentNative) - 已上线下载服务
