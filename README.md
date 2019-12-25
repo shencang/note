@@ -1,9 +1,11 @@
 # 我的笔记
 
+```text
     我的学习笔记归类整理。包含计算机技术的多个方面，不断补充更新中。
     我会慢慢完善各类的内容，并修复和解决各类漏洞和问题
     我会尽力补充，如果有想法或者推荐，欢迎留言。
     当然更欢迎前往我的博客留言，（*∩——∩*）谢谢。
+```
 
 ## 网站&博客
 
@@ -24,7 +26,7 @@
 
 ### 面试与笔试：(近期重点)
 >
->* [面试与笔试集合](https://github.com/shencang/note/tree/master/Interview&26WrittenExamination)
+>* [面试与笔试](https://github.com/shencang/note/tree/master/Interview&26WrittenExamination)
 >
 >
 ### 编程
