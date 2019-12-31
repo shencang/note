@@ -9,7 +9,7 @@
 
 ## 网站&博客
 
-* 我的[博客](http://blog.shencangblue.com):同步日期：2019年12月30日
+* 我的[博客](http://blog.shencangblue.com):同步日期：2020年1月1日
 >
 >目录框架全部同步-间歇日期同步。
 >
