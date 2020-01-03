@@ -11,7 +11,7 @@
 
 * 我的[博客](http://blog.shencangblue.com):同步日期：2020年1月2日
 >
->目录框架全部同步-间歇日期同步。
+>目录框架全部同步-不定日期同步。
 >
 >正在尝试https改造中，可能会有暂时无法访问的问题。
 >
@@ -24,7 +24,7 @@
 
 ## Github笔记目录
 
-### 面试与笔试：(近期重点)
+### 面试与笔试
 >
 >* [面试与笔试](https://github.com/shencang/note/tree/master/Interview&26WrittenExamination)
 >
