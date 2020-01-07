@@ -44,7 +44,13 @@
 >* [Java](https://github.com/shencang/note/tree/master/Java)->java
 >
 >* [NetWork](https://github.com/shencang/note/tree/master/NetWork)->网络
->
+>>
+>>[server](https://github.com/shencang/note/tree/master/NetWork/Server)
+>>
+>>[WSN](https://github.com/shencang/note/tree/master/NetWork/Server)
+>>
+>>[FRP](https://github.com/shencang/note/blob/master/NetWork/FRP.md)
+
 ### 硬件
 
 >* [Hardware](https://github.com/shencang/note/tree/master/Hardware)->硬件
