@@ -45,15 +45,17 @@
 >
 >* [NetWork](https://github.com/shencang/note/tree/master/NetWork)->网络
 >>
->>[server](https://github.com/shencang/note/tree/master/NetWork/Server)
+>>[server](https://github.com/shencang/note/tree/master/NetWork/Server)->服务器
 >>
->>[WSN](https://github.com/shencang/note/tree/master/NetWork/Server)
+>>[WSN](https://github.com/shencang/note/tree/master/NetWork/Server)->无线传感网
 >>
->>[FRP](https://github.com/shencang/note/blob/master/NetWork/FRP.md)
+>>[FRP](https://github.com/shencang/note/blob/master/NetWork/FRP.md)->内网穿透/网络代理
 
 ### 硬件
 
 >* [Hardware](https://github.com/shencang/note/tree/master/Hardware)->硬件
+>
+>> [Singlechip](https://github.com/shencang/note/tree/master/Singlechip)->单片机
 >
 ### 算法
 
@@ -61,6 +63,10 @@
 >
 >* [Graph theory](https://github.com/shencang/note/tree/master/Algorithm/Graph_theory)->图论
 >
+>* [LeetCode](https://github.com/shencang/note/tree/master/Algorithm/LeetCode)->LeetCode
+>
+>* [mioj](https://github.com/shencang/note/tree/master/Algorithm/MiOJ)->小米oj
+
 ### 其他
 
 >* [Other](https://github.com/shencang/note/tree/master/Other)->其他
