@@ -1,0 +1,59 @@
+[{
+		"topicName": "物联网智能教室资源调度管理系统的研究设计与实现",
+		"passStuNumber": 0,
+		"stuNumber": 0,
+		"thesisPlan": {
+			"planName": "2020届物联网毕业设计",
+			"teacherTopicEndTime": "2019-12-24",
+			"teacherTopicStartTime": "2019-11-25",
+			"selectedTopicStartTime": "2019-12-19 10:00",
+			"selectedTopicEndTime": "2019-12-19 16:00",
+			"isCurrentPlan": "true",
+			"id": "ec74462c-5bc5-4766-85a0-bc2ea661a24f"
+		},
+		"professional": {
+			"createUserName": "中北大学软件学院-管理员",
+			"schoolId": "7f9a5eb4-ba84-4ae2-b566-b217fb0cfa4d",
+			"describe": "物联网工程",
+			"developTarget": "",
+			"ptype": "理工类",
+			"createUserId": "42dfde04-8044-40b3-a0b2-0ae0834d9817",
+			"createtime": "2019-10-14",
+			"name": "物联网工程",
+			"id": "03a8f684-0a75-4e36-98d8-a4f815361442"
+		},
+		"baseUserInfo": {
+			"technicalId": "讲师",
+			"schoolId": "7f9a5eb4-ba84-4ae2-b566-b217fb0cfa4d",
+			"topicCount": 0,
+			"fieldHandler": {},
+			"theme": "教工",
+			"createUserName": "中北大学大数据学院-管理员",
+			"userType": "教工",
+			"deleteMark": "正常",
+			"userCode": "20030840",
+			"userSex": "女",
+			"userAccount": "20030840",
+			"userPwd": "25d55ad283aa400af464c76d713c07ad",
+			"spellName": "zhenchengfang|zcf",
+			"createDate": "2019-10-14",
+			"createUserId": "42dfde04-8044-40b3-a0b2-0ae0834d9817",
+			"modifyUserName": "中北大学大数据学院-管理员",
+			"userName": "甄成方",
+			"id": "a1c1f39c-513e-4290-aed3-1c4e04f3f469"
+		},
+		"guideTeacher": {
+			"_toString": "甄成方"
+		},
+		"maxStuNumber": 1,
+		"requirement": "\"1、 完成需求分析以及数据库设计；\n2、 完成软件界面以及功能设计；\n3、 完成软件测试与完善；\n4、 完成毕业设计论文。\"\n",
+		"synopsis": "实现智能教室管理平台，完成教室设备管理、语音控制、远程调度、信息分享等功能。\n",
+		"topicType": "毕业设计",
+		"topicProperty": "应用基础及其应用研究",
+		"topicSource": "科研项目/工程背景",
+		"isRenewal": "新题目",
+		"topicTime": "2019-12-12",
+		"topicPeopleType": "教师",
+		"id": "00219346-b732-4895-9b7d-3282936f4592",
+		"stage": "已终审"
+	}]
