@@ -45,7 +45,7 @@
 >>
 >>[server](https://github.com/shencang/note/tree/master/NetWork/Server)->服务器
 >>
->>[WSN](https://github.com/shencang/note/tree/master/NetWork/Server)->无线传感网
+>>[WSN](https://github.com/shencang/note/tree/master/NetWork/WSN)->无线传感网
 >>
 >>[FRP](https://github.com/shencang/note/blob/master/NetWork/FRP.md)->内网穿透/网络代理
 
@@ -53,7 +53,7 @@
 
 >* [Hardware](https://github.com/shencang/note/tree/master/Hardware)->硬件
 >
->> [Singlechip](https://github.com/shencang/note/tree/master/Singlechip)->单片机
+>> [Singlechip](https://github.com/shencang/note/tree/master/Hardware/Singlechip)->单片机
 >
 ### 算法
 
@@ -69,7 +69,14 @@
 
 >* [Other](https://github.com/shencang/note/tree/master/Other)->其他
 >
+>>[Markdown](https://github.com/shencang/note/tree/master/Other/Markdown)->Markdown
+>>
+>>[Wiki](https://github.com/shencang/note/tree/master/Other/Wiki)->Wiki
+>>
 >* [Resources](https://github.com/shencang/note/tree/master/Resources)->资源
+>>
+>>[apk](https://github.com/shencang/note/tree/master/Resources/apk)->apk
+>>
 
 ### 博客首页图
 
