@@ -32,7 +32,15 @@
 ### 编程
 
 >* [Python](https://github.com/shencang/note/tree/master/Python)->python
->
+>>
+>>[课程作业](https://github.com/shencang/note/tree/master/课程作业)->课程作业
+>>
+>>[小型项目](https://github.com/shencang/note/tree/master/小型项目)->小型项目
+>>
+>>[学习记录](https://github.com/shencang/note/tree/master/学习记录)->学习记录
+>>
+>>[linux](https://github.com/shencang/note/tree/master/linux)->linux
+>>
 >* [Android](https://github.com/shencang/note/tree/master/Android)->Android
 >
 >* [C和C++](https://github.com/shencang/note/tree/master/CorC%2B%2B)->c和c++
