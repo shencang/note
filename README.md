@@ -11,13 +11,13 @@
 
 * 我的[博客](http://blog.shencangblue.com):同步日期：2020年1月17日
 >
->目录框架全部同步-不定日期同步。
+>* 目录框架全部同步-不定日期同步。
 >
->正在尝试https改造中，可能会有暂时无法访问的问题。
+>* 正在尝试https改造中，可能会有暂时无法访问的问题。
 >
->近期稳定性改进中，涵盖部分插件和主题更新
+>* 近期稳定性改进中，涵盖部分插件和主题更新
 >
-> [博客Android客户端](https://github.com/shencang/Blog_RecentNative) - 已上线下载服务
+>* [博客Android客户端](https://github.com/shencang/Blog_RecentNative) - 已上线下载服务
 >
 
 * 我的[私有网盘](http://data.shencangblue.com)：申请账号请联系邮箱
