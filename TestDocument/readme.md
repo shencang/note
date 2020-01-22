@@ -4,5 +4,5 @@
 
 ```t
 
-void
+void main
 ```
