@@ -19,3 +19,5 @@
 [Spring Boot干货系列：（一）优雅的入门篇](http://tengj.top/2017/02/26/springboot1/)
 
 [教学](https://www.cnblogs.com/softidea/p/8192974.html)
+
+[知乎-教学](https://www.zhihu.com/question/50958416)
