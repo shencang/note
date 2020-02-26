@@ -1,0 +1,37 @@
+# Vue
+
+## Vue 入门
+
+[参考](https://blog.csdn.net/Neuf_Soleil/article/details/88925013)
+
+## Vue 问题 CLI-idea
+
+[官方](https://cli.vuejs.org/zh/guide/installation.html)
+
+![image.png](https://i.loli.net/2020/02/25/NvikegKqHwzj74f.png)
+
+## npm一直停在"checking installable status"或者下载卡住的问题
+
+* 原因：旧的npm缓存与项目冲突和资源下载不畅
+
+解决方法：
+
+步骤一
+
+```cmd
+(sudo) npm cache clean
+```
+
+步骤二
+
+```cmd
+npm config set registry https://registry.npm.taobao.org
+```
+
+[存疑方案](https://www.cnblogs.com/sansancn/p/11139030.html)
+
+[存疑方案2](https://blog.csdn.net/Ellen5203/article/details/104339425)
+
+## vue项目中开启Eslint碰到的一些问题及其规范
+
+[范例](https://www.cnblogs.com/plb2307/p/10586585.html)
