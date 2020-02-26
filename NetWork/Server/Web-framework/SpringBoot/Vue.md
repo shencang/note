@@ -35,3 +35,11 @@ npm config set registry https://registry.npm.taobao.org
 ## vue项目中开启Eslint碰到的一些问题及其规范
 
 [范例](https://www.cnblogs.com/plb2307/p/10586585.html)
+
+## vue-cli3 没有config.js文件的解决办法
+
+[链接](https://www.jianshu.com/p/a47662af75c5)
+
+## vue-cli 3.x 配置Axios(proxyTable)跨域代理
+
+[链接](https://www.cnblogs.com/focusoldman/p/10281293.html)
