@@ -64,3 +64,29 @@ else{
    //另一种情况....
 }
 ```
+
+### Spring-Data-Jpa的Sort排序时遇到的问题 has private access in 'org.springframework.data.domain.Sort'
+
+springboot2.2.1（含）以上的版本Sort已经不能再实例化了，构造方法已经私有
+
+![image.png](https://i.loli.net/2020/03/06/o36CiPeL517fWlQ.png)
+
+![image.png](https://i.loli.net/2020/03/06/sm1e2lghd35IOn8.png)
+
+改用Sort.by获得Sort对象
+
+![image.png](https://i.loli.net/2020/03/06/vPjKirqOkAd1zCp.png)
+
+```java
+@GetMapping("/test2")
+    public String find3() {
+        List<Book> book = bookDao.findAll(Sort.by(Sort.Direction.DESC, "bookId"));
+        for (Book book1 : book) {
+            System.out.println(book1);
+        }
+        return "success";
+    }
+
+```
+
+Sort.by()可以一个或多个字段排序
