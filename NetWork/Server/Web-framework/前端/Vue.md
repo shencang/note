@@ -4,9 +4,11 @@
 
 [参考](https://blog.csdn.net/Neuf_Soleil/article/details/88925013)
 
+[官方入门](https://cn.vuejs.org/)
+
 ## Vue 问题 CLI-idea
 
-[官方](https://cli.vuejs.org/zh/guide/installation.html)
+[官方-脚手架](https://cli.vuejs.org/zh/guide/installation.html)
 
 ![image.png](https://i.loli.net/2020/02/25/NvikegKqHwzj74f.png)
 
