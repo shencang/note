@@ -9,3 +9,5 @@ Shiro 就足够了。
 ```
 
 [教程](https://blog.csdn.net/pengjwhx/article/details/84867112)
+
+[教程2](https://www.w3cschool.cn/shiro/skex1if6.html)
