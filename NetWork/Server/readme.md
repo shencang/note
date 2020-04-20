@@ -4,11 +4,11 @@
 
 系统：
 
-* [CentOS](https://github.com/shencang/note/tree/master/Server/CentOS)
+* [CentOS](https://github.com/shencang/note/tree/master/Server/CentOS/)
 >
 框架：
 
->* [Web-framework](https://github.com/shencang/note/tree/master/Server/Web-framework)
+>* [Web-framework](https://github.com/shencang/note/tree/master/Server/Web-framework/)
 >>
 >>后端
 >>>
@@ -16,7 +16,7 @@
 >>>
 >>>* [SSM](https://github.com/shencang/note/tree/master/Server/SSM%20and%20third%20party%20framework/SSM)
 >>>
->>>* [SpringBoot](https://github.com/shencang/note/tree/master/Server/Web-framework/后端/Django)
+>>>* [SpringBoot](https://github.com/shencang/note/tree/master/Server/Web-framework/后端/SpringBoot/)
 >>>
 >>前端
 >>
