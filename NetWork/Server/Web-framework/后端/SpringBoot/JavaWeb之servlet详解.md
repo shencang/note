@@ -261,9 +261,9 @@ web.xml 配置 整个web项目的初始化
 ```t
 5、还有很多别的方法，暂时用到的就这几个了，以后需要在用的，就查看源码，看API。
 
-　　　　　　request对象
+request对象
 
-　　　　　　　我们知道，request就是将请求文本封装而成的对象，所以通过request能获得请求文本中的所有内容，请求头、请求体、请求行。
+我们知道，request就是将请求文本封装而成的对象，所以通过request能获得请求文本中的所有内容，请求头、请求体、请求行。
 ```
 
 ```t
@@ -272,7 +272,7 @@ web.xml 配置 整个web项目的初始化
 ```
 
 ```t
-　　　　　2请求头的获取
+2请求头的获取
 
 随便百度一个东西，然后查看的请求头，包括以下这些内容，稍作了解。
 
@@ -290,68 +290,68 @@ Enumeration getHeaders(java.lang.String name) 获得指定名称所有内容
 
 3请求体的获取 -- 请求参数的获取
 
-　　　　　　　　　　　　　　　分两种，一种get请求，一种post请求
+分两种，一种get请求，一种post请求
 
-　　　　　　　　　　　　　　　get请求参数：http://localhost:8080/test01/MyServlet?username=jack&password=1234
+get请求参数：http://localhost:8080/test01/MyServlet?username=jack&password=1234
 
-　　　　　　　　　　　　　　　post请求参数: <form method="post"><input type="text" name="username">
+post请求参数: <form method="post"><input type="text" name="username">
 
-　　　　　　　　　　　　　　　　String request.getParameter(String) 获得指定名称，一个请求参数值。
+String request.getParameter(String) 获得指定名称，一个请求参数值。
 
-　　　　　　　　　　　　　　　　String[] request.getParameterValues(String) 获得指定名称，所有请求参数值。例如：checkbox、select等
+String[] request.getParameterValues(String) 获得指定名称，所有请求参数值。例如：checkbox、select等
 
-　　　　　　　　　　　　　　　　Map<String , String[]> request.getParameterMap() 获得所有的请求参数　　
+Map<String , String[]> request.getParameterMap() 获得所有的请求参数　　
 
 4请求转发
 
-　　　　　　　　　　　　　　　　request.getRequestDispatcher(String path).forward(request,response);　　//path:转发后跳转的页面，这里不管用不用"/"开头，都是以web项目根开始，因为这是请求转发，请求转发只局限与在同一个web项目下使用，所以这里一直都是从web项目根下开始的，
+request.getRequestDispatcher(String path).forward(request,response);　　//path:转发后跳转的页面，这里不管用不用"/"开头，都是以web项目根开始，因为这是请求转发，请求转发只局限与在同一个web项目下使用，所以这里一直都是从web项目根下开始的，
 
-　　　　　　　　　　　　　　　　web项目根：
+web项目根：
 
-　　　　　　　　　　　　　　　　　　　　开发：G:\Workspaces\test01\WebRoot\..
+开发：G:\Workspaces\test01\WebRoot\..
 
-　　　　　　　　　　　　　　　　　　　　运行时：D:\java\tomcat\apache-tomcat-7.0.53\webapps\test01\..
+运行时：D:\java\tomcat\apache-tomcat-7.0.53\webapps\test01\..
 
-　　　　　　　　　　　　　　　　 web站点根：
+web站点根：
 
-　　　　　　　　　　　　　　　　　　　　运行时：D:\java\tomcat\apache-tomcat-7.0.53\webapps\..
+运行时：D:\java\tomcat\apache-tomcat-7.0.53\webapps\..
 
-　　　　　　　　　　　　　　　　从这里可以看出，web项目根就是从该web项目名开始，所以我们请求转发时，只需要接着项目名后面需要访问的路径写就行了，
+从这里可以看出，web项目根就是从该web项目名开始，所以我们请求转发时，只需要接着项目名后面需要访问的路径写就行了，
 
-　　　　　　　　　　　　　　　　特点：浏览器中url不会改变，也就是浏览器不知道服务器做了什么，是服务器帮我们跳转页面的，并且在转发后的页面，能够继续使用原先的request，因为是原先的request，所以request域中的属性都可以继续获取到。
-
-
-　　　　　　response对象
+特点：浏览器中url不会改变，也就是浏览器不知道服务器做了什么，是服务器帮我们跳转页面的，并且在转发后的页面，能够继续使用原先的request，因为是原先的request，所以request域中的属性都可以继续获取到。
 
 
-
-　　　　　　　　常用的一个方法：response.setHeader(java.lang.String name, java.lang.String value) 设置指定的头，一般常用。
-
-　　　　　　　　　　　　　例如：设置每隔3秒就自动刷新一次，
-
-　　　　　　　　　　　　　　response.setHeader("Refresh",3);
+response对象
 
 
 
-　　　　　　　　　　　　　　这样可以看到现在时间的秒数，会发现每隔三秒就会自动刷新一次页面。
+常用的一个方法：response.setHeader(java.lang.String name, java.lang.String value) 设置指定的头，一般常用。
 
-　　　　　　　　这个最重要的一个就是重定向，其他的一些操作都被封装到response对象中了，重点讲解重定向
+例如：设置每隔3秒就自动刷新一次，
 
-　　　　　　　　　　重定向(页面跳转)
+response.setHeader("Refresh",3);
 
-　　　　　　　　　　　　方式一：手动方案
 
-　　　　　　　　　　　　　　　　response.setStatus(302);　　//状态码302就代表重定向
 
-　　　　　　　　　　　　　　　　response.setHeader("location","http://www.baidu.com");
+这样可以看到现在时间的秒数，会发现每隔三秒就会自动刷新一次页面。
 
-　　　　　　　　　　　　方式二：使用封装好的，通过response.sendRedirect("http://www.baidu.com");
+这个最重要的一个就是重定向，其他的一些操作都被封装到response对象中了，重点讲解重定向
 
-　　　　　　　　　　特点：服务器告诉浏览器要跳转的页面，是浏览器主动去跳转的页面，浏览器知道，也浏览器的地址栏中url会变，是浏览器重新发起一个请求到另外一个页面，所以request是重新发起的，跟请求转发不一样。
+重定向(页面跳转)
 
-　　　　　　　　　　　　注意：response.sendRedirect(path);　　//
+方式一：手动方案
 
-　　　　　　　　　　　　第一种：response.sendRedirect("/test01/MyServlet01");　　//使用了"/"开头，说明是从web站点根开始，所以需要写test01/MyServlet01
+response.setStatus(302);　　//状态码302就代表重定向
+
+response.setHeader("location","http://www.baidu.com");
+
+方式二：使用封装好的，通过response.sendRedirect("http://www.baidu.com");
+
+特点：服务器告诉浏览器要跳转的页面，是浏览器主动去跳转的页面，浏览器知道，也浏览器的地址栏中url会变，是浏览器重新发起一个请求到另外一个页面，所以request是重新发起的，跟请求转发不一样。
+
+注意：response.sendRedirect(path);　　//
+
+第一种：response.sendRedirect("/test01/MyServlet01");　　//使用了"/"开头，说明是从web站点根开始，所以需要写test01/MyServlet01
 
 　　　　　　　　　　　　第二种：response.sendRedirect("MyServlet01");　　//没有使用"/"开头，说明是从web项目根开始，那么就无需写test01了。
 
@@ -364,15 +364,15 @@ Enumeration getHeaders(java.lang.String name) 获得指定名称所有内容
 ## 五、总结
 
 ```t
-　　　　　　这一章节篇幅较长，不过理清很多知识点
+这一章节篇幅较长，不过理清很多知识点
 
-　　　　　　　　　　1、什么是servlet？如果编写servlet？
+1、什么是servlet？如果编写servlet？
 
-　　　　　　　　　　2、分析了servlet的部分源码，知道了其中的一些设计巧妙的东西，比如，本来编写servlet是能看到其生命周期的，但是在其设计下，我们只关注doGet和doPost方法，为什么能这样呢？就可以通过源码中得知。
+2、分析了servlet的部分源码，知道了其中的一些设计巧妙的东西，比如，本来编写servlet是能看到其生命周期的，但是在其设计下，我们只关注doGet和doPost方法，为什么能这样呢？就可以通过源码中得知。
 
-　　　　　　　　　　3、servlet的生命周期，web.xml的配置
+3、servlet的生命周期，web.xml的配置
 
-　　　　　　　　　　4、servlet中的ServletConfig对象，ServletContext对象，request对象，response对象的详细讲解。包括其中的一些常用的方法。
+4、servlet中的ServletConfig对象，ServletContext对象，request对象，response对象的详细讲解。包括其中的一些常用的方法。
 
-　　　　　　　　　　5、下一篇讲解一下request、response的中文乱码问题的解决
+5、下一篇讲解一下request、response的中文乱码问题的解决
 ```
