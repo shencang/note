@@ -108,5 +108,5 @@
 ### 备注
 
 ```t
-version 2.3B
+version 2.4
 ```

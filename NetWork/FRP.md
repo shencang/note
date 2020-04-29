@@ -37,7 +37,7 @@
 
 ### FRP 服务端配置
 
-配置 FRP 服务端的前提条件是需要一台具有**公网 IP **的设备，得益于 FRP 是 Go 语言开发的，具有良好的跨平台特性。你可以在 Windows、Linux、MacOS、ARM等几乎任何可联网设备上部署。
+配置 FRP 服务端的前提条件是需要一台具有公网 IP 的设备，得益于 FRP 是 Go 语言开发的，具有良好的跨平台特性。你可以在 Windows、Linux、MacOS、ARM等几乎任何可联网设备上部署。
 
 这里以 Linux 为例，FRP 默认给出两个服务端配置文件，一个是简版的 frps.ini，另一个是完整版本 frps_full.ini。
 我们先来看看简版的 frps.ini，通过这个配置可以快速的搭建起一个 FRP 服务端。
