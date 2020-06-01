@@ -29,3 +29,25 @@
 ## RFID-RC522
 
 [树莓派3B连接RC522模块进行RFID读写全指南](https://blog.csdn.net/weixin_42317232/article/details/103080987)
+
+## 传感器开发列表
+
+### HC-SR04(超声波测距模块工作)
+
+### mh-sensor-series(霍尔传感器)
+
+### MH-MQ sensor(其他传感器)
+
+### MH-RD(雨滴传感器)
+
+### YL-40（8-bit CMOS数据获取器件）
+
+### HW-416（人体红外传感器）
+
+### 土壤湿度检测
+
+### MH-FMD （无源&有源蜂鸣器模块）
+
+### Tracker Sensor（红外寻迹传感器）
+
+### 高电平触发器（高电平触发器）
