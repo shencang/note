@@ -11,6 +11,7 @@
 
 * 我的[博客](http://blog.shencangblue.com):
 同步日期：`2020年6月10日`（重置中）
+![image.png](https://i.loli.net/2020/06/14/HpeETrcGj3qwBYz.png)
 >
 >* 目录框架全部同步-不定日期同步。
 >
@@ -26,25 +27,25 @@
 ## Github笔记目录(正在重构)
 
 >
->* [面试&笔试](-)
+>* [面试&笔试](https://github.com/shencang/note/tree/master/%E9%9D%A2%E8%AF%95%26%E7%AC%94%E8%AF%95(Interview%20%26%20written%20test))
 >
->* [前端技术](-)
+>* [前端技术](https://github.com/shencang/note/tree/master/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF(Front-end%20technology))
 >
->* [后端技术](-)
+>* [后端技术](https://github.com/shencang/note/tree/master/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF(Backend%20technology))
 >
->* [算法学习](-)
+>* [算法学习](https://github.com/shencang/note/tree/master/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0(Algorithm%20learning))
 >
->* [移动开发](-)
+>* [移动开发](https://github.com/shencang/note/tree/master/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91(Mobile%20development))
 >
->* [硬件技术](-)
+>* [硬件技术](https://github.com/shencang/note/tree/master/%E7%A1%AC%E4%BB%B6%E6%8A%80%E6%9C%AF(Hardware%20technology))
 >
->* [语言知识](-)
+>* [语言知识](https://github.com/shencang/note/tree/master/%E8%AF%AD%E8%A8%80%E7%9F%A5%E8%AF%86(Language%20knowledge))
 >
->* [数据资源](-)
+>* [数据资源](https://github.com/shencang/note/tree/master/%E6%95%B0%E6%8D%AE%E8%B5%84%E6%BA%90(Data%20resource))
 >
->* [其他内容](-)
+>* [其他内容](https://github.com/shencang/note/tree/master/%E5%85%B6%E4%BB%96%E5%86%85%E5%AE%B9(Other%20content))
 >
->* [测试目录](-)
+>* [测试目录](https://github.com/shencang/note/tree/master/%E6%B5%8B%E8%AF%95%E7%9B%AE%E5%BD%95(TestDocument))
 >
 
 ### 备注
