@@ -25,85 +25,27 @@
 
 ## Github笔记目录(正在重构)
 
-### 面试与笔试
 >
->* [面试与笔试](https://github.com/shencang/note/tree/master/Interview&26WrittenExamination)
+>* [面试&笔试](-)
 >
+>* [前端技术](-)
 >
-### 编程
-
->* [Python](https://github.com/shencang/note/tree/master/Python)->python
->>
->>[课程作业](https://github.com/shencang/note/tree/master/课程作业)->课程作业
->>
->>[小型项目](https://github.com/shencang/note/tree/master/小型项目)->小型项目
->>
->>[学习记录](https://github.com/shencang/note/tree/master/学习记录)->学习记录
->>
->>[linux](https://github.com/shencang/note/tree/master/linux)->linux
->>
->* [Android](https://github.com/shencang/note/tree/master/Android)->Android
+>* [后端技术](-)
 >
->* [C和C++](https://github.com/shencang/note/tree/master/CorC%2B%2B)->c和c++
+>* [算法学习](-)
 >
->* [DateBase](https://github.com/shencang/note/tree/master/DateBase)->数据库
+>* [移动开发](-)
 >
->* [Java](https://github.com/shencang/note/tree/master/Java)->java
+>* [硬件技术](-)
 >
->* [NetWork](https://github.com/shencang/note/tree/master/NetWork)->网络
->>
->>[server](https://github.com/shencang/note/tree/master/NetWork/Server)->服务器
->>
->>>[CentOS](https://github.com/shencang/note/tree/master/NetWork/Server/CentOS)->CentOS
->>>
->>>[HTML&JS](https://github.com/shencang/note/tree/master/NetWork/Server/HTML&JS)->HTML&JS
->>>
->>>[Web-framework](https://github.com/shencang/note/tree/master/NetWork/Server/Web-framework)->Web-framework
->>>>
->>>>[Django](https://github.com/shencang/note/tree/master/NetWork/Server/Web-framework/Django)
->>>>
->>>>
->>>>[Springboot](https://github.com/shencang/note/tree/master/NetWork/Server/Web-framework/Springboot)
->>>>
->>>>
->>>>[SSM](https://github.com/shencang/note/tree/master/NetWork/Server/Web-framework/SSM)
->>>>
->>[WSN](https://github.com/shencang/note/tree/master/NetWork/WSN)->无线传感网
->>
->>[FRP](https://github.com/shencang/note/blob/master/NetWork/FRP.md)->内网穿透/网络代理
-
-### 硬件
-
->* [Hardware](https://github.com/shencang/note/tree/master/Hardware)->硬件
+>* [语言知识](-)
 >
->> [Singlechip](https://github.com/shencang/note/tree/master/Hardware/Singlechip)->单片机
+>* [数据资源](-)
 >
-### 算法
-
->* [DeepLearning](https://github.com/shencang/note/tree/master/Algorithm/DeepLearning)->深度学习
+>* [其他内容](-)
 >
->* [Graph theory](https://github.com/shencang/note/tree/master/Algorithm/Graph_theory)->图论
+>* [测试目录](-)
 >
->* [LeetCode](https://github.com/shencang/note/tree/master/Algorithm/LeetCode)->LeetCode
->
->* [mioj](https://github.com/shencang/note/tree/master/Algorithm/MiOJ)->小米oj
-
-### 其他
-
->* [Other](https://github.com/shencang/note/tree/master/Other)->其他
->
->>[Markdown](https://github.com/shencang/note/tree/master/Other/Markdown)->Markdown
->>
->>[Wiki](https://github.com/shencang/note/tree/master/Other/Wiki)->Wiki
->>
->* [Resources](https://github.com/shencang/note/tree/master/Resources)->资源
->>
->>[apk](https://github.com/shencang/note/tree/master/Resources/apk)->apk
->>
-
-### 博客首页图
-
-![welcome](https://i.loli.net/2019/11/09/cQ19X3B5WFro6eN.png)
 
 ### 备注
 
