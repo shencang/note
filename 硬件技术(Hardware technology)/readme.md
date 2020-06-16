@@ -1,5 +1,7 @@
-# 硬件
+# 硬件技术(Hardware technology)
 
 >* [单片机](https://github.com/shencang/note/tree/master/Hardware/Singlechip)
 >
->* [WSN](https://github.com/shencang/note/tree/master/Hardware/WSN)
+>* [树莓派](-)
+>
+>* [Hyper-v](-)

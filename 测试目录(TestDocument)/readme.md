@@ -1,4 +1,4 @@
-# 接入VScode等用于测试的文件
+# 测试目录(TestDocument)
 
 * 仅仅在github区域使用，不同步。
 

@@ -1,4 +1,4 @@
-# 资源
+# 数据资源(Data resource)
 
 ## ACG
 
