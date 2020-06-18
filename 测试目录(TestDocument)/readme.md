@@ -5,4 +5,5 @@
 ```t
 
 void main
+new computer
 ```
