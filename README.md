@@ -10,7 +10,7 @@
 ## 网站&博客
 
 * 我的[博客](http://blog.shencangblue.com):
-同步日期：`2020年6月20日`
+同步日期：`2020年6月21日`
 ![image.png](https://i.loli.net/2020/06/14/HpeETrcGj3qwBYz.png)
 >
 >* 目录框架全部同步-不定日期同步。
