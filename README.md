@@ -24,7 +24,7 @@
 >
 >* 我的[私有网盘](http://data.shencangblue.com)：申请账号请联系邮箱
 
-## 笔记目录(正在重构)
+## 笔记目录
 
 >
 >* [面试&笔试](https://github.com/shencang/note/tree/master/%E9%9D%A2%E8%AF%95%26%E7%AC%94%E8%AF%95(Interview%20%26%20written%20test))
@@ -51,5 +51,5 @@
 ### 备注
 
 ```t
-version 3.0
+version 3.1
 ```
