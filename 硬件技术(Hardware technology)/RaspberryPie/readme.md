@@ -4,6 +4,8 @@
 
 [开发网站](http://bettertree.cn/)
 
+[知乎-树莓派能干什么](https://www.zhihu.com/question/22741805/answer/757808557)
+
 ![针脚定义](https://i.loli.net/2020/07/10/8SkhpRot6AWiOdT.png)
 
 ## 传感器开发
