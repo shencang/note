@@ -8,6 +8,8 @@
 
 ![针脚定义](https://i.loli.net/2020/07/10/8SkhpRot6AWiOdT.png)
 
+![针脚定义2](https://i.loli.net/2020/08/04/XQI2FnjbpRDdqA9.png)
+
 ## 传感器开发
 
 [相关帖-1](https://blog.csdn.net/weixin_34148340/article/details/92435474)

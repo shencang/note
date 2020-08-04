@@ -1,5 +1,7 @@
 # 3.5寸LCD显示器
 
+[树莓派专用LCD Wiki网站](https://blog.csdn.net/JOYIST/article/details/90694835)
+
 ## 安装
 
 风扇自选安装，不赘述
