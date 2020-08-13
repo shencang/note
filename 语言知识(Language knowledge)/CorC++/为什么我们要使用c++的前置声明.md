@@ -1,6 +1,7 @@
 # 为什么我们要使用c++的前置声明
 
-转载声明：(http://blog.csdn.net/fjb2080/archive/2010/04/27/5533514.aspx) 。
+转载声明：(<http://blog.csdn.net/fjb2080/archive/2010/04/27/5533514.aspx>)
+
 感谢原作者的辛勤付出。
 
 一、正文
