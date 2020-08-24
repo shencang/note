@@ -10,3 +10,5 @@ SOAP 是基于 XML 的简易协议，可使应用程序在 HTTP 之上进行信�
 ```
 
 ## [教程](https://www.runoob.com/soap/soap-intro.html)
+
+* 前提知识 - [xml](https://www.runoob.com/xml/)
