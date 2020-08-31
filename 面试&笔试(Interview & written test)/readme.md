@@ -1,6 +1,6 @@
 # 面试和笔试题的集合
 
-``相关文件已经移动到对应的新目录``
+``相关文件已经移动到对应的新目录（部分错误，需要修改！）``
 
 >* [Android](https://github.com/shencang/note/tree/master/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91(Mobile%20development)/Android/Android.md)
 >
