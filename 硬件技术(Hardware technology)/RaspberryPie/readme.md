@@ -57,3 +57,5 @@
 ### Tracker Sensor（红外寻迹传感器）
 
 ### 高电平触发器（高电平触发器）
+
+[用树莓派做一个服务器是否可行？](https://www.zhihu.com/question/35801849)
