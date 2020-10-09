@@ -445,7 +445,160 @@ export default class InjectProvideChild extends Vue {
 
 ## 改造Vue Router
 
+使用Vue CLI创建的TypeScript项目，Vue Router与TypeScript配合基本不再需要进行额外的处理，除了对组件内的路由钩子方法需要提前进行注册。
+
+使用`vue-class-component`提供的`Component.registerHooks`方法来提前注册，要注意，注册需要在引入路由之前完成
+
+```ts
+// ./src/components/class-component-hooks.ts
+
+// 在此注册其他插件提供的钩子函数，用来在 Vue Class 组件中使用
+// 例如 Vue Router 提供的钩子函数
+// 必须在 router 之前引入
+import Component from 'vue-class-component';
+
+// Register the router hooks with their names
+Component.registerHooks(['beforeRouteEnter', 'beforeRouteLeave', 'beforeRouteUpdate
+```
+
+在`main.ts`中引入：
+
+```ts
+import '@/components/class-component-hooks';
+import router from './router';
+```
+
 ## 改造VueX
+
+Vuex与TypeScript配合会复杂一些，并且体验也不算太好，需要安全额外的包实现与TypeScript的配合使用，有三种方案来帮助我们使用TypeScript版本的Vuex
+
+### 使用vue-class-component
+
+第一种方案是使用`vue-class-component`配合以前常常使用`mapState`等帮助方法：
+
+```ts
+import { Component, Vue } from 'vue-property-decorator';
+import { mapState, mapMutations } from 'vuex'
+
+@Component(
+  {
+    // Vuex's component binding helper can use here
+    computed: mapState(['count']),
+    methods: mapMutations(['increment'])
+  }
+)
+export default class App extends Vue {
+  // additional declaration is needed
+  // when you declare some properties in `Component` decorator
+  count!: number
+  increment!: () => void
+}
+```
+
+这种方式的好处是可以通过`mapState`等方法将Store中定义的数据、方法一次性引入组件，确定就是这种『一次性』其实也还需要在组件内部再次定义，并且如果采用这种形式配合`vue-property-decorator`使用时，会将计算属性、方法等逻辑打乱。另外，通过这种方式调用Mutation和Action，也不是类型安全的（即没有办法校验我们传入的参数是否与Store中定义的`payload`类型相匹配
+
+### 使用vuex-class
+
+第二种方案是vuex-class，它与上一种方案相同，并没有对Vuex的Store中的代码进行改造，而是在组件消费Store中的数据、方法时，提供了一些遍历的API，简化使用方法
+
+```ts
+import { Component, Vue } from 'vue-property-decorator';
+import {
+  State,
+  Getter,
+  Action,
+  Mutation,
+  namespace
+} from 'vuex-class'
+
+const someModule = namespace('path/to/module')
+
+@Component
+export class MyComp extends Vue {
+  @State('foo') stateFoo
+  @State(state => state.bar) stateBar
+  @Getter('foo') getterFoo
+  @Action('foo') actionFoo
+  @Mutation('foo') mutationFoo
+  @someModule.Getter('foo') moduleGetterFoo
+
+  // If the argument is omitted, use the property name
+  // for each state/getter/action/mutation type
+  @State foo
+  @Getter bar
+  @Action baz
+  @Mutation qux
+
+  created () {
+    this.stateFoo // -> store.state.foo
+    this.stateBar // -> store.state.bar
+    this.getterFoo // -> store.getters.foo
+    this.actionFoo({ value: true }) // -> store.dispatch('foo', { value: true })
+    this.mutationFoo({ value: true }) // -> store.commit('foo', { value: true })
+    this.moduleGetterFoo // -> store.getters['path/to/module/foo']
+  }
+}
+```
+
+注意，给`namespace`传入的参数是Vuex中`module`的命名空间，并非模块的目录路径
+
+这种方法虽然不能使用`mapState`等辅助函数，但是好在使用`@State`等装饰符集中导入，也还算清晰明了。但是缺点仍然是没有办法完全进行类型安全的Mutation和Action调用
+
+### 使用vuex-module-decorators
+
+如果想要实现获得完全类型安全的Vuex，那么就需要使用`vuex-module-decorators`，它对Vuex的Store也进行了Class化的改造，引入了`VuexModule`和@Mutation等修饰符，让我们能够使用Class形式来编写Store
+
+使用的时候，按照下面的形式来改写Store：
+
+```ts
+import { Module, Mutation, Action, VuexModule } from 'vuex-module-decorators';
+import store from '@/store';
+import { setTimeoutThen } from '@/utils';
+
+@Module({ dynamic: true, namespaced: true, store, name: 'testStore' })
+export default class TestStore extends VuexModule {
+  // state
+  message: string = '';
+
+  get UpperMessage() {
+    return this.message;
+  }
+
+  @Mutation
+  UPDATE_MESSAGE_MUTATION(title: string): void {
+    this.message = title;
+  }
+
+  @Action
+  async UPDATE_MESSAGE_ACTION(): Promise<string> {
+    const result: string = await setTimeoutThen(1000, 'ok');
+    this.context.commit('UPDATE_MESSAGE_MUTATION', result);
+    return result;
+  }
+}
+```
+
+要注意，改写的Module在`@Module`中传入了几个属性，传入`namesapced`和name来使用Module成为命名空间下的模块，此外还需要传入`dynamic`，让这个模块成为动态注册的模块，同时还需要将完全空白的`store`传入给这个模块
+
+完成改造之后，在使用的时候就可以使用他提供的`getModule`方法获得类型安全了，使用方法：
+
+```ts
+import { getModule } from 'vuex-module-decorators';
+import TestStore from '@/store/modules/testStore';
+
+const testStore = getModule(TestStore);
+testStore.message;
+testStore.UPDATE_MESSAGE_MUTATION('Hello');
+testStore.UPDATE_MESSAGE_ACTION();
+```
+
+### 最终选择vuex-class
+
+我选择了使用第二种方案，相比于第一种方案能够将组件内的逻辑几种，并且通过相关的修饰符能够显示的提醒代码的含义。相比于第三种方案编写复杂度也有了一定降低
+
+对于类型安全我的做法是，当在组件内引入Mutation时再次编写对应的函数接口，在Vuex中编写的时候，通过引入Vuex提供的类型配合自定义类型，保证类型安全。
+
+具体的实践在我们『相关实践』部分会有更具体写的介绍。
 
 ## 相关实践
 
