@@ -602,6 +602,373 @@ testStore.UPDATE_MESSAGE_ACTION();
 
 ## 相关实践
 
+### TypeScript类型校验
+
+Vue-CLI使用的TypeScript插件是`@vue/cli-plugin-typescript`，它将`ts-loader`和`fork-ts-checker-webpack-plugin`配合使用，实现线程外的快速类型检查。
+
+在默认配置下，如果发现了TypeScript类型错误，仅仅会在终端进行提示，而不会中断编译过程。我认为TypeScript发现的类型错误是比较严重的错误类型，应当中断编译过程，让开发者给予足够的重试，所以需要进行配置，让TypeScript发现的错误中断编译过程并且在浏览器界面上进行提示。
+
+常规的TypeScript项目只需要在`tsconfig.json`中的`compilerOptions`选项中配置`noEmitOnError`即可，这就会阻止TypeScript编译器在发现错误的时候继续将`.ts`文件编译成为.js文件。
+
+但是由于Vue CLI使用了`fork-ts-checker-webpack-plugin`这个插件，需要进行额外的配置（在`@vue/cli-plugin-typescript`的文档中并没有明确的介绍，需要到`fork-ts-checker-webpack-plugin`的文档中自行查找）
+
+在`vue.config.js`中，使用`chainWebpack`属性，对其进行配置，将`async`设置为`false`：
+
+```ts
+module.exports = {
+  chainWebpack: config => {
+    // 配置 TypeScript 检查配置
+    // https://github.com/TypeStrong/fork-ts-checker-webpack-plugin#options
+    config.plugin('fork-ts-checker').tap(option => {
+      option[0].async = false;
+      return option;
+    })
+  },
+};
+```
+
+另外，在`tsconfig.json`中的`compilerOptions`选项中将`noImplicitAny`设定为`true`，这样如果编译器推导出的结果默认为`any`的话，编译器会报错。不推荐轻易使用`any`，除非有明确的理由。即使需要`any`也要现实的标注为`any`，这样才能享受到TypeScript的强类型提示的好处（更何况这不是一个就项目改造）
+
+### Lint工具
+
+配置比较高的Lint级别，可能会导致开发时的效率稍微降低，但是有助于项目的长期发展，以及良好的代码习惯的养成，也避免了保存代码时不提示，但是在Commit时一堆错误不好修改的问题。
+
+配置的Lint工具包括了：
+
+#### ESLint
+
+使用了`plugin:vue/recommended/@vue/prettier/@vue/typescript/plugin:prettier/recommended`四个规则，使用`@typescript-eslint/parser`解析器对`.vue`文件和`.ts`文件都会进行校验（这些都是Vue CLI自动配置的）。
+
+同时在`vue.config.js`中配置了`lintOnSave: process.env.NODE_ENV === 'development' ? 'error' : 'false', 让ESLint`检测到错误时不仅在终端中提示，还会在浏览器界面上展示，同时中断编译过程
+
+#### Prettier
+
+配置了Prettier，根据它提供的不多的选项进行了配置，有可能会与公司代码提交平台的规范有冲突，如果发现冲突后面再进行调整。
+
+由于ESLint中配置了`@vue/prettier`和`plugin:prettier/recommended`，Prettier发现的错误也会中断编译过程。
+
+不过Prettier的问题相对比较好修复，IDE中配置好Prettier的插件后，可以一键进行修复。
+
+#### StyleLint
+
+对于样式文件使用StyleLint进行了检查，在`vue.config.js`中通过`configureWebpack`方法引入了StyleLint插件，对所有样式文件以及`.vue`单文件组件、HTML组件中的样式代码进行校验。
+
+同样如果出错会中断编译过程（这个应该是Bug，即便想关闭配置了相关选项后也无法关闭）
+
+在`.stylelintrc.js`中定义了一些规则，也可能与公司的代码规范有冲突，后续进行调整。
+
+### 目录组织
+
+这部分也是我个人的尝试，带有一定个人喜好，希望在这个项目中验证是否可行.
+
+#### types.ts文件
+
+一般来说，如果`.vue`文件或者其他的`.ts`文件，如果涉及到的类型不多不复杂，可以直接在文件中进行定义，但是如果对应的类型接口需要复用，或者比较多，最好将原来的文件变为目录，文件名改为`index`，里面配套添加`types.ts`文件，用来声明类型，例如有一个`example.ts`文件，如果需要定义的类型比较复杂，那么将这个文件替换为：
+
+```ts
+- example
+  |
+  - index.ts
+  - types.ts
+```
+
+#### 目录组织结构
+
+基本按照Vue CLI生成目录结构，各个插件的配置文件（例如`.eslintrc.js`、`.eslintignore`文件）、环境配置文件（例如`.env`）都放置在根目录，ElementUI定制样式文件放置在根目录下的`theme`目录，其余文件都放在`src`目录下。（`test`目录是单元测试文件的目录，暂时没有引入单测的计划，不过在业务空闲期可能会考虑使用Jest进行单元测试）
+
+Vue CLI为我们配置了Webpack的Alias，`@`会指向`src`目录，所以导入文件时，除非是只被一个组件引用的内部组件可使用`./`相对路径，其余路径都建议使用`@`进行引入，保证文件移动时无需关注组件和资源的路径问题。
+
+`src`目录下，除了根目录下的几个文件`App.vue`等之外，还有以下几个目录：
+
+（1）`src/assets`目录，将所有前端的资源（图片、音频、视频、字体等）都建立单独的目录放到该目录下，例如：
+
+```ts
+- src
+  |
+  - assets
+    |
+    - images
+    - videos
+    - icons
+```
+
+如果图片资源比较多，还可以在`images`目录下按模块进行分割
+
+（2）`src/components`目录，这里放置的组件应该是一些自己封装的、作为模块的功能化基础组件，例如在ElementUI基础上根据封装的组件，会被多个页面引用，例如自己封装的筛选组件等。
+
+这里的结构应该只有单层，即一个目录是一个`component`，不再划分新的目录（组件内部可以根据需要划分子目录）：
+
+```ts
+- src
+  |
+  - components
+    |
+    - query
+      |
+      - index.vue
+        |
+        - components
+          |
+          - handler.vue
+          - result.vue
+    - user-list
+      |
+      - index.vue
+```
+
+（3）`src/mixins`，放置Mixin文件，不再划分目录，通过文件名和注释描述该文件实现的Mixin的功能
+
+（4）`src/plugins`，引入的或者自己实现的插件，目录要求与`components`相同
+
+（5）`src/router`，路由相关文件，具体在路由部分的实践介绍
+
+（6）`src/store`，Vuex相关文件，具体在Vuex部分的实践介绍
+
+（7）`src/styles`，样式相关文件，只放置全局的样式变量和样式Mixin，通过Style-resource-loader配置自动进行引入
+
+（8）`src/utils`，帮助函数的目录，总的出口文件是`index.ts`，用于组织帮助函数的分类，其余文件按照帮助函数的类别进行划分，无法分类比较零散的帮助函数放置在`common-helper`，目前其他的帮助函数分为了下面几个：
+
+`date-time-helper.ts`，用来处理日期时间相关的函数都在这里
+`router-helper.ts`，与路由相关的函数在这里，例如路由守卫中应用的方法等
+`network-helper`，与网络请求有关的方法都在这里，最主要的就是对Axios的封装，在后面的网络请求部分单独介绍
+（9）`src/views`，是最常用的目录，里面按照模块划分目录（可以大致理解为按照导航菜单的一级目录划分），里面有一个`common`目录，用来放置被多个页面同时引用的组件。
+
+例如有一个`user-create.vue`，在`user-info`路由下有使用，在`user-admin`中也有使用，那么就可以把它放到`common`中：
+
+```ts
+- src
+  |
+  - views
+    |
+    - common
+      |
+      - user
+        |
+        - user-create.vue
+```
+
+现在的`common`目录下有两个组件，分别是`not-found`（对应404路由）和`menu`目录，不过这个目录的划分可能会比较主观，也会随着业务不同进行调整。
+
+### 命名
+
+这里的命名风格主要参考了[Vue的风格指南](https://cn.vuejs.org/v2/style-guide/index.html)和Element的实践
+
+#### 目录的命名
+目录使用`kebab-case`格式进行命名，如果里面的主文件使用`index.ts`或者`index.vue`命名，如果有子组件则放到与`index`平级的`components`目录下，例如：
+
+```ts
+- src
+  |
+  - views
+    |
+    - layout.vue
+      |
+      - index.vue
+      - components
+        |
+        - header.vue
+        - main.vue
+        - footer.vue
+```
+
+另外，如果一个组件的代码长度超过了300行，就需要考虑拆分组件了，如果超过了500行，则必须拆分组件。
+
+这样做的好处是，当进入一个目录后，一眼就能看出主文件是哪一个，对应的组件在哪里。缺点就是当在IDE中打开多个文件时，每个代码文件的文件名为防止重名会变得很长，不太便于切换。
+
+#### 组件的命名
+
+如果组件不以目录的形式存在，而是一个单独的组件，则使用`kebab-case`格式进行命名，例如`user-store.ts`、`user-list.vue`。
+
+在编写组件时，导出的Class的名字需要是`PascalCase`格式的，且语义正确：
+
+```ts
+@Component()
+export default class UserList extends Vue {
+}
+```
+
+导入组件时，也按照`PascalCase`格式进行导入和注册：
+
+```ts
+import UserList from '@/views/user-list/index.vue';
+
+@Component({ components: { UserList } )
+export default class UserList extends Vue {
+}
+```
+
+在模板中使用的时候，需要使用`kebab-case`格式，例如：
+
+```ts
+<template>
+  <user-lit />
+</template>
+```
+
+`在单文件组件、字符串模板和JSX中没有内容的组件应该是自闭合的（在DOM模板中不可以）`
+
+这样做的好处是符合HTML和JS的语言规范，但是就是当我在组件里想要找到`UserList`时会习惯的直接搜索`Userlist`却搜不到。
+
+#### 变量的命名
+
+变量的命名由ESLint控制，要求使用驼峰拼写法，这也和公司准入平台的要求是一致的。
+
+组件的Prop的命名应该遵循的规则：在声明Prop的时候，命名始终使用`camelCase`，在模板中使用`kebab-case`：
+
+```ts
+<template>
+  <User user-name="Jay" />
+</template>
+
+<script lang="ts">
+import User from '@/views/user/index.vue';
+
+@Component({ components: { User } )
+export default class UserList extends Vue {
+  @Prop(String) username!: string;
+}
+</script>
+```
+
+#### 接口的命名
+
+此处指的接口是TypeScript中的`interface`，命名应遵循`PascalCase`规则：
+
+```ts
+export interface RootState {
+  title: string;
+}
+```
+
+### 类型
+
+为了充分享受TypeScript带来的强类型的好处，提高项目的可维护性和代码质量，我在项目中开启了`noImplicitAny`，即所有的隐式的`any`类型都不不被允许的。
+
+所以对于比较复杂的类型、变量建议显示的定义类型，简单的可以令编译器自动推导来确定。
+
+谨慎使用`any`类型，对于`as`断言的使用也要仔细考虑是否合理。
+
+### 路由
+
+路由的目录是`./src/router`，`index.ts`是实际进行路由组装的地方，在`modules`中按照目录对路由进行了分割代理，分割的维度也可以认为是按照导航的一级目录。在`router-guards.ts`中定义路由守卫相关的功能。
+
+#### 按模块组织路由
+
+在`modules`中，每个模块是一个.ts文件，具体的业务模块都在这里定义，例如我定义了一个`base-knowledge.ts`模块，里面的路由都是与『基础知识』相关的路由定义，路由对象的类型直接使用了`vue-router`定义的`RouteConfig`
+
+要善于利用第三方包已经定义好的类型，具体可以在IDE中按住`alt`点击进入其类型声明文件，选择使用。
+
+Route对象的定义与Vue Route需要的路由对象一直，在`meta`中定义我们需要自定义的数据，具体的路由守卫都在`router-guards.ts`中定义，在此引用。
+
+引入组件的时候，使用了`lazyLoaderHelper`辅助函数，在生产环境中会实现路由懒加载，所以引入组件的方式与原来不同：
+
+```ts
+const baseKnowledgeRoutes: RouteConfig[] = [
+  {
+    path: '/base/hello-vue',
+    name: 'base',
+    component: lazyLoadHelper('base-knowledge/hello-vue/index'),
+    meta: {
+      title: 'Hello Vue'
+    }
+  },
+];
+
+export default baseKnowledgeRoutes;
+```
+
+传给`lazyLoadHelper`参数是组件位于`./src/views/`路径下的目录和文件名，不必添加.vue后缀（其实看一下`lazyLoadHelper`的实现就明白了），上面导入的组件实际路径是`./src/view/base-knowledge/hello-vue/index.vue`
+
+这样带来的弊端就是IDE搜索组件引用的时候没有办法直接按照建立的索引搜索到组件的使用，因为我们传入的是字符串形式的路径，所以在搜索组件引用时候需要到这个目录下使用字符串搜索的形式进行搜索\
+
+如果业务复杂，或者需要再嵌套子路由，后续可以在`modules`中再换按照目录进行划分，组织形式类似
+
+#### 路由汇总
+
+在`./src/router/index.ts`中对各个模块进行汇总，汇总的方式就是采取结构赋值的形式，同时将一些公用的、有特定顺序的路由（例如`404`）插入到最终的`routes`对象中：
+
+```ts
+const routes: RouteConfig[] = [
+  {
+    path: '/',
+    name: 'home',
+    component: lazyLoadHelper('home/index'),
+    meta: {
+      title: 'Vue Learning Demos'
+    }
+  },
+  ...baseKnowledge,
+  ...application,
+  {
+    path: '*',
+    name: 'NotFound',
+    component: lazyLoadHelper('common/not-found'),
+    meta: {
+      title: 'Not Found'
+    }
+  }
+];
+
+const router = new VueRouter({ routes });
+```
+
+同时路由守卫也是在这里进行组装的。
+
+#### 导航
+
+设置完路由后，大部分情况下需要在导航菜单中进行处理。项目中关于菜单的组件我放在了`./src/views/common/menu`目录下
+
+导航组件是基于`<el-menu>`封装的视图组件，基本上不会被其他组件引用，也没有做太多通用性的抽象，所在放到了`views/common`中而没有放到`components`中。
+
+`menu`目录下有三个文件：
+
+```ts
+- src
+  |
+  - views
+    |
+    - common
+      |
+      - menu
+        |
+        - index.vue
+        - config.ts
+        - types.ts
+```
+
+`index.vue`是导航的主文件，用来将数据映射为视图，`types.ts`是前面提到的类型文件，而剩下的`config.ts`就是视图的数据来源。格式如下：
+
+```ts
+const menuConfigs: MenuConfig[] = [
+  {
+    path: '/base',
+    icon: 'el-icon-location',
+    title: '基础知识',
+    children: [
+      { path: '/base/hello-vue', title: 'Hello Vue', icon: 'el-icon-location' },
+      { path: '/base/life-circles', title: 'Life Circles', icon: 'el-icon-location' },
+      { path: '/base/inject-and-provide', title: 'Inject/Provide', icon: 'el-icon-location' },
+      { path: '/base/mixin-example', title: 'Mixin Example', icon: 'el-icon-location' }
+    ]
+  },
+  {
+    path: '/application',
+    icon: 'el-icon-basketball',
+    title: '综合应用',
+    children: [{ path: '/application/todo-list', title: 'Todo List', icon: 'el-icon-basketball' }]
+  }
+];
+```
+
+`menuConfigs`数组的成员都是一级菜单的属性，成员的`children`属性是二级菜单的属性。可以添加哪些属性看`types.ts`中的定义即可。如果添加了错误的或者不存在的属性，TypeScript编译器就会报错，不必等到编译成功后在浏览器中看不到预期的结果才发现属性传错，这就是TypeScript静态检查带来的好处之一。
+
+我们的导航组件目录只支持二级导航
+
+### Vuex
+
+关于Vuex的代码都在`.src/store`目录中，目录分为了三个部分，`index.ts`组装Store，不负责具体的实现，`root-sotre`来定义根Store的具体实现，`modules`中按目录实现各个模块的Store
+
+#### 
 ## CLI工具
 
 ## 其他
