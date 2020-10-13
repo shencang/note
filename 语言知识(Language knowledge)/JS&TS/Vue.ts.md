@@ -754,6 +754,7 @@ Vue CLI为我们配置了Webpack的Alias，`@`会指向`src`目录，所以导�
 这里的命名风格主要参考了[Vue的风格指南](https://cn.vuejs.org/v2/style-guide/index.html)和Element的实践
 
 #### 目录的命名
+
 目录使用`kebab-case`格式进行命名，如果里面的主文件使用`index.ts`或者`index.vue`命名，如果有子组件则放到与`index`平级的`components`目录下，例如：
 
 ```ts
@@ -968,7 +969,10 @@ const menuConfigs: MenuConfig[] = [
 
 关于Vuex的代码都在`.src/store`目录中，目录分为了三个部分，`index.ts`组装Store，不负责具体的实现，`root-sotre`来定义根Store的具体实现，`modules`中按目录实现各个模块的Store
 
-#### 
+#### Store目录划分
+
+在`root-store`中定义根Store的具体实现，在`modules`里面按目录定义各模块的Store的实现，每个模块目录建议以`模块名-store`命名，导出时根节点的Store将各个属性分别导出，插入到index.ts中new Vuex.Store的各个属性中，子模块的Stroe直接将模块整体插入到new Vuex.Store的modules属性中，属性名（即命名空间）以模块名命名：
+
 ## CLI工具
 
 ## 其他
