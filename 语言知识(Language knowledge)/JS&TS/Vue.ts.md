@@ -1045,7 +1045,7 @@ export const UPDATE_TITLE = {
 export interface RootMutations extends MutationTree<RootState> {
   [UPDATE_TITLE.action]: RootUpdateTitleMutation;
 }
-// Error:(16, 3) TS1169: A computed property name in an interface must refer 
+// Error:(16, 3) TS1169: A computed property name in an interface must refer
 // to an expression whose type is a literal type or a 'unique symbol' type.
 ```
 
