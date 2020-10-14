@@ -1125,13 +1125,13 @@ export default { state, getters, mutations, actions };
 
 #### UI组件
 
-项目的UI组件仍然选择了ElementUI，对于ElementUI的引入应该采取按需引入的方式，尽可能减少构建后的体积。可以直接使用Element为Vue Cli@3提供的插件，它会帮助我们完成ElementUI的按需引入。
+项目的UI组件仍然选择了[ElementUI](https://element.eleme.cn/#/zh-CN)，对于ElementUI的引入应该采取按需引入的方式，尽可能减少构建后的体积。可以直接使用Element为Vue Cli@3提供的[插件](https://github.com/ElementUI/vue-cli-plugin-element)，它会帮助我们完成ElementUI的按需引入。
 
-如果是手动安装的话需要安装babel-plugin-component使用，安装之后在根目录下新建.babel.config.js文件（如果Vue CLI已经创建的话可以直接使用），然后在plugins中添加element-ui的使用）
+如果是手动安装的话需要安装`babel-plugin-component`使用，安装之后在根目录下新建`.babel.config.js`文件（如果Vue CLI已经创建的话可以直接使用），然后在`plugins`中添加`element-ui`的使用）
 
-然后在/src/plugins/elemment.ts中引入需要的Element组件，并将需要的方法（比如$loading挂载到Vue的原型上（不推荐挂载大量的属性到Vue原型上，会导致性能的下降）。
+然后在`/src/plugins/elemment.ts`中引入需要的Element组件，并将需要的方法（比如`$loading`挂载到Vue的原型上（不推荐挂载大量的属性到Vue原型上，会导致性能的下降）。
 
-同时，ElementUI提供了主题定制的功能，详细使用方法参考文档。完成主题定制后，下载定制后的文件放到根目录下新建的theme目录内，然后在.babel.config.js添加styleLibraryName属性，指向theme目录，.babel.config.js完整的配置如下：
+同时，ElementUI提供了[主题定制](https://element.eleme.cn/#/zh-CN/theme)的功能，详细使用方法参考[文档](https://element.eleme.cn/#/zh-CN/component/custom-theme)。完成主题定制后，下载定制后的文件放到根目录下新建的`theme`目录内，然后在`.babel.config.js`添加`styleLibraryName`属性，指向`theme`目录，`.babel.config.js`完整的配置如下：
 
 ```ts
 module.exports = {
@@ -1150,31 +1150,34 @@ module.exports = {
 };
 ```
 
-在开发类似CRM的后台项目时，如果对样式有要求，尽量提前与UE/UI同学进行沟通，基于ElementUI的组件规范进行样式定制，尽量避免通过覆盖样式的方式来修改ElementUI的内置组件的样式。
+`在开发类似CRM的后台项目时，如果对样式有要求，尽量提前与UE/UI同学进行沟通，基于ElementUI的组件规范进行样式定制，尽量避免通过覆盖样式的方式来修改ElementUI的内置组件的样式。`
 
 #### 样式规范
 
 前面提到了，项目会使用Stylelint对样式的编写进行规范，同时还有一些规范要遵守：
 
-在Vue单文件组件内，除非极特殊的情况，都需要使用scoped属性，避免组件样式成为全局样式，污染全局样式，并且导致在开发或编译时组件间的样式相互干扰。
-如果没有添加scoped属性，那么意味着你明确知晓并且意图将这个样式继承给子组件，但是前提是为这些样式添加了一个足够独一无二的类名。
+在Vue单文件组件内，除非极特殊的情况，`都需要使用scoped属性`，避免组件样式成为全局样式，污染全局样式，并且导致在开发或编译时组件间的样式相互干扰。
+如果没有添加`scoped`属性，那么意味着你明确知晓并且意图将这个样式继承给子组件，但是前提是为这些样式添加了一个足够独一无二的类名。
 另外，除非UI组件的要求，不允许使用内联样式
 不允许使用ID选择器编写样式
-除非极特殊情况，不允许使用!important
-class命名使用kebab-case格式，例如user-list-item
+除非极特殊情况，不允许使用`!important`
+`class`命名使用`kebab-case`格式，例如`user-list-item`
 
-关于变量名：无论是CSS的类名还是JavaScript的变量名，在遵守格式要求的基础上（PascalCase或者kebab-case)尽可能传达出有效的信息，想value1、value2这样没有任何意义的命名要避免（除非是在具体的回调函数中有具体的上下文环境），使用带有足够信息量的变量名提高代码的可读性。使用英文命名，不要使用拼音。
+关于变量名：无论是CSS的类名还是JavaScript的变量名，在遵守格式要求的基础上（`PascalCase`或者`kebab-case`)尽可能传达出有效的信息，想`value1`、`value2`这样没有任何意义的命名要避免（除非是在具体的回调函数中有具体的上下文环境），使用带有足够信息量的变量名提高代码的可读性。使用英文命名，不要使用拼音。
 
 另外，避免（！）语意不明或者是错误的缩写。
 
 #### 自动导入全局样式变量
 
-样式预处理器选择使用了Less，在/src/styles下面声明了一些全局的样式文件，目前有三个：
+样式预处理器选择使用了Less，在`/src/styles`下面声明了一些全局的样式文件，目前有三个：
 
-reset.css，用来重置浏览器默认样式
-mixins.less，用来实现一些可以传入参数的样式模块，比如文字剪切等，直接在组件样式中调用
-variables.less，用来定义一些全局的样式变量，比如主题颜色、边框颜色等等
-对于后两者，使用了style-resources-loader，让我们不需要手动导入这些全局的样式文件。需要在vue.config.js中进行配置：
+`reset.css`，用来重置浏览器默认样式
+
+`mixins.less`，用来实现一些可以传入参数的样式模块，比如文字剪切等，直接在组件样式中调用
+
+`variables.less`，用来定义一些全局的样式变量，比如主题颜色、边框颜色等等
+
+对于后两者，使用了`style-resources-loader`，让我们不需要手动导入这些全局的样式文件。需要在`vue.config.js`中进行配置：
 
 ```ts
 const path = require('path');
@@ -1200,13 +1203,13 @@ function addStyleResource (rule) {
 }
 ```
 
-如果后续需要导入更多的样式变量，那么只需要在addStyleResource的我patterns数组中添加对应的路径即可。
+如果后续需要导入更多的样式变量，那么只需要在`addStyleResource`的我`patterns`数组中添加对应的路径即可。
 
 ### 5.10 环境变量和构建脚本
 
-根据不同的环境新建了几个.env文件，例如我们有线上（production）/开发（development）/测试（staging）三个环境，在各自的环境文件中（例如.env.production）配置VUE_BASE_URL等变量。
+根据不同的环境新建了几个`.env`文件，例如我们有线上（`production`）/开发（`development`）/测试（`staging`）三个环境，在各自的环境文件中（例如`.env.production`）配置`VUE_BASE_URL`等变量。
 
-依赖管理工具选择了使用Yarn代替NPM，在package.json中的脚本除了常规的serve、build之外，还未编译的时候也创建对应的脚本，
+依赖管理工具选择了使用[Yarn](https://yarn.bootcss.com/)代替NPM，`在package.json`中的脚本除了常规的`serve`、`build`之外，还未编译的时候也创建对应的脚本，
 
 ```ts
 "scripts": {
@@ -1221,7 +1224,7 @@ function addStyleResource (rule) {
 },
 ```
 
-另外，配置了pre-commit的钩子，在每次提交前都会对改动的文件进行代码格式和规范的检查，不通过本地也无法提交，这样就缩短了代码质量的反馈链，不必等到Icode检查半天才告诉你不符合规范
+另外，配置了`pre-commit`的钩子，在每次提交前都会对改动的文件进行代码格式和规范的检查，不通过本地也无法提交，这样就缩短了代码质量的反馈链，不必等到Icode检查半天才告诉你不符合规范
 
 ### Code Reivew
 
