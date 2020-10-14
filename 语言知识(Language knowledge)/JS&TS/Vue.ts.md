@@ -963,7 +963,7 @@ const menuConfigs: MenuConfig[] = [
 
 `menuConfigs`数组的成员都是一级菜单的属性，成员的`children`属性是二级菜单的属性。可以添加哪些属性看`types.ts`中的定义即可。如果添加了错误的或者不存在的属性，TypeScript编译器就会报错，不必等到编译成功后在浏览器中看不到预期的结果才发现属性传错，这就是TypeScript静态检查带来的好处之一。
 
-我们的导航组件目录只支持二级导航
+`我们的导航组件目录只支持二级导航`
 
 ### Vuex
 
@@ -971,8 +971,341 @@ const menuConfigs: MenuConfig[] = [
 
 #### Store目录划分
 
-在`root-store`中定义根Store的具体实现，在`modules`里面按目录定义各模块的Store的实现，每个模块目录建议以`模块名-store`命名，导出时根节点的Store将各个属性分别导出，插入到index.ts中new Vuex.Store的各个属性中，子模块的Stroe直接将模块整体插入到new Vuex.Store的modules属性中，属性名（即命名空间）以模块名命名：
+在`root-store`中定义根Store的具体实现，在`modules`里面按目录定义各模块的Store的实现，每个模块目录建议以`模块名-store`命名，导出时根节点的Store将各个属性分别导出，插入到`index.ts`中`new Vuex.Store`的各个属性中，子模块的Stroe直接将模块整体插入到`new Vuex.Store`的`modules`属性中，属性名（即命名空间）以模块名命名：
+
+```ts
+import Vue from 'vue';
+import Vuex from 'vuex';
+import RootStore from '@/store/root-store/index';
+import TodoStore from '@/store/modules/todo-store/index';
+
+Vue.use(Vuex);
+
+export default new Vuex.Store({
+  strict: process.env.NODE_ENV === 'development',
+  state: RootStore.state,
+  getters: RootStore.getters,
+  mutations: RootStore.mutations,
+  actions: RootStore.actions,
+  modules: {
+    todo: TodoStore
+  }
+});
+```
+
+#### Store的实现
+
+根Store（以及其他每个Module的Store）都应该包含三个文件：
+
+（1）`index.ts`，用来定义Store的具体实现，例如`state`、`getters`、`Mutation`和`Action`等，
+
+（2）`interface-types.ts`是用来定义Store对应的类型的文件（因为还存在另外一个`store-types.ts`文件，所以命名为`interface-types.ts`），这里面也大量借用了`vuex`提供了类型帮助构建我们自己的类型，具体实现可以参考代码。
+
+（3）`store-types.ts`用来定义Mutation的Type常量，实际上由于Mutation、Action的Type在Store中、组件中以及上面定义类型的`interface-types.ts`中，所以需要在这里定义常量然后导出
+
+另外，由于在之前的项目中，API是单独划分目录存放的，但是实际上目录结构与Store中的结构相同，并且在新项目中我仍然准备所有API请求都都通过Action完成，相当于API与Store也是强耦合的，所以我定义Mutaion和Action的Type常量时，我将对应的URL也作为一个常量保存在了`store-types.ts`中。例如我们有要完成的Action是更新标题，那么在`store-types.ts`中我会做如下的定义：
+
+```ts
+export const UPDATE_TITLE_URL = '/title';
+export const UPDATE_TITLE_MUTATION = 'UPDATE_TITLE_MUTATION';
+export const UPDATE_TITLE_ACTION = 'UPDATE_TITLE_ACTION';
+
+```
+
+我将上面三个常量成为为一组Type，注意，常量命名应该全大写，以_分割，结尾单词是固定的，以`MUTATION`/`ACTION`/`URL`结尾，用来表明类型。多组常量之间应该间隔一个空行。
+
+这一组Type有可能会包含一个URL，但是对应多个Mutaion和Action，例如严格遵守REST风格的API接口是：
+
+```ts
+export const TITLE_URL = '/title';
+// 对应 PUT 方法，更新资源
+export const UPDATE_TITLE_MUTATION = 'UPDATE_TITLE_MUTATION';
+export const UPDATE_TITLE_ACTION = 'UPDATE_TITLE_ACTION';
+// 对应 POST 方法，创建资源
+export const CREATE_TITLE_MUTATION = 'UPDATE_TITLE_MUTATION';
+export const CREATE_TITLE_ACTION = 'UPDATE_TITLE_ACTION';
+// 对应 GET 方法，获取资源
+export const GET_TITLE_MUTATION = 'UPDATE_TITLE_MUTATION';
+export const GET_TITLE_ACTION = 'UPDATE_TITLE_ACTION';
+```
+
+想到过采用一个对象里面多个属性的方式来维护，例如：
+
+```ts
+export const UPDATE_TITLE = {
+  mutation: 'UPDATE_TITLE_MUTATION',
+  action: 'UPDATE_TITLE_ACTION',
+  url: 'title'
+};
+```
+
+但是在`interface-types.ts`中用这个变量来定义对应的Mutaion或者Action的类型时会报错：
+
+```ts
+export interface RootMutations extends MutationTree<RootState> {
+  [UPDATE_TITLE.action]: RootUpdateTitleMutation;
+}
+// Error:(16, 3) TS1169: A computed property name in an interface must refer 
+// to an expression whose type is a literal type or a 'unique symbol' type.
+```
+
+就是说如果对象的属性名是一个用`[]`包裹的计算属性，那么计算属性只能是字面量或者是`unique symbol`类型，字面量就是我现在才去的方案，而如果要使用`unique symbol`又遇到了[Vuex不支持Symbol类型作为Mutation Type的限制](https://github.com/vuejs/vuex/issues/224/)，所以只能采取了上面的方案。
+
+使用常量的时候直接将常量导入，属性名使用`[]`的形式来插入常量：
+
+```ts
+import { UPDATE_TITLE_MUTATION, UPDATE_TITLE_ACTION } from '@/store/root-store/store-types';
+
+const mutations: RootMutations = {
+  [UPDATE_TITLE_MUTATION](state, { title }) {
+    state.title = title;
+  }
+};
+
+const actions: RootActions = {
+  async [UPDATE_TITLE_ACTION]({ commit }) {
+    const result: string = await setTimeoutThen(1000, 'ok');
+    commit(UPDATE_TITLE_MUTATION, { title: result });
+  }
+};
+
+export default { state, getters, mutations, actions };
+```
+
+#### 什么数据需要存到Store中
+
+需要共享的全局数据自不必说，需要存到Store中，而且一般要放到`root-store`中
+
+对于组件中的数据，如果组件内有多个子组件共享数据建议也放到`Store`中的state中进行维护，如果父组件获取数据不全仍需要子组件通过网络请求获取数据的情况，不建议放到Store中。
+
+例如，有一个组件`UserList`，保存了用户数据列表，`User`是子组件，点击`UserList`其中一列会打开`User`组件，展示用户详情，如果：
+
+`User`展示的详情数据在`UserList`中已经完全具备，`User`不需要再通过网络请求获取数据，那么`UserList`的数据建议放到Store中，在Action中将数据`commit`到`state`中
+如果情况相反，则不建议将`UserList`的数据建议放到Store中，不需要`commit`，直接`return`返回的数据
+
+#### 缓存
+
+对于`root-store`中的数据应该有全局缓存的功能，如果请求的数据短期内不变，就不必再次发送网络请求，简单做的话就是对`root-store`中的每个请求进行判断，如果State中数据已经存在则直接返回该数据
+
+这样做需要每个请求单独处理，而且实现的功能比较简陋，比较完善的全局缓存我能想到的是：
+
+不需要每个请求（即`dispatch`每个Action）时都需要处理，那么也许将缓存这一部分与Axios的封装结合在一起比较好
+为缓存添加可控制的属性，比如最大缓存时间、强制忽略缓存等
+缓存控制的粒度，是以请求为粒度，还是URL作为更细的控制粒度？
+当多个请求请求同一份资源的时候，后续请求如何处理？是直接忽略缓存发送多个请求（简单粗暴）？还是使用资源池配合监听订阅模式实现效率最大化（精致复杂）？
+这一块我还没有进行处理，后面有了具体的实践经验再来补充。
+
+### 网络请求处理
+
+#### Axios的封装
+
+项目的网络工具选了最主流的Axios，在`utiles/network-helper`中进行了处理，这个目录下除了`types.ts`是类型声明文件，`index.ts`是具体实现的主文件，`loading-counter.ts`是用来对全局Loading进行处理的方法。
+
+对Axios的封装其实还是老一套，只是没有直接导出的`get`等方法，而是作为`request`的一个属性，按照`request.get`的形式使用。
+
+在`index.ts`也添加了一些Interceptors，目前主要添加的功能时错误提示、Loading处理，后面会加上对请求参数自动拼装（例如JWT参数）。后续如果Interceptors比较多，可以单独拆分文件维护。
+
+要注意的是，对错误的拦截，如果是网络异常导致的错误，拦截器会进行提示后，将错误对象`reject`，在`main.ts`的`Vue.config.errorHandler`统一处理，如果是业务返回的错误码，会在拦截器中进行提示，错误对象会`resolve`，响应结果在业务代码中处理（单不需要处理Loading和提示错误了）
+
+#### 全局Loading
+
+`loading-counter.ts`中定义了`LoadingCounter`这个类，并导出了一个实例，在Axios的成功的请求拦截器中Loading数`+1`，失败的请求拦截器不作处理，在成功或失败的响应拦截器中Loading数`-1`，并提供了`clearLoading`方法强制清除Loading，
+
+这个方案的优点就是不需要再网络请求时反复的添加Loading的处理逻辑，缺点就是只能默认添加全屏的Loading，而且实现比较简单，没有经过复杂项目的验证，可能由于欠考虑导致什么潜在的问题。
+
+#### Mock数据
+
+前端Mock数据选择了使用[Yapi](https://hellosean1025.github.io/yapi/index.html)来完成[（内网地址）](http://yapi.baidu-int.com/group/10871)，让前端编写Mock数据能够更加轻松，它采用了[Mock.js](http://mockjs.com/)的语法，也可以自己编写Mock脚本来实现复杂数据的输出。
+
+其实它完全可以充当API的文档，不过需要后端的配合，一般实现起来是比较难的，所以可以前端自己来维护一份Mock的API。
+
+理想状态时，在本地开发时，所有请求都应该是通过Mock完成的，这样有一些数据在测试环境也没有办法获取到真实反映（例如车辆接管数据，需要同步到Monitor，所以后端只返回一种结果），但是在Mock数据里我们就可以自由控制。
+
+### 样式
+
+#### UI组件
+
+项目的UI组件仍然选择了ElementUI，对于ElementUI的引入应该采取按需引入的方式，尽可能减少构建后的体积。可以直接使用Element为Vue Cli@3提供的插件，它会帮助我们完成ElementUI的按需引入。
+
+如果是手动安装的话需要安装babel-plugin-component使用，安装之后在根目录下新建.babel.config.js文件（如果Vue CLI已经创建的话可以直接使用），然后在plugins中添加element-ui的使用）
+
+然后在/src/plugins/elemment.ts中引入需要的Element组件，并将需要的方法（比如$loading挂载到Vue的原型上（不推荐挂载大量的属性到Vue原型上，会导致性能的下降）。
+
+同时，ElementUI提供了主题定制的功能，详细使用方法参考文档。完成主题定制后，下载定制后的文件放到根目录下新建的theme目录内，然后在.babel.config.js添加styleLibraryName属性，指向theme目录，.babel.config.js完整的配置如下：
+
+```ts
+module.exports = {
+  "presets": [
+    "@vue/cli-plugin-babel/preset"
+  ],
+  "plugins": [
+    [
+      "component",
+      {
+        "libraryName": "element-ui",
+        "styleLibraryName": "~theme"
+      }
+    ]
+  ]
+};
+```
+
+在开发类似CRM的后台项目时，如果对样式有要求，尽量提前与UE/UI同学进行沟通，基于ElementUI的组件规范进行样式定制，尽量避免通过覆盖样式的方式来修改ElementUI的内置组件的样式。
+
+#### 样式规范
+
+前面提到了，项目会使用Stylelint对样式的编写进行规范，同时还有一些规范要遵守：
+
+在Vue单文件组件内，除非极特殊的情况，都需要使用scoped属性，避免组件样式成为全局样式，污染全局样式，并且导致在开发或编译时组件间的样式相互干扰。
+如果没有添加scoped属性，那么意味着你明确知晓并且意图将这个样式继承给子组件，但是前提是为这些样式添加了一个足够独一无二的类名。
+另外，除非UI组件的要求，不允许使用内联样式
+不允许使用ID选择器编写样式
+除非极特殊情况，不允许使用!important
+class命名使用kebab-case格式，例如user-list-item
+
+关于变量名：无论是CSS的类名还是JavaScript的变量名，在遵守格式要求的基础上（PascalCase或者kebab-case)尽可能传达出有效的信息，想value1、value2这样没有任何意义的命名要避免（除非是在具体的回调函数中有具体的上下文环境），使用带有足够信息量的变量名提高代码的可读性。使用英文命名，不要使用拼音。
+
+另外，避免（！）语意不明或者是错误的缩写。
+
+#### 自动导入全局样式变量
+
+样式预处理器选择使用了Less，在/src/styles下面声明了一些全局的样式文件，目前有三个：
+
+reset.css，用来重置浏览器默认样式
+mixins.less，用来实现一些可以传入参数的样式模块，比如文字剪切等，直接在组件样式中调用
+variables.less，用来定义一些全局的样式变量，比如主题颜色、边框颜色等等
+对于后两者，使用了style-resources-loader，让我们不需要手动导入这些全局的样式文件。需要在vue.config.js中进行配置：
+
+```ts
+const path = require('path');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+
+module.exports = {
+  chainWebpack: config => {
+    // 自动导入样式文件
+    const types = ['vue-modules', 'vue', 'normal-modules', 'normal'];
+    types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)));
+  },
+};
+
+function addStyleResource (rule) {
+  rule.use('style-resource')
+    .loader('style-resources-loader')
+    .options({
+      patterns: [
+        path.resolve(__dirname, './src/styles/variables.less'),
+        path.resolve(__dirname, './src/styles/mixins.less'),
+      ],
+    })
+}
+```
+
+如果后续需要导入更多的样式变量，那么只需要在addStyleResource的我patterns数组中添加对应的路径即可。
+
+### 5.10 环境变量和构建脚本
+
+根据不同的环境新建了几个.env文件，例如我们有线上（production）/开发（development）/测试（staging）三个环境，在各自的环境文件中（例如.env.production）配置VUE_BASE_URL等变量。
+
+依赖管理工具选择了使用Yarn代替NPM，在package.json中的脚本除了常规的serve、build之外，还未编译的时候也创建对应的脚本，
+
+```ts
+"scripts": {
+  "serve": "vue-cli-service serve --open",
+  "build": "vue-cli-service build --modern",
+  "build-dev": "vue-cli-service build --modern --mode development",
+  "build-staging": "vue-cli-service build --modern --mode staging",
+  "test:unit": "vue-cli-service test:unit",
+  "lint": "vue-cli-service lint",
+  "analyze": "vue-cli-service build --modern --report",
+  "preview": "cd dist && npx http-server -a 127.0.0.1 -p 7000"
+},
+```
+
+另外，配置了pre-commit的钩子，在每次提交前都会对改动的文件进行代码格式和规范的检查，不通过本地也无法提交，这样就缩短了代码质量的反馈链，不必等到Icode检查半天才告诉你不符合规范
+
+### Code Reivew
+
+Code Reivew是一个可以提升团队代码质量的手段，更重要的是，它也可以提高自己的代码水平，无论是你Review他人的代码，还是被别人Review代码。
+
+关于Code Reivew，提交代码时有如下几点建议：
+
+分节点提交代码（开始写之前做好规划），每次提交Reivew的代码不要过多
+
+分批次Commit
+
+清晰的Commit Message
+
+Review他人代码时：
+
+尽量抽出时间Review别人的代码
+
+了解需求详情
+
+首先关注高层次问题（例如接口设计、函数分解等）
+
+多打-2
+
+#### Axios + Vuex的全局缓存
+
+前面提到了，需要考虑的问题：
+
+不需要每个请求（即`dispatch`每个Action）时都需要处理，那么也许将缓存这一部分与Axios的封装结合在一起比较好
+
+为缓存添加可控制的属性，比如最大缓存时间、强制忽略缓存等
+
+缓存控制的粒度，是以请求为粒度，还是URL作为更细的控制粒度？
+
+当多个请求请求同一份资源的时候，后续请求如何处理？是直接忽略缓存发送多个请求（简单粗暴）？还是使用资源池配合监听订阅模式实现效率最大化（精致复杂）？
+
+#### 接口超时自动重试
+
+除了前面提到的，与Vuex的全局缓存相结合的问题，有时间再研究下接口超时自动重试的方案。
+
+其实在JS版本的Vue项目中已经实现了接口自动重试的方案，但是TS版本中没有办法向Axios的配置对象中传入自定义的参数，所以不能自由的控制是否开启接口的自动重试，所以不太完美，而且这个需求也是低优的，再仔细考虑一下
+
+找到了[解决方案](https://github.com/microsoft/TypeScript/issues/10859)，就是利用TypeScript的声明合并，为Axios的AxiosRequestConfig添加自定义的属性。具体解决方法时在根目录下创建一个shims-cunstom.d.ts文件，里面用来定制第三方模块的类型
+
+```ts
+import * as axios from 'axios';
+
+
+declare module 'axios' {
+  export interface AxiosRequestConfig {
+    customProperty?: boolean;
+  }
+}
+
+declare module '*.png';
+declare module '*.jpg';
+
+```
+
+如果没有第一行，`axios.d.ts`中定义的接口就不会被合并进来，细节参考[TypeScript的文档](http://www.typescriptlang.org/docs/handbook/declaration-merging.html#merging-namespaces)吧
+
+#### WebP图片引入
+
+WebP是Google推出的图片格式，相比于PNG、JPG能够在保证图片质量的同时，大幅减小图片的体积，[兼容性](https://caniuse.com/#search=webp)如下：
+
+![image.png](https://i.loli.net/2020/10/14/EpjUf951hCAvnzw.png)
+
+IE系列和Safari系列的兼容性需要处理，所以需要在引入WebP的同时实现优雅降级。
+
+#### 异常监控和上报
+
+#### 图片压缩
 
 ## CLI工具
+
+将上面基本的配置和实践抽离成为了一个模板[vue-ts-template](https://github.com/duola8789/vue-ts-template)，预置的功能可以看项目的介绍。使用的时候可以直接将这个仓库`clone`下来使用。
+
+为了更方便的使用，作者[以前的博客](https://duola8789.github.io/2019/07/17/01%20%E5%89%8D%25vue-ts-cliE7%AB%AF%E7%AC%94%E8%AE%B0/11%20%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B02%20%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E8%84%9A%E6%89%8B%E6%9E%B6%E5%B7%A5%E5%85%B7/)，做了一个简单的CLI工具[vue-ts-cli](https://github.com/duola8789/vue-ts-cli)，并且发布到了[NPM](https://www.npmjs.com/package/vue-ts-cli-zh)上，可以更方便的拉取模板。
+
+使用方法（推荐使用`npx`工具，需要`npm`版本高于5.2）：
+
+```ts
+npx vue-ts-cli-zh init [project_name]
+```
+
+`init`跟着的`project_name`就是新创建的项目所在的目录名。
 
 ## 其他
