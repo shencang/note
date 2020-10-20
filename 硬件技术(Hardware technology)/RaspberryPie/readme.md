@@ -10,6 +10,8 @@
 
 ![针脚定义2](https://i.loli.net/2020/08/04/XQI2FnjbpRDdqA9.png)
 
+[树莓派安装系统](https://zhuanlan.zhihu.com/p/59027897)
+
 ## 传感器开发
 
 [相关帖-1](https://blog.csdn.net/weixin_34148340/article/details/92435474)
