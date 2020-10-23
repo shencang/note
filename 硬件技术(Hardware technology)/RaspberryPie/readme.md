@@ -14,7 +14,7 @@
 
 ## 传感器开发
 
-[相关帖-1](https://blog.csdn.net/weixin_34148340/article/details/92435474)
+[相关资料](https://blog.csdn.net/weixin_34148340/article/details/92435474)
 
 ## USB摄像头开发
 
