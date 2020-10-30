@@ -13,3 +13,5 @@
 * 恢复方案
 
 [关于SSL设置错误引起wordpress网站不能正常访问的处理方法](http://www.seo628.com/3480.html)
+
+[阿里云轻量应用服务器（WordPress）本地更新流程（2020/2/17）](https://blog.csdn.net/m0_38024332/article/details/104367175)
