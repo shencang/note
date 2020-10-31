@@ -10,7 +10,7 @@
 ## 网站&博客  ----  [快速访问我的博客](http://blog.shencangblue.com)
 
 * 我的[博客](http://blog.shencangblue.com):
-同步日期：`2020年10月30日`
+同步日期：`2020年10月31日`
 
 >
 >* 目录框架全部同步-不定日期同步。
@@ -19,10 +19,10 @@
 >
 >* 近期稳定性改进中，涵盖部分插件和主题更新
 >
->* [博客Android客户端](https://github.com/shencang/Blog_RecentNative)
+>* [博客Android客户端](https://github.com/shencang/Blog_RecentNative)（暂停服务）
 >
 >
->* 我的[私有网盘](http://data.shencangblue.com)：申请账号请联系邮箱【暂时停服】
+>* 我的[私有网盘](http://data.shencangblue.com)：申请账号请联系邮箱（暂停服务）
 
 ## 笔记目录
 
