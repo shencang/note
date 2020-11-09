@@ -47,9 +47,3 @@
 >
 >* [测试目录](https://github.com/shencang/note/tree/master/%E6%B5%8B%E8%AF%95%E7%9B%AE%E5%BD%95(TestDocument))
 >
-
-### 备注
-
-```t
-version 3.5
-```
