@@ -2,9 +2,6 @@
 
 ## 目录
 
->* [计算机网络](-)
->
->* [数据库](-)
 >
 >* [Server](https://github.com/shencang/note/tree/master/NetWork/Server)
 >
