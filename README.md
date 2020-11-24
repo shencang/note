@@ -40,5 +40,3 @@
 >
 >* [其他内容](https://github.com/shencang/note/tree/master/%E5%85%B6%E4%BB%96%E5%86%85%E5%AE%B9(Other%20content))
 >
->* [测试目录](https://github.com/shencang/note/tree/master/%E6%B5%8B%E8%AF%95%E7%9B%AE%E5%BD%95(TestDocument))
->
