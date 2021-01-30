@@ -12,12 +12,11 @@
 * 我的[博客](http://blog.shencangblue.com):
 同步日期：`2021年1月30日`
 
-> 明日更新：k8s(gugugugu)
+> 明日更新：K8s文档、docker学习资料
 >
 >* 目录框架全部同步-不定日期同步。
 >
->* [博客Android客户端](https://github.com/shencang/Blog_RecentNative)（停止服务）
->
+>* [博客Android客户端](https://github.com/shencang/Blog_RecentNative)
 
 ## 笔记目录
 
