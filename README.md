@@ -39,3 +39,7 @@
 >
 >* [其他内容](https://github.com/shencang/note/tree/master/%E5%85%B6%E4%BB%96%E5%86%85%E5%AE%B9(Other%20content))
 >
+## 其他资源
+
+>* [计算机电子书资源](https://github.com/niudai/How-to-be-a-good-programmer)
+>
