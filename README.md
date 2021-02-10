@@ -10,7 +10,7 @@
 ## 网站&博客  ----  [快速访问我的博客](http://blog.shencangblue.com)
 
 * 我的[博客](http://blog.shencangblue.com):
-同步日期：`2021年2月11日`
+同步日期：`2021年2月12日`
 
 > 明日更新：K8s文档
 >
