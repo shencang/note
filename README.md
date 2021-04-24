@@ -14,7 +14,7 @@
 >
 >* 目录框架全部同步-不定日期同步。
 >
->* [博客Android客户端](https://github.com/shencang/Blog_RecentNative)（待恢复）
+>* [博客Android客户端](https://github.com/shencang/Blog_ReactNative)
 
 ## 笔记目录
 
