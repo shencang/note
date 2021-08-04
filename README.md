@@ -10,8 +10,8 @@
 ## 网站&博客  ----  [快速访问我的博客](http://blog.shencangblue.com)
 
 * 我的[博客](http://blog.shencangblue.com):
-同步日期：`2021年8月3日`
->
+同步日期：`2021年8月4日`
+>   
 >* 目录框架全部同步-不定日期同步。
 >
 >* [博客Android客户端](https://github.com/shencang/Blog_ReactNative)
