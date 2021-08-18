@@ -61,3 +61,5 @@
 ### 高电平触发器（高电平触发器）
 
 [用树莓派做一个服务器是否可行？](https://www.zhihu.com/question/35801849)
+
+[首次安装后SSH无法使用](https://blog.csdn.net/weixin_30819085/article/details/97541066)
