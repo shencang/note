@@ -9,8 +9,8 @@
 
 ## 网站&博客  ----  [快速访问我的博客](http://blog.shencangblue.com)
 
-* 我的[博客](http://blog.shencangblue.com):c
-同步日期：`2021年10月16日`
+* 我的[博客](http://blog.shencangblue.com):
+同步日期：`2021年10月17日`
 >
 >* 目录框架全部同步-不定日期同步。
 >
