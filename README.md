@@ -10,7 +10,7 @@
 ## 网站&博客  ----  [快速访问我的博客](http://blog.shencangblue.com)
 
 * 我的[博客](http://blog.shencangblue.com):
-同步日期：`2022年7月21日`
+同步日期：`2022年7月22日`
 >
 >* 目录框架全部同步-不定日期同步。
 >
@@ -35,7 +35,7 @@
 >
 >* [数据资源](https://github.com/shencang/note/tree/master/%E6%95%B0%E6%8D%AE%E8%B5%84%E6%BA%90(Data%20resource))
 >
->* [其他内容](https://github.com/shencang/note/tree/master/%E5%85%B6%E4%BB%96%E5%86%85%E5%AE%B9(Other%20content))
+>* [其他内容](https://github.com/shencang/note/tree/master/%E5%85%B6%E4%BB%96%E5%86%85%E5%AE%B9(Other%20content))r
 >
 ## 其他资源
 
